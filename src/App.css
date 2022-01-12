@@ -22,14 +22,16 @@
   border: solid black 1px;
   height: 100%;
   width: 100%;
+}
 
+.button {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.input:hover,
-.input:focus {
+.button:hover,
+.button:focus {
   text-decoration: underline;
   cursor: pointer;
 }

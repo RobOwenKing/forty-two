@@ -1,8 +1,11 @@
-const InputButton = ({ input }) => {
+const InputButton = ({ input, clickHandler }) => {
   return (
-    <div className="input"
-         role="button"
-         tabIndex="0" >
+    <div
+      className="button"
+      role="button"
+      tabIndex="0"
+      onClick={() => clickHandler(input)}
+    >
       {input}
     </div>
   );
