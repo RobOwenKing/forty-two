@@ -1,3 +1,19 @@
 .App {
   text-align: center;
 }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 6rem);
+  grid-template-rows: minmax(7rem, auto) repeat(5, 6rem);
+  justify-content: center;
+  align-items: center;
+}
+
+.span-four {
+  grid-column: span 4;
+}
+
+.span-two {
+  grid-column: span 2;
+}
