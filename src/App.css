@@ -27,3 +27,9 @@
   align-items: center;
   justify-content: center;
 }
+
+.input:hover,
+.input:focus {
+  text-decoration: underline;
+  cursor: pointer;
+}

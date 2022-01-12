@@ -1,6 +1,10 @@
 const InputButton = ({ input }) => {
   return (
-    <div>{input}</div>
+    <div className="input"
+         role="button"
+         tabIndex="0" >
+      {input}
+    </div>
   );
 }
 
