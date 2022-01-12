@@ -1,6 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
 
+import InputButton from './components/InputButton.jsx';
+
 const App = () => {
   const inputs = [1, 2, 3, 4, '+', '-', '*', '/', '(', ')'];
 
@@ -13,7 +15,7 @@ const App = () => {
           <div className="output-value"></div>
         </div>
         {
-          inputs.map((input, id) => { return <div key={id}>{input}</div>; })
+          inputs.map((input, id) => { return <InputButton key={id} input={input} />; })
         }
         <div className="span-two">Back</div>
         <div className="span-four">=</div>
