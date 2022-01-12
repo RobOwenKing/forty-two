@@ -4,8 +4,8 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(4, 6rem);
-  grid-template-rows: minmax(7rem, auto) repeat(5, 6rem);
+  grid-template-columns: repeat(4, 72px);
+  grid-template-rows: minmax(7rem, auto) repeat(5, 72px);
   justify-content: center;
   align-items: center;
 }
@@ -16,4 +16,14 @@
 
 .span-two {
   grid-column: span 2;
+}
+
+.grid > div {
+  border: solid black 1px;
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
