@@ -17,8 +17,8 @@ const App = () => {
         {
           inputs.map((input, id) => { return <InputButton key={id} input={input} />; })
         }
-        <div className="input span-two">Back</div>
-        <div className="input span-four">=</div>
+        <div className="input span-two" role="button" tabIndex="0">Back</div>
+        <div className="input span-four" role="button" tabIndex="0">=</div>
       </div>
     </div>
   );
