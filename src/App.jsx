@@ -23,9 +23,17 @@ const App = () => {
     updateInputVal(newInputStr);
   };
 
+  const backspaceHandler = () => {
+    const newInputStr = currentInputStr.slice(0, currentInputStr.length - 1);
+    setCurrentInputStr(newInputStr);
+    updateInputVal(newInputStr);
+  };
+
   useEventListener('keydown', (e) => {
     e.preventDefault();
     if (inputs.includes(e.key)) { inputHandler(e.key); }
+    if (e.key === 'Backspace') { backspaceHandler(); }
+    console.log(e.key);
   });
 
   return (
@@ -41,7 +49,7 @@ const App = () => {
             return <InputButton key={id} input={input} clickHandler={inputHandler} />;
           })
         }
-        <div className="button span-two" role="button" tabIndex="0">Back</div>
+        <div className="button span-two" role="button" tabIndex="0" onClick={backspaceHandler}>Back</div>
         <div className="button span-four" role="button" tabIndex="0">=</div>
       </div>
     </div>
