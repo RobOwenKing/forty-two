@@ -14,8 +14,13 @@ const App = () => {
 
   const updateInputVal = (newInputStr) => {
     const whitelistedStr = newInputStr.replace(/[^0-9\(\)\+\-\*\/\.]/g, "");
-    const newInputVal = evaluate(whitelistedStr);
-    setCurrentInputVal(newInputVal);
+
+    try {
+      const newInputVal = evaluate(whitelistedStr);
+      setCurrentInputVal(newInputVal);
+    } catch(e) {
+      return;
+    }
   };
 
   const inputHandler = (input) => {
