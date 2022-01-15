@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { evaluate } from 'mathjs';
 
 import './App.css';
 
@@ -13,7 +14,7 @@ const App = () => {
 
   const updateInputVal = (newInputStr) => {
     const whitelistedStr = newInputStr.replace(/[^0-9\(\)\+\-\*\/\.]/g, "");
-    const newInputVal = eval(whitelistedStr);
+    const newInputVal = evaluate(whitelistedStr);
     setCurrentInputVal(newInputVal);
   };
 
