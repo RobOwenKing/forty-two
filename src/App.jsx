@@ -8,9 +8,12 @@ import InputButton from './components/InputButton.jsx';
 import { useEventListener } from './hooks/useEventListener.js';
 
 const App = () => {
+  const inputs = ['1', '2', '3', '4', '+', '-', '*', '/', '(', ')'];
+
   const [currentInputStr, setCurrentInputStr] = useState('');
   const [currentInputVal, setCurrentInputVal] = useState(0);
-  const inputs = ['1', '2', '3', '4', '+', '-', '*', '/', '(', ')'];
+
+  const [answers, setAnswers] = useState([]);
 
   const updateInputVal = (newInputStr) => {
     const whitelistedStr = newInputStr.replace(/[^0-9\(\)\+\-\*\/\.]/g, "");
@@ -35,10 +38,21 @@ const App = () => {
     updateInputVal(newInputStr);
   };
 
+  const enterHandler = () => {
+    if (Number.isInteger(currentInputVal)) {
+      if (currentInputVal > 0 && currentInputVal < 43) {
+        setAnswers([...answers, currentInputVal]);
+        setCurrentInputStr('');
+        setCurrentInputVal(0);
+      }
+    }
+  };
+
   useEventListener('keydown', (e) => {
     e.preventDefault();
     if (inputs.includes(e.key)) { inputHandler(e.key); }
     if (e.key === 'Backspace') { backspaceHandler(); }
+    if (e.key === 'Enter') { enterHandler(); }
     console.log(e.key);
   });
 
@@ -56,7 +70,7 @@ const App = () => {
           })
         }
         <div className="button span-two" role="button" tabIndex="0" onClick={backspaceHandler}>Back</div>
-        <div className="button span-four" role="button" tabIndex="0">=</div>
+        <div className="button span-four" role="button" tabIndex="0" onClick={enterHandler}>=</div>
       </div>
     </div>
   );
