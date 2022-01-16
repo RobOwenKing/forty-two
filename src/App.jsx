@@ -38,13 +38,18 @@ const App = () => {
     updateInputVal(newInputStr);
   };
 
+  const isValidAnswer = () => {
+    return Number.isInteger(currentInputVal) &&
+        currentInputVal > 0 &&
+        currentInputVal < 43 &&
+        !answers.includes(currentInputVal);
+  };
+
   const enterHandler = () => {
-    if (Number.isInteger(currentInputVal)) {
-      if (currentInputVal > 0 && currentInputVal < 43) {
-        setAnswers([...answers, currentInputVal]);
-        setCurrentInputStr('');
-        setCurrentInputVal(0);
-      }
+    if (isValidAnswer()) {
+      setAnswers([...answers, currentInputVal]);
+      setCurrentInputStr('');
+      setCurrentInputVal(0);
     }
   };
 
