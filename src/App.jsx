@@ -8,7 +8,8 @@ import InputButton from './components/InputButton.jsx';
 import { useEventListener } from './hooks/useEventListener.js';
 
 const App = () => {
-  const inputs = ['1', '2', '3', '4', '+', '-', '*', '/', '(', ')'];
+  const digits = ['1', '2', '3', '4'];
+  const operations = ['+', '-', '*', '/', '(', ')'];
 
   const [currentInputStr, setCurrentInputStr] = useState('');
   const [currentInputVal, setCurrentInputVal] = useState(0);
@@ -55,7 +56,7 @@ const App = () => {
 
   useEventListener('keydown', (e) => {
     e.preventDefault();
-    if (inputs.includes(e.key)) { inputHandler(e.key); }
+    if (digits.includes(e.key) || operations.includes(e.key)) { inputHandler(e.key); }
     if (e.key === 'Backspace') { backspaceHandler(); }
     if (e.key === 'Enter') { enterHandler(); }
     console.log(e.key);
@@ -70,7 +71,12 @@ const App = () => {
           <div className="output-value">{currentInputVal}</div>
         </div>
         {
-          inputs.map((input, id) => {
+          digits.map((input, id) => {
+            return <InputButton key={id} input={input} clickHandler={inputHandler} />;
+          })
+        }
+        {
+          operations.map((input, id) => {
             return <InputButton key={id} input={input} clickHandler={inputHandler} />;
           })
         }
