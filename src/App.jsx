@@ -3,12 +3,14 @@ import { evaluate } from 'mathjs';
 
 import './App.css';
 
+import DigitButton from './components/DigitButton.jsx';
 import InputButton from './components/InputButton.jsx';
 
 import { useEventListener } from './hooks/useEventListener.js';
 
 const App = () => {
   const digits = ['1', '2', '3', '4'];
+  const [isDigitUsed, setIsDigitUsed] = useState([false, false, false, false]);
   const operations = ['+', '-', '*', '/', '(', ')'];
 
   const [currentInputStr, setCurrentInputStr] = useState('');
@@ -31,6 +33,10 @@ const App = () => {
     const newInputStr = currentInputStr + input;
     setCurrentInputStr(newInputStr);
     updateInputVal(newInputStr);
+  };
+
+  const digitHandler = (id, input) => {
+    inputHandler(input);
   };
 
   const backspaceHandler = () => {
@@ -72,7 +78,12 @@ const App = () => {
         </div>
         {
           digits.map((input, id) => {
-            return <InputButton key={id} input={input} clickHandler={inputHandler} />;
+            return (
+              <DigitButton
+                  key={id} id={id} input={input}
+                  clickHandler={digitHandler}
+              />
+            );
           })
         }
         {
