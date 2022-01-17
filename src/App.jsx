@@ -10,7 +10,7 @@ import { useEventListener } from './hooks/useEventListener.js';
 
 const App = () => {
   const digits = ['1', '2', '3', '4'];
-  const [isDigitUsed, setIsDigitUsed] = useState([false, false, false, false]);
+  const [digitsUsed, setDigitsUsed] = useState([]);
   const operations = ['+', '-', '*', '/', '(', ')'];
 
   const [currentInputStr, setCurrentInputStr] = useState('');
@@ -36,10 +36,17 @@ const App = () => {
   };
 
   const digitHandler = (id, input) => {
+    if (digitsUsed.includes(id)) { return; }
+
     inputHandler(input);
+    setDigitsUsed([...digitsUsed, id]);
   };
 
   const backspaceHandler = () => {
+    if (digits.includes(currentInputStr[currentInputStr.length - 1])) {
+      setDigitsUsed(digitsUsed.slice(0, digitsUsed.length - 1));
+    }
+
     const newInputStr = currentInputStr.slice(0, currentInputStr.length - 1);
     setCurrentInputStr(newInputStr);
     updateInputVal(newInputStr);
