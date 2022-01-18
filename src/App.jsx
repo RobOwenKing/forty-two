@@ -56,12 +56,14 @@ const App = () => {
     return Number.isInteger(currentInputVal) &&
         currentInputVal > 0 &&
         currentInputVal < 43 &&
+        digitsUsed.length === 4 &&
         !answers.includes(currentInputVal);
   };
 
   const enterHandler = () => {
     if (isValidAnswer()) {
       setAnswers([...answers, currentInputVal]);
+      setDigitsUsed([]);
       setCurrentInputStr('');
       setCurrentInputVal(0);
     }
