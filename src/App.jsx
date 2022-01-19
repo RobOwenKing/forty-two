@@ -45,9 +45,7 @@ const App = () => {
   const advancedDigitsHandler = (input) => {
     for (let i = 0; i < 4; i += 1) {
       if (digits[i] == input) {
-        if (digitHandler(i, input)) {
-          break;
-        }
+        if (digitHandler(i, input)) { break; }
       }
     };
   }
@@ -114,7 +112,7 @@ const App = () => {
         <div className="button span-two" role="button" tabIndex="0" onClick={backspaceHandler}>Back</div>
         <div className="button span-four" role="button" tabIndex="0" onClick={enterHandler}>=</div>
       </div>
-      <div>You've found: {answers.join(', ')}</div>
+      <p>You've found: {answers.join(', ')}</p>
     </div>
   );
 }
