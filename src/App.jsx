@@ -9,7 +9,7 @@ import InputButton from './components/InputButton.jsx';
 import { useEventListener } from './hooks/useEventListener.js';
 
 const App = () => {
-  const digits = ['1', '2', '3', '4'];
+  const digits = ['1', '2', '2', '4'];
   const [digitsUsed, setDigitsUsed] = useState([]);
   const operations = ['+', '-', '*', '/', '(', ')'];
 
@@ -36,11 +36,21 @@ const App = () => {
   };
 
   const digitHandler = (id, input) => {
-    if (digitsUsed.includes(id)) { return; }
+    if (digitsUsed.includes(id)) { return false; }
 
     inputHandler(input);
     setDigitsUsed([...digitsUsed, id]);
   };
+
+  const advancedDigitsHandler = (input) => {
+    for (let i = 0; i < 4; i += 1) {
+      if (digits[i] == input) {
+        if (digitHandler(i, input)) {
+          break;
+        }
+      }
+    };
+  }
 
   const backspaceHandler = () => {
     if (digits.includes(currentInputStr[currentInputStr.length - 1])) {
@@ -71,7 +81,8 @@ const App = () => {
 
   useEventListener('keydown', (e) => {
     e.preventDefault();
-    if (digits.includes(e.key) || operations.includes(e.key)) { inputHandler(e.key); }
+    if (digits.includes(e.key)) { advancedDigitsHandler(e.key); }
+    if (operations.includes(e.key)) { inputHandler(e.key); }
     if (e.key === 'Backspace') { backspaceHandler(); }
     if (e.key === 'Enter') { enterHandler(); }
     console.log(e.key);
