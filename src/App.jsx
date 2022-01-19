@@ -103,6 +103,7 @@ const App = () => {
         <div className="button span-two" role="button" tabIndex="0" onClick={backspaceHandler}>Back</div>
         <div className="button span-four" role="button" tabIndex="0" onClick={enterHandler}>=</div>
       </div>
+      <div>You've found: {answers.join(', ')}</div>
     </div>
   );
 }
