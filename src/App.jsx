@@ -62,7 +62,7 @@ const App = () => {
 
   const enterHandler = () => {
     if (isValidAnswer()) {
-      setAnswers([...answers, currentInputVal]);
+      setAnswers([...answers, currentInputVal].sort((a, b) => a - b));
       setDigitsUsed([]);
       setCurrentInputStr('');
       setCurrentInputVal(0);
