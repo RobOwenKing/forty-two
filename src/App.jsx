@@ -88,7 +88,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <h1>Forty-Two</h1>
+      <h1>Twenty-Eight</h1>
       <div className="grid">
         <div className="output span-four">
           <div className="output-calculation">{currentInputStr}</div>
