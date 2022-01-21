@@ -83,7 +83,6 @@ const App = () => {
     if (operations.includes(e.key)) { inputHandler(e.key); }
     if (e.key === 'Backspace') { backspaceHandler(); }
     if (e.key === 'Enter') { enterHandler(); }
-    console.log(e.key);
   });
 
   return (
