@@ -11,7 +11,7 @@ import { useEventListener } from './hooks/useEventListener.js';
 const App = () => {
   const digits = ['1', '2', '2', '4'];
   const [digitsUsed, setDigitsUsed] = useState([]);
-  const operations = ['+', '-', '*', '/', '(', ')'];
+  const operations = ['+', '-', '*', '/', '!', '^', '(', ')'];
 
   const [currentInputStr, setCurrentInputStr] = useState('');
   const [currentInputVal, setCurrentInputVal] = useState(0);
@@ -19,7 +19,7 @@ const App = () => {
   const [answers, setAnswers] = useState([]);
 
   const updateInputVal = (newInputStr) => {
-    const whitelistedStr = newInputStr.replace(/[^0-9\(\)\+\-\*\/\.]/g, "");
+    const whitelistedStr = newInputStr.replace(/[^0-9\(\)\+\-\*\/\.\!\^]/g, "");
 
     try {
       const newInputVal = evaluate(whitelistedStr);
@@ -109,6 +109,7 @@ const App = () => {
           })
         }
         <div className="button span-two" role="button" tabIndex="0" onClick={backspaceHandler}>Back</div>
+        <div className="button span-two" role="button" tabIndex="0" onClick={backspaceHandler}>A/C</div>
         <div className="button span-four" role="button" tabIndex="0" onClick={enterHandler}>=</div>
       </div>
       <p>You've found: {answers.join(', ')}</p>
