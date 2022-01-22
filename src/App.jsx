@@ -6,10 +6,12 @@ import './App.css';
 import DigitButton from './components/DigitButton.jsx';
 import InputButton from './components/InputButton.jsx';
 
+import { getTodaysDigits } from './helpers/getTodaysDigits.js';
+
 import { useEventListener } from './hooks/useEventListener.js';
 
 const App = () => {
-  const digits = ['1', '2', '2', '4'];
+  const digits = getTodaysDigits();
   const [digitsUsed, setDigitsUsed] = useState([]);
   const operations = ['+', '-', '*', '/', '!', '^', '(', ')'];
 
