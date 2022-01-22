@@ -60,6 +60,12 @@ const App = () => {
     updateInputVal(newInputStr);
   };
 
+  const acHandler = () => {
+    setDigitsUsed([]);
+    setCurrentInputStr('');
+    setCurrentInputVal(0);
+  };
+
   const isValidAnswer = () => {
     return Number.isInteger(currentInputVal) &&
         currentInputVal > 0 &&
@@ -109,7 +115,7 @@ const App = () => {
           })
         }
         <div className="button span-two" role="button" tabIndex="0" onClick={backspaceHandler}>Back</div>
-        <div className="button span-two" role="button" tabIndex="0" onClick={backspaceHandler}>A/C</div>
+        <div className="button span-two" role="button" tabIndex="0" onClick={acHandler}>A/C</div>
         <div className="button span-four" role="button" tabIndex="0" onClick={enterHandler}>=</div>
       </div>
       <p>You've found: {answers.join(', ')}</p>
