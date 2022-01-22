@@ -36,5 +36,5 @@ export const getTodaysDigits = () => {
     i += 1;
   };
 
-  return returnable;
+  return returnable.map(d => d.toString());
 };
