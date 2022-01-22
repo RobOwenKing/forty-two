@@ -1,5 +1,8 @@
+const seedrandom = require('seedrandom');
+const rng = seedrandom(new Date().toDateString());
+
 const getCandidate = (seed) => {
-  return Math.floor((Math.sin(seed) + 1) * 6) + 1;
+  return Math.floor(rng() * 12) + 1;
 };
 
 const countMatchesInArray = (array, matchable) => {
@@ -28,7 +31,6 @@ export const getTodaysDigits = () => {
   let seed = 0;
   let candidate = 0;
   const returnable = [];
-  console.log(month);
 
   while (returnable.length < 4) {
     seed += i % 2 === 0 ? day : month;
@@ -37,5 +39,6 @@ export const getTodaysDigits = () => {
     i += 1;
   };
 
+  console.log(returnable);
   return returnable;
 };
