@@ -1,8 +1,8 @@
-const seedrandom = require('seedrandom');
+const seedrandom = require('seedrandom');          // So all players on same day get same digits
 const rng = seedrandom(new Date().toDateString());
 
-const getCandidate = (seed) => {
-  return Math.floor(rng() * 12) + 1;
+const getCandidate = () => {
+  return Math.floor(rng() * 12) + 1;  // Random number from 1 to 12
 };
 
 const countMatchesInArray = (array, matchable) => {
@@ -12,11 +12,13 @@ const countMatchesInArray = (array, matchable) => {
 const reducer = (currentTotal, currentValue) => currentTotal + currentValue;
 
 const isCandidateValid = (array, candidate) => {
-  if (array.reduce(reducer, 0) + candidate < array.length + 2) { return false; }
+  if (array.reduce(reducer, 0) + candidate < array.length + 2) { return false; }  // Total can't be too small (too difficult to make larger numbers then)
 
   const numberOfMatches = countMatchesInArray(array, candidate);
-  if (numberOfMatches >= 2) { return false; }
+  if (candidate === 1 && numberOfMatches >= 1) { return false; }  // 1 can only appear once
+  if (numberOfMatches >= 2) { return false; }  // No number can appear more than twice
   if (numberOfMatches === 1 && !array.some(e => countMatchesInArray(array, e)) == 2) {
+    // You can have at most one repeated digit i.e. [a, a, b, c] = valid; [a, a, b, b] != valid
     return false;
   }
 
@@ -24,21 +26,15 @@ const isCandidateValid = (array, candidate) => {
 };
 
 export const getTodaysDigits = () => {
-  const currentDate = new Date();
-  const day = currentDate.getDate();
-  const month = currentDate.getMonth() + 1;
   let i = 0;
-  let seed = 0;
   let candidate = 0;
   const returnable = [];
 
   while (returnable.length < 4) {
-    seed += i % 2 === 0 ? day : month;
-    candidate = getCandidate(seed);
+    candidate = getCandidate();
     if (isCandidateValid(returnable, candidate)) { returnable.push(candidate); }
     i += 1;
   };
 
-  console.log(returnable);
   return returnable;
 };

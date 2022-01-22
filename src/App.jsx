@@ -11,7 +11,7 @@ import { getTodaysDigits } from './helpers/getTodaysDigits.js';
 import { useEventListener } from './hooks/useEventListener.js';
 
 const App = () => {
-  const digits = getTodaysDigits();
+  const [digits, setDigits] = useState(getTodaysDigits());
   const [digitsUsed, setDigitsUsed] = useState([]);
   const operations = ['+', '-', '*', '/', '!', '^', '(', ')'];
 
