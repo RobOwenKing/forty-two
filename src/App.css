@@ -5,7 +5,7 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(4, 72px);
-  grid-template-rows: minmax(7rem, auto) repeat(4, 72px);
+  grid-template-rows: minmax(7rem, auto) repeat(5, 72px);
   justify-content: center;
   align-items: center;
 }

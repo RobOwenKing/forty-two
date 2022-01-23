@@ -6,12 +6,14 @@ import './App.css';
 import DigitButton from './components/DigitButton.jsx';
 import InputButton from './components/InputButton.jsx';
 
+import { getTodaysDigits } from './helpers/getTodaysDigits.js';
+
 import { useEventListener } from './hooks/useEventListener.js';
 
 const App = () => {
-  const digits = ['1', '2', '2', '4'];
+  const [digits, setDigits] = useState(getTodaysDigits());
   const [digitsUsed, setDigitsUsed] = useState([]);
-  const operations = ['+', '-', '*', '/', '(', ')'];
+  const operations = ['+', '-', '*', '/', '!', '^', '(', ')'];
 
   const [currentInputStr, setCurrentInputStr] = useState('');
   const [currentInputVal, setCurrentInputVal] = useState(0);
@@ -19,7 +21,7 @@ const App = () => {
   const [answers, setAnswers] = useState([]);
 
   const updateInputVal = (newInputStr) => {
-    const whitelistedStr = newInputStr.replace(/[^0-9\(\)\+\-\*\/\.]/g, "");
+    const whitelistedStr = newInputStr.replace(/[^0-9\(\)\+\-\*\/\.\!\^]/g, "");
 
     try {
       const newInputVal = evaluate(whitelistedStr);
@@ -60,6 +62,12 @@ const App = () => {
     updateInputVal(newInputStr);
   };
 
+  const acHandler = () => {
+    setDigitsUsed([]);
+    setCurrentInputStr('');
+    setCurrentInputVal(0);
+  };
+
   const isValidAnswer = () => {
     return Number.isInteger(currentInputVal) &&
         currentInputVal > 0 &&
@@ -83,12 +91,11 @@ const App = () => {
     if (operations.includes(e.key)) { inputHandler(e.key); }
     if (e.key === 'Backspace') { backspaceHandler(); }
     if (e.key === 'Enter') { enterHandler(); }
-    console.log(e.key);
   });
 
   return (
     <div className="App">
-      <h1>Forty-Two</h1>
+      <h1>Twenty-Eight</h1>
       <div className="grid">
         <div className="output span-four">
           <div className="output-calculation">{currentInputStr}</div>
@@ -110,6 +117,7 @@ const App = () => {
           })
         }
         <div className="button span-two" role="button" tabIndex="0" onClick={backspaceHandler}>Back</div>
+        <div className="button span-two" role="button" tabIndex="0" onClick={acHandler}>A/C</div>
         <div className="button span-four" role="button" tabIndex="0" onClick={enterHandler}>=</div>
       </div>
       <p>You've found: {answers.join(', ')}</p>
