@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { evaluate } from 'mathjs';
 
 import './App.css';
@@ -21,6 +21,13 @@ const App = () => {
   const [currentInputVal, setCurrentInputVal] = useState(0);
 
   const [answers, setAnswers] = useState([]);
+
+  useEffect(() => {
+    const storedAnswers = localStorage.getItem('answers');
+    if (storedAnswers) {
+      setAnswers(JSON.parse(storedAnswers)['answers']);
+    }
+  }, []);
 
   const updateInputVal = (newInputStr) => {
     const whitelistedStr = newInputStr.replace(/[^0-9\(\)\+\-\*\/\.\!\^]/g, "");
