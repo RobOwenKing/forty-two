@@ -78,12 +78,22 @@ const App = () => {
         !answers.includes(currentInputVal);
   };
 
+  const setLocalStorage = (answers) => {
+    const storable = JSON.stringify({
+      date: date,
+      answers: answers
+    });
+    localStorage.setItem('answers', storable);
+  };
+
   const enterHandler = () => {
     if (isValidAnswer()) {
-      setAnswers([...answers, currentInputVal].sort((a, b) => a - b));
+      const newAnswers = [...answers, currentInputVal].sort((a, b) => a - b);
+      setAnswers(newAnswers);
       setDigitsUsed([]);
       setCurrentInputStr('');
       setCurrentInputVal(0);
+      setLocalStorage(newAnswers);
     }
   };
 
