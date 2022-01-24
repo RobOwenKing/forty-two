@@ -1,8 +1,7 @@
 const seedrandom = require('seedrandom');          // So all players on same day get same digits
-const rng = seedrandom(new Date().toDateString());
 
-const getCandidate = () => {
-  return Math.floor(rng() * 12) + 1;  // Random number from 1 to 12
+const getCandidate = (rng) => {
+  return Math.floor(rng.call() * 12) + 1;  // Random number from 1 to 12
 };
 
 const countMatchesInArray = (array, matchable) => {
@@ -25,13 +24,14 @@ const isCandidateValid = (array, candidate) => {
   return true;
 };
 
-export const getTodaysDigits = () => {
+export const getTodaysDigits = (date) => {
+  const rng = seedrandom(date);
   let i = 0;
   let candidate = 0;
   const returnable = [];
 
   while (returnable.length < 4) {
-    candidate = getCandidate();
+    candidate = getCandidate(rng);
     if (isCandidateValid(returnable, candidate)) { returnable.push(candidate); }
     i += 1;
   };
