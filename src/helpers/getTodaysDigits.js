@@ -26,14 +26,12 @@ const isCandidateValid = (array, candidate) => {
 
 export const getTodaysDigits = (date) => {
   const rng = seedrandom(date);
-  let i = 0;
   let candidate = 0;
   const returnable = [];
 
   while (returnable.length < 4) {
     candidate = getCandidate(rng);
     if (isCandidateValid(returnable, candidate)) { returnable.push(candidate); }
-    i += 1;
   };
 
   return returnable.map(d => d.toString());
