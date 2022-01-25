@@ -36,6 +36,12 @@
   cursor: pointer;
 }
 
+.totals-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 24px);
+  justify-content: center;
+}
+
 .solved {
   color: #666;
 }

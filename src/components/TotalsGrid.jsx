@@ -1,6 +1,6 @@
 const TotalsGrid = ({ answers }) => {
   return (
-    <div>
+    <div class="totals-grid">
       {
         answers.map((answer, id) => {
           return (
