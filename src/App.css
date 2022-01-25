@@ -35,3 +35,11 @@
   text-decoration: underline;
   cursor: pointer;
 }
+
+.solved {
+  color: #666;
+}
+
+.not-solved {
+  font-weight: bold;
+}

@@ -4,6 +4,7 @@ import './App.css';
 
 import AnswersList from './components/AnswersList.jsx';
 import Calculator from './components/Calculator.jsx';
+import TotalsGrid from './components/TotalsGrid.jsx';
 
 const App = () => {
   const date = new Date().toDateString();
@@ -48,6 +49,10 @@ const App = () => {
         &nbsp;/&nbsp;
         <span onClick={() => setIsDisplayAnswers(!isDisplayAnswers)}>My Answers</span>
       </p>
+      {
+        isDisplayTotals &&
+          <TotalsGrid answers={answerDetails} />
+      }
       {
         isDisplayAnswers &&
           <AnswersList answers={answerDetails} />
