@@ -33,6 +33,14 @@ const App = () => {
     }
   }, []);
 
+  useEffect(() => {
+    const storable = JSON.stringify({
+      date: date,
+      answers: answers
+    });
+    localStorage.setItem('answers', storable);
+  }, [answers]);
+
   const updateInputVal = (newInputStr) => {
     const whitelistedStr = newInputStr.replace(/[^0-9\(\)\+\-\*\/\.\!\^]/g, "");
 
@@ -95,14 +103,6 @@ const App = () => {
     setAnswerDetails(newAnswerDetails);
   }
 
-  const updateLocalStorage = (answers) => {
-    const storable = JSON.stringify({
-      date: date,
-      answers: answers
-    });
-    localStorage.setItem('answers', storable);
-  };
-
   const enterHandler = () => {
     if (isValidAnswer()) {
       const newAnswers = [...answers, currentInputVal].sort((a, b) => a - b);
@@ -111,7 +111,6 @@ const App = () => {
       setDigitsUsed([]);
       setCurrentInputStr('');
       setCurrentInputVal(0);
-      updateLocalStorage(newAnswers);
     }
   };
 
