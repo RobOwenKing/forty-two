@@ -21,11 +21,15 @@ const App = () => {
   const [currentInputVal, setCurrentInputVal] = useState(0);
 
   const [answers, setAnswers] = useState([]);
+  const [answerDetails, setAnswerDetails] = useState(new Array(28));
 
   useEffect(() => {
-    const storedAnswers = localStorage.getItem('answers');
-    if (storedAnswers) {
-      setAnswers(JSON.parse(storedAnswers)['answers']);
+    const stored = localStorage.getItem('answers');
+    if (stored) {
+      const parsedStored = JSON.parse(stored);
+      if (parsedStored['date'] === date) {
+        setAnswers(parsedStored['answers']);
+      }
     }
   }, []);
 
@@ -85,7 +89,13 @@ const App = () => {
         !answers.includes(currentInputVal);
   };
 
-  const setLocalStorage = (answers) => {
+  const updateAnswerDetails = (inputStr, inputVal) => {
+    const newAnswerDetails = [...answerDetails];
+    newAnswerDetails[inputVal - 1] = inputStr;
+    setAnswerDetails(newAnswerDetails);
+  }
+
+  const updateLocalStorage = (answers) => {
     const storable = JSON.stringify({
       date: date,
       answers: answers
@@ -97,10 +107,11 @@ const App = () => {
     if (isValidAnswer()) {
       const newAnswers = [...answers, currentInputVal].sort((a, b) => a - b);
       setAnswers(newAnswers);
+      updateAnswerDetails(currentInputStr, currentInputVal);
       setDigitsUsed([]);
       setCurrentInputStr('');
       setCurrentInputVal(0);
-      setLocalStorage(newAnswers);
+      updateLocalStorage(newAnswers);
     }
   };
 
