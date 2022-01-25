@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 
 import './App.css';
 
+import AnswersList from './components/AnswersList.jsx';
 import Calculator from './components/Calculator.jsx';
 
 const App = () => {
@@ -47,6 +48,10 @@ const App = () => {
         &nbsp;/&nbsp;
         <span onClick={() => setIsDisplayAnswers(!isDisplayAnswers)}>My Answers</span>
       </p>
+      {
+        isDisplayAnswers &&
+          <AnswersList answers={answerDetails} />
+      }
     </div>
   );
 }
