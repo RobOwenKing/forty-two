@@ -29,6 +29,7 @@ const App = () => {
       const parsedStored = JSON.parse(stored);
       if (parsedStored['date'] === date) {
         setAnswers(parsedStored['answers']);
+        setAnswerDetails(parsedStored['answerDetails']);
       }
     }
   }, []);
@@ -36,7 +37,8 @@ const App = () => {
   useEffect(() => {
     const storable = JSON.stringify({
       date: date,
-      answers: answers
+      answers: answers,
+      answerDetails: answerDetails
     });
     localStorage.setItem('answers', storable);
   }, [answers]);
