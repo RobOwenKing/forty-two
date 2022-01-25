@@ -10,6 +10,9 @@ const App = () => {
   const [answers, setAnswers] = useState([]);
   const [answerDetails, setAnswerDetails] = useState(new Array(28));
 
+  const [isDisplayTotals, setIsDisplayTotals] = useState(false);
+  const [isDisplayAnswers, setIsDisplayAnswers] = useState(false);
+
   useEffect(() => {
     const stored = localStorage.getItem('answers');
     if (stored) {
@@ -38,6 +41,12 @@ const App = () => {
           answerDetails={answerDetails} setAnswerDetails={setAnswerDetails}
       />
       <h3>Score: {answers.length}/28</h3>
+      <p>
+        Show:&nbsp;
+        <span onClick={() => setIsDisplayTotals(!isDisplayTotals)}>Totals</span>
+        &nbsp;/&nbsp;
+        <span onClick={() => setIsDisplayAnswers(!isDisplayAnswers)}>My Answers</span>
+      </p>
     </div>
   );
 }
