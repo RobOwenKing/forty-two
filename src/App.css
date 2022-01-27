@@ -36,10 +36,11 @@
   cursor: pointer;
 }
 
-.totals-grid {
+.answers-grid {
   display: grid;
-  grid-template-columns: repeat(7, 24px);
+  grid-template-columns: repeat(4, 80px);
   justify-content: center;
+  font-family: monospace;
 }
 
 .solved {
