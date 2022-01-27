@@ -4,8 +4,8 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(4, 72px);
-  grid-template-rows: minmax(7rem, auto) repeat(5, 72px);
+  grid-template-columns: repeat(4, 64px);
+  grid-template-rows: minmax(6rem, auto) repeat(5, 64px);
   justify-content: center;
   align-items: center;
 }
