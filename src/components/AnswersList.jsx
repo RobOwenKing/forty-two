@@ -4,7 +4,7 @@ const AnswersList = ({ answers }) => {
       {
         answers.map((answer, id) => {
           return (
-            <li>{id+1} = {answer ? answer : '???'}</li>
+            <li>{answer ? answer : id+1}</li>
           )
         })
       }
