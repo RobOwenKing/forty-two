@@ -43,6 +43,12 @@
   font-family: monospace;
 }
 
+@media (min-width: 570px) {
+  .answers-grid {
+    grid-template-columns: repeat(7, 80px);
+  }
+}
+
 .solved {
   color: #228722;
 }
