@@ -31,8 +31,7 @@
   justify-content: center;
 }
 
-.button:hover,
-.button:focus {
+.button:hover {
   cursor: pointer;
   font-size: 1.5em;
   outline: solid black 4px;
