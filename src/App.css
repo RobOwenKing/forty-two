@@ -46,6 +46,7 @@
   display: grid;
   grid-template-columns: repeat(4, 80px);
   justify-content: center;
+  align-items: center;
   font-family: monospace;
 }
 
