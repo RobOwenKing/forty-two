@@ -109,6 +109,7 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
             <DigitButton
                 key={id} id={id} input={input}
                 clickHandler={digitHandler}
+                digitsUsed={digitsUsed}
             />
           );
         })
