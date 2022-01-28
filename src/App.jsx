@@ -6,7 +6,7 @@ import AnswersGrid from './components/AnswersGrid.jsx';
 import Calculator from './components/Calculator.jsx';
 
 const App = () => {
-  const date = new Date().toDateString();
+  const date = new Date(2022, 0, 29).toDateString();
 
   const [answers, setAnswers] = useState([]);
   const [answerDetails, setAnswerDetails] = useState(new Array(28));
