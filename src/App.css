@@ -35,6 +35,7 @@
   cursor: pointer;
   font-size: 1.5em;
   outline: solid black 4px;
+  z-index: 1;
 }
 
 .button.used {
