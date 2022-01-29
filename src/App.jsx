@@ -42,7 +42,7 @@ const App = () => {
           className="clickable"
           onClick={() => setIsShowHowTo(!isShowHowTo)}
       >
-        {isShowHowTo ? 'Go to game' : 'How to play?'}
+        {isShowHowTo ? 'Back to game' : 'How to play?'}
       </p>
       {isShowHowTo && <HowTo />}
       {!isShowHowTo &&
