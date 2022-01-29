@@ -12,6 +12,16 @@
   font-size: 18px;
 }
 
+.how-to-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 64px);
+  grid-template-rows: 64px;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+  font-size: 18px;
+}
+
 .span-four {
   grid-column: span 4;
 }
@@ -20,10 +30,17 @@
   grid-column: span 2;
 }
 
-.grid > div {
+.grid > div,
+.how-to-grid > div {
   outline: solid black 2px;
   height: 100%;
   width: 100%;
+}
+
+.how-to-grid > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .output-calculation {
@@ -51,7 +68,7 @@
   z-index: 1;
 }
 
-.button.used {
+.used {
   background-color: #A2C1E0;
 }
 
@@ -89,4 +106,13 @@
 .clickable:hover {
   text-decoration: underline;
   cursor: pointer;
+}
+
+.how-to {
+  width: 300px;
+  margin: auto auto;
+}
+
+.how-to p {
+  color: #333;
 }

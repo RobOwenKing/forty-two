@@ -4,6 +4,7 @@ import './App.css';
 
 import AnswersGrid from './components/AnswersGrid.jsx';
 import Calculator from './components/Calculator.jsx';
+import HowTo from './components/HowTo.jsx'
 
 const App = () => {
   const date = new Date(2022, 0, 29).toDateString();
@@ -43,6 +44,7 @@ const App = () => {
       >
         {isShowHowTo ? 'Go to game' : 'How to play?'}
       </p>
+      {isShowHowTo && <HowTo />}
       {!isShowHowTo &&
           (
             <div>
