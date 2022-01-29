@@ -13,6 +13,7 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
   const [digitsUsed, setDigitsUsed] = useState([]);
   const operations = ['+', '-', '*', '/', '!', '^', '(', ')'];
 
+  const [currentInputArr, setCurrentInputArr] = useState([]);
   const [currentInputStr, setCurrentInputStr] = useState('');
   const [currentInputVal, setCurrentInputVal] = useState(0);
 
@@ -28,9 +29,9 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
   };
 
   const inputHandler = (input) => {
-    const newInputStr = currentInputStr + input;
-    setCurrentInputStr(newInputStr);
-    updateInputVal(newInputStr);
+    const newInputArr = [...currentInputArr, input];
+    setCurrentInputArr(newInputArr);
+    updateInputVal(newInputArr.join(''));
   };
 
   const digitHandler = (id, input) => {
@@ -100,7 +101,7 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
   return (
     <div className="grid">
       <div className="output span-four">
-        <div className="output-calculation">{currentInputStr}</div>
+        <div className="output-calculation">{currentInputArr.join('')}</div>
         <div
             className={`output-value ${isValidAnswer() ? 'valid' : 'not-valid'}`}
         >
