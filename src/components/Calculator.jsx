@@ -62,7 +62,7 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
 
   const acHandler = () => {
     setDigitsUsed([]);
-    setCurrentInputStr('');
+    setCurrentInputArr([]);
     setCurrentInputVal(0);
   };
 
