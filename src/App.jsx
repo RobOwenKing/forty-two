@@ -36,19 +36,25 @@ const App = () => {
   return (
     <div className="App">
       <h1>Twenty-Eight</h1>
+      <h3>Your Daily Numbers Game</h3>
       <p
+          className="clickable"
           onClick={() => setIsShowHowTo(!isShowHowTo)}
       >
         {isShowHowTo ? 'Go to game' : 'How to play?'}
       </p>
       {!isShowHowTo &&
-          <Calculator date={date}
-              answers={answers} setAnswers={setAnswers}
-              answerDetails={answerDetails} setAnswerDetails={setAnswerDetails}
-          />
+          (
+            <div>
+              <Calculator date={date}
+                  answers={answers} setAnswers={setAnswers}
+                  answerDetails={answerDetails} setAnswerDetails={setAnswerDetails}
+              />
+              <h3>Score: {answers.length}/28</h3>
+              <AnswersGrid answers={answerDetails} />
+            </div>
+          )
       }
-      <h3>Score: {answers.length}/28</h3>
-      <AnswersGrid answers={answerDetails} />
     </div>
   );
 }

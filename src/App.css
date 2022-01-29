@@ -86,3 +86,7 @@
   background-color: #F17105;
 }
 
+.clickable:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
