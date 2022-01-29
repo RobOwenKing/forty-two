@@ -16,7 +16,7 @@ const isCandidateValid = (array, candidate) => {
   const numberOfMatches = countMatchesInArray(array, candidate);
   if (candidate === 1 && numberOfMatches >= 1) { return false; }  // 1 can only appear once
   if (numberOfMatches >= 2) { return false; }  // No number can appear more than twice
-  if (numberOfMatches === 1 && !array.some(e => countMatchesInArray(array, e)) === 2) {
+  if (numberOfMatches === 1 && array.some(e => countMatchesInArray(array, e) > 1)) {
     // You can have at most one repeated digit i.e. [a, a, b, c] = valid; [a, a, b, b] != valid
     return false;
   }

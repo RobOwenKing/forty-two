@@ -4,10 +4,12 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(4, 72px);
-  grid-template-rows: minmax(7rem, auto) repeat(5, 72px);
+  grid-template-columns: repeat(4, 64px);
+  grid-template-rows: minmax(96px, auto) repeat(5, 64px);
   justify-content: center;
   align-items: center;
+  gap: 2px;
+  font-size: 18px;
 }
 
 .span-four {
@@ -19,9 +21,21 @@
 }
 
 .grid > div {
-  border: solid black 1px;
+  outline: solid black 2px;
   height: 100%;
   width: 100%;
+}
+
+.output-calculation {
+  height: 32px;
+  font-size: 32px;
+  margin-top: 24px;
+}
+
+.output-value {
+  font-size: 16px;
+  margin-top: 8px;
+  margin-bottom: 16px;
 }
 
 .button {
@@ -30,22 +44,45 @@
   justify-content: center;
 }
 
-.button:hover,
-.button:focus {
-  text-decoration: underline;
+.button:hover {
   cursor: pointer;
+  font-size: 1.5em;
+  outline: solid black 4px;
+  z-index: 1;
 }
 
-.totals-grid {
+.button.used {
+  background-color: #A2C1E0;
+}
+
+.answers-grid {
   display: grid;
-  grid-template-columns: repeat(7, 24px);
+  grid-template-columns: repeat(4, 80px);
   justify-content: center;
+  align-items: center;
+  font-family: monospace;
 }
 
-.solved {
-  color: #666;
+@media (min-width: 570px) {
+  .answers-grid {
+    grid-template-columns: repeat(7, 80px);
+  }
+}
+
+.solved,
+.valid {
+  color: #036016;
 }
 
 .not-solved {
   font-weight: bold;
 }
+
+.not-valid {
+  color: #81171B;
+}
+
+.equals {
+  background-color: #F17105;
+}
+

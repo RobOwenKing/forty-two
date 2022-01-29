@@ -101,7 +101,11 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
     <div className="grid">
       <div className="output span-four">
         <div className="output-calculation">{currentInputStr}</div>
-        <div className="output-value">{currentInputVal}</div>
+        <div
+            className={`output-value ${isValidAnswer() ? 'valid' : 'not-valid'}`}
+        >
+          {currentInputVal}
+        </div>
       </div>
       {
         digits.map((input, id) => {
@@ -109,6 +113,7 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
             <DigitButton
                 key={id} id={id} input={input}
                 clickHandler={digitHandler}
+                digitsUsed={digitsUsed}
             />
           );
         })
@@ -120,7 +125,7 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
       }
       <div className="button span-two" role="button" tabIndex="0" onClick={backspaceHandler}>Back</div>
       <div className="button span-two" role="button" tabIndex="0" onClick={acHandler}>A/C</div>
-      <div className="button span-four" role="button" tabIndex="0" onClick={enterHandler}>=</div>
+      <div className="button span-four equals" role="button" tabIndex="0" onClick={enterHandler}>=</div>
     </div>
   );
 }
