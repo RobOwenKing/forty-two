@@ -1,6 +1,29 @@
+/* App */
+
 .App {
   text-align: center;
 }
+
+.solved,
+.valid {
+  color: #036016;
+}
+
+.not-solved {
+  font-weight: bold;
+}
+
+.not-valid {
+  /*color: #81171B;*/
+  color: #666;
+}
+
+.clickable:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* Calculator */
 
 .grid {
   display: grid;
@@ -12,18 +35,26 @@
   font-size: 18px;
 }
 
+.grid > div,
+.how-to-grid > div {
+  outline: solid black 2px;
+  height: 100%;
+  width: 100%;
+}
+
+.button,
+.how-to-grid > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .span-four {
   grid-column: span 4;
 }
 
 .span-two {
   grid-column: span 2;
-}
-
-.grid > div {
-  outline: solid black 2px;
-  height: 100%;
-  width: 100%;
 }
 
 .output-calculation {
@@ -38,12 +69,6 @@
   margin-bottom: 16px;
 }
 
-.button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .button:hover {
   cursor: pointer;
   font-size: 1.5em;
@@ -51,9 +76,15 @@
   z-index: 1;
 }
 
-.button.used {
+.used {
   background-color: #A2C1E0;
 }
+
+.equals {
+  background-color: #F17105;
+}
+
+/* Answers Grid */
 
 .answers-grid {
   display: grid;
@@ -69,20 +100,23 @@
   }
 }
 
-.solved,
-.valid {
-  color: #036016;
+/* How To */
+
+.how-to-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 64px);
+  grid-template-rows: 64px;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+  font-size: 18px;
 }
 
-.not-solved {
-  font-weight: bold;
+.how-to {
+  width: 300px;
+  margin: auto auto;
 }
 
-.not-valid {
-  color: #81171B;
+.how-to p {
+  color: #333;
 }
-
-.equals {
-  background-color: #F17105;
-}
-

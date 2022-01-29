@@ -4,12 +4,15 @@ import './App.css';
 
 import AnswersGrid from './components/AnswersGrid.jsx';
 import Calculator from './components/Calculator.jsx';
+import HowTo from './components/HowTo.jsx'
 
 const App = () => {
   const date = new Date(2022, 0, 29).toDateString();
 
   const [answers, setAnswers] = useState([]);
   const [answerDetails, setAnswerDetails] = useState(new Array(28));
+
+  const [isShowHowTo, setIsShowHowTo] = useState(false);
 
   useEffect(() => {
     const stored = localStorage.getItem('answers');
@@ -34,12 +37,26 @@ const App = () => {
   return (
     <div className="App">
       <h1>Twenty-Eight</h1>
-      <Calculator date={date}
-          answers={answers} setAnswers={setAnswers}
-          answerDetails={answerDetails} setAnswerDetails={setAnswerDetails}
-      />
-      <h3>Score: {answers.length}/28</h3>
-      <AnswersGrid answers={answerDetails} />
+      <h3>Your Daily Numbers Game</h3>
+      <p
+          className="clickable"
+          onClick={() => setIsShowHowTo(!isShowHowTo)}
+      >
+        {isShowHowTo ? 'Back to game' : 'How to play?'}
+      </p>
+      {isShowHowTo && <HowTo />}
+      {!isShowHowTo &&
+          (
+            <div>
+              <Calculator date={date}
+                  answers={answers} setAnswers={setAnswers}
+                  answerDetails={answerDetails} setAnswerDetails={setAnswerDetails}
+              />
+              <h3>Score: {answers.length}/28</h3>
+              <AnswersGrid answers={answerDetails} />
+            </div>
+          )
+      }
     </div>
   );
 }
