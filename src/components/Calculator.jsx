@@ -121,7 +121,7 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
       }
       <div className="button span-two" role="button" tabIndex="0" onClick={backspaceHandler}>Back</div>
       <div className="button span-two" role="button" tabIndex="0" onClick={acHandler}>A/C</div>
-      <div className="button span-four" role="button" tabIndex="0" onClick={enterHandler}>=</div>
+      <div className="button span-four equals" role="button" tabIndex="0" onClick={enterHandler}>=</div>
     </div>
   );
 }
