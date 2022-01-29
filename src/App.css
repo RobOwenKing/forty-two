@@ -5,10 +5,11 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(4, 64px);
-  grid-template-rows: minmax(6rem, auto) repeat(5, 64px);
+  grid-template-rows: minmax(88px, auto) repeat(5, 64px);
   justify-content: center;
   align-items: center;
   gap: 2px;
+  font-size: 18px;
 }
 
 .span-four {
@@ -23,6 +24,18 @@
   outline: solid black 2px;
   height: 100%;
   width: 100%;
+}
+
+.output-calculation {
+  height: 32px;
+  font-size: 32px;
+  margin-top: 16px;
+}
+
+.output-value {
+  font-size: 16px;
+  margin-top: 8px;
+  margin-bottom: 16px;
 }
 
 .button {
