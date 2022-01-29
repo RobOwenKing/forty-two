@@ -50,13 +50,14 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
   }
 
   const backspaceHandler = () => {
-    if (digits.includes(currentInputStr[currentInputStr.length - 1])) {
+    if (digits.includes(currentInputArr[currentInputArr.length - 1])) {
       setDigitsUsed(digitsUsed.slice(0, digitsUsed.length - 1));
     }
 
-    const newInputStr = currentInputStr.slice(0, currentInputStr.length - 1);
-    setCurrentInputStr(newInputStr);
-    updateInputVal(newInputStr);
+    const newInputArr = [...currentInputArr];
+    newInputArr.pop();
+    setCurrentInputArr(newInputArr);
+    updateInputVal(newInputArr.join(''));
   };
 
   const acHandler = () => {
