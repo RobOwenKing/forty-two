@@ -11,6 +11,8 @@ const App = () => {
   const [answers, setAnswers] = useState([]);
   const [answerDetails, setAnswerDetails] = useState(new Array(28));
 
+  const [isShowHowTo, setIsShowHowTo] = useState(false);
+
   useEffect(() => {
     const stored = localStorage.getItem('answers');
     if (stored) {
@@ -34,10 +36,17 @@ const App = () => {
   return (
     <div className="App">
       <h1>Twenty-Eight</h1>
-      <Calculator date={date}
-          answers={answers} setAnswers={setAnswers}
-          answerDetails={answerDetails} setAnswerDetails={setAnswerDetails}
-      />
+      <p
+          onClick={() => setIsShowHowTo(!isShowHowTo)}
+      >
+        {isShowHowTo ? 'Go to game' : 'How to play?'}
+      </p>
+      {!isShowHowTo &&
+          <Calculator date={date}
+              answers={answers} setAnswers={setAnswers}
+              answerDetails={answerDetails} setAnswerDetails={setAnswerDetails}
+          />
+      }
       <h3>Score: {answers.length}/28</h3>
       <AnswersGrid answers={answerDetails} />
     </div>
