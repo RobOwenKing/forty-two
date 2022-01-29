@@ -101,7 +101,11 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
     <div className="grid">
       <div className="output span-four">
         <div className="output-calculation">{currentInputStr}</div>
-        <div className="output-value">{currentInputVal}</div>
+        <div
+            className={`output-value ${isValidAnswer() ? 'valid' : 'not-valid'}`}
+        >
+          {currentInputVal}
+        </div>
       </div>
       {
         digits.map((input, id) => {

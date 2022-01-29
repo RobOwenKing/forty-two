@@ -5,9 +5,6 @@ const getCandidate = (rng) => {
 };
 
 const countMatchesInArray = (array, matchable) => {
-  console.log(array);
-  console.log(matchable);
-  console.log(array.filter(e => e === matchable))
   return array.filter(e => e === matchable).length;
 };
 
