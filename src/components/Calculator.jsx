@@ -14,7 +14,6 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
   const operations = ['+', '-', '*', '/', '!', '^', '(', ')'];
 
   const [currentInputArr, setCurrentInputArr] = useState([]);
-  const [currentInputStr, setCurrentInputStr] = useState('');
   const [currentInputVal, setCurrentInputVal] = useState(0);
 
   const updateInputVal = (newInputStr) => {
