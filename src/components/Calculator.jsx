@@ -13,6 +13,7 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
   const [digitsUsed, setDigitsUsed] = useState([]);
   const operations = ['+', '-', '*', '/', '!', '^', '(', ')'];
 
+  const [currentInputArr, setCurrentInputArr] = useState([]);
   const [currentInputStr, setCurrentInputStr] = useState('');
   const [currentInputVal, setCurrentInputVal] = useState(0);
 
@@ -28,9 +29,9 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
   };
 
   const inputHandler = (input) => {
-    const newInputStr = currentInputStr + input;
-    setCurrentInputStr(newInputStr);
-    updateInputVal(newInputStr);
+    const newInputArr = [...currentInputArr, input];
+    setCurrentInputArr(newInputArr);
+    updateInputVal(newInputArr.join(''));
   };
 
   const digitHandler = (id, input) => {
@@ -49,18 +50,19 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
   }
 
   const backspaceHandler = () => {
-    if (digits.includes(currentInputStr[currentInputStr.length - 1])) {
+    if (digits.includes(currentInputArr[currentInputArr.length - 1])) {
       setDigitsUsed(digitsUsed.slice(0, digitsUsed.length - 1));
     }
 
-    const newInputStr = currentInputStr.slice(0, currentInputStr.length - 1);
-    setCurrentInputStr(newInputStr);
-    updateInputVal(newInputStr);
+    const newInputArr = [...currentInputArr];
+    newInputArr.pop();
+    setCurrentInputArr(newInputArr);
+    updateInputVal(newInputArr.join(''));
   };
 
   const acHandler = () => {
     setDigitsUsed([]);
-    setCurrentInputStr('');
+    setCurrentInputArr([]);
     setCurrentInputVal(0);
   };
 
@@ -76,15 +78,15 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
     const newAnswerDetails = [...answerDetails];
     newAnswerDetails[inputVal - 1] = inputStr;
     setAnswerDetails(newAnswerDetails);
-  }
+  };
 
   const enterHandler = () => {
     if (isValidAnswer()) {
       const newAnswers = [...answers, currentInputVal].sort((a, b) => a - b);
       setAnswers(newAnswers);
-      updateAnswerDetails(currentInputStr, currentInputVal);
+      updateAnswerDetails(currentInputArr.join(''), currentInputVal);
       setDigitsUsed([]);
-      setCurrentInputStr('');
+      setCurrentInputArr([]);
       setCurrentInputVal(0);
     }
   };
@@ -100,7 +102,7 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
   return (
     <div className="grid">
       <div className="output span-four">
-        <div className="output-calculation">{currentInputStr}</div>
+        <div className="output-calculation">{currentInputArr.join('')}</div>
         <div
             className={`output-value ${isValidAnswer() ? 'valid' : 'not-valid'}`}
         >

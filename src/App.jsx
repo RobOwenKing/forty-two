@@ -7,7 +7,7 @@ import Calculator from './components/Calculator.jsx';
 import HowTo from './components/HowTo.jsx'
 
 const App = () => {
-  const date = new Date(2022, 0, 29).toDateString();
+  const date = new Date().toDateString();
 
   const [answers, setAnswers] = useState([]);
   const [answerDetails, setAnswerDetails] = useState(new Array(28));
