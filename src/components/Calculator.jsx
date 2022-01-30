@@ -69,7 +69,7 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
   const isValidAnswer = () => {
     return Number.isInteger(currentInputVal) &&
         currentInputVal > 0 &&
-        currentInputVal < 43 &&
+        currentInputVal <= 28 &&
         digitsUsed.length === 4 &&
         !answers.includes(currentInputVal);
   };
