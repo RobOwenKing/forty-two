@@ -78,15 +78,15 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
     const newAnswerDetails = [...answerDetails];
     newAnswerDetails[inputVal - 1] = inputStr;
     setAnswerDetails(newAnswerDetails);
-  }
+  };
 
   const enterHandler = () => {
     if (isValidAnswer()) {
       const newAnswers = [...answers, currentInputVal].sort((a, b) => a - b);
       setAnswers(newAnswers);
-      updateAnswerDetails(currentInputStr, currentInputVal);
+      updateAnswerDetails(currentInputArr.join(''), currentInputVal);
       setDigitsUsed([]);
-      setCurrentInputStr('');
+      setCurrentInputArr([]);
       setCurrentInputVal(0);
     }
   };
