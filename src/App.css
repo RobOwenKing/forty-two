@@ -120,3 +120,9 @@
 .how-to p {
   color: #333;
 }
+
+/* Footer */
+
+footer {
+  margin: 16px auto;
+}
