@@ -69,6 +69,10 @@
   margin-bottom: 16px;
 }
 
+.output-value.valid {
+  font-weight: bold;
+}
+
 .button:hover {
   cursor: pointer;
   font-size: 1.5em;
