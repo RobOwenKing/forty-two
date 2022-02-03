@@ -1,7 +1,7 @@
 {
   "name": "forty-two",
   "version": "0.1.0",
-  "homepage": "https://robowenking.github.io/twenty-eight",
+  "homepage": "https://twenty-eight.robowenking.com",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.1",
