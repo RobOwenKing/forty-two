@@ -15,23 +15,46 @@ const App = () => {
   const [isShowHowTo, setIsShowHowTo] = useState(false);
 
   useEffect(() => {
-    const stored = localStorage.getItem('answers');
-    if (stored) {
-      const parsedStored = JSON.parse(stored);
-      if (parsedStored['date'] === date) {
-        setAnswers(parsedStored['answers']);
-        setAnswerDetails(parsedStored['answerDetails']);
+    const storedAnswers = localStorage.getItem('answers');
+    if (storedAnswers) {
+      const parsedStoredAnswers = JSON.parse(storedAnswers);
+      if (parsedStoredAnswers['date'] === date) {
+        setAnswers(parsedStoredAnswers['answers']);
+        setAnswerDetails(parsedStoredAnswers['answerDetails']);
       }
     }
   }, []);
 
   useEffect(() => {
-    const storable = JSON.stringify({
+    const storableAnswers = JSON.stringify({
       date: date,
       answers: answers,
       answerDetails: answerDetails
     });
-    localStorage.setItem('answers', storable);
+    localStorage.setItem('answers', storableAnswers);
+
+    const storedHistory = localStorage.getItem('history');
+    if (storedHistory) {
+      const parsedStoredHistory = JSON.parse(storedHistory);
+      if (parsedStoredHistory['lastPlayed'] === date) {
+        const lengthOfScores = parsedStoredHistory['scores'].length;
+        parsedStoredHistory['scores'][lengthOfScores - 1] = answers.length;
+      } else {
+        parsedStoredHistory['lastPlayed'] = date;
+        parsedStoredHistory['scores'].push(answers.length);
+      }
+      const storableHistory = JSON.stringify(parsedStoredHistory);
+      localStorage.setItem('history', storableHistory);
+    } else {
+      if (answers.length > 0) {
+        const storableHistory = JSON.stringify({
+          firstPlayed: new Date(),
+          lastPlayed: date,
+          scores: [answers.length]
+        });
+        localStorage.setItem('history', storableHistory);
+      }
+    }
   }, [answers]);
 
   return (
@@ -48,7 +71,8 @@ const App = () => {
       {!isShowHowTo &&
           (
             <div>
-              <Calculator date={date}
+              <Calculator
+                  date={date}
                   answers={answers} setAnswers={setAnswers}
                   answerDetails={answerDetails} setAnswerDetails={setAnswerDetails}
               />
