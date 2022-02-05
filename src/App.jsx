@@ -18,8 +18,11 @@ const App = () => {
   const [isShowHowTo, setIsShowHowTo] = useState(false);
 
   useEffect(() => {
+    /*
+      When the app loads, check for saved state from earlier the same day
+    */
     const returned = parseStoredAnswers(date);
-    if (!returned['answers']) { return; }
+    if (!returned['answers']) { return; } // eg: New player or first time playing that day
 
     setAnswers(returned['answers']);
     setAnswerDetails(returned['answerDetails']);
