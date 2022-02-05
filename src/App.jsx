@@ -4,7 +4,8 @@ import './App.css';
 
 import AnswersGrid from './components/AnswersGrid.jsx';
 import Calculator from './components/Calculator.jsx';
-import HowTo from './components/HowTo.jsx'
+import HowTo from './components/HowTo.jsx';
+import ViewToggle from './components/ViewToggle.jsx';
 
 import { parseStoredAnswers } from './helpers/parseStoredAnswers.js';
 import { storeAnswers } from './helpers/storeAnswers.js';
@@ -17,6 +18,7 @@ const App = () => {
   const [answerDetails, setAnswerDetails] = useState(new Array(28));
 
   const [isShowHowTo, setIsShowHowTo] = useState(false);
+  const [view, setView] = useState('howto');
 
   useEffect(() => {
     /*
@@ -27,6 +29,8 @@ const App = () => {
 
     setAnswers(returned['answers']);
     setAnswerDetails(returned['answerDetails']);
+
+    if (localStorage.getItem('history')) { setView('game'); }
   }, []);
 
   useEffect(() => {
@@ -41,14 +45,9 @@ const App = () => {
     <div className="App">
       <h1>Twenty-Eight</h1>
       <h3>Your Daily Numbers Game</h3>
-      <p
-          className="clickable"
-          onClick={() => setIsShowHowTo(!isShowHowTo)}
-      >
-        {isShowHowTo ? 'Back to game' : 'How to play?'}
-      </p>
-      {isShowHowTo && <HowTo />}
-      {!isShowHowTo &&
+      <ViewToggle view={view} setView={setView} />
+      {view === 'howto' && <HowTo />}
+      {view === 'game' &&
           (
             <div>
               <Calculator
