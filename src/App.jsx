@@ -7,6 +7,7 @@ import Calculator from './components/Calculator.jsx';
 import HowTo from './components/HowTo.jsx'
 
 import { parseStoredAnswers } from './helpers/parseStoredAnswers.js';
+import { storeAnswers } from './helpers/storeAnswers.js';
 
 const App = () => {
   const date = new Date().toDateString();
@@ -25,12 +26,7 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    const storableAnswers = JSON.stringify({
-      date: date,
-      answers: answers,
-      answerDetails: answerDetails
-    });
-    localStorage.setItem('answers', storableAnswers);
+    storeAnswers(date, answers, answerDetails);
 
     const storedHistory = localStorage.getItem('history');
     if (storedHistory) {
