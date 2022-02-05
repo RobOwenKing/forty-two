@@ -6,6 +6,8 @@ import AnswersGrid from './components/AnswersGrid.jsx';
 import Calculator from './components/Calculator.jsx';
 import HowTo from './components/HowTo.jsx'
 
+import { parseStoredAnswers } from './helpers/parseStoredAnswers.js';
+
 const App = () => {
   const date = new Date().toDateString();
 
@@ -15,14 +17,7 @@ const App = () => {
   const [isShowHowTo, setIsShowHowTo] = useState(false);
 
   useEffect(() => {
-    const storedAnswers = localStorage.getItem('answers');
-    if (storedAnswers) {
-      const parsedStoredAnswers = JSON.parse(storedAnswers);
-      if (parsedStoredAnswers['date'] === date) {
-        setAnswers(parsedStoredAnswers['answers']);
-        setAnswerDetails(parsedStoredAnswers['answerDetails']);
-      }
-    }
+    parseStoredAnswers(date, setAnswers, setAnswerDetails);
   }, []);
 
   useEffect(() => {
