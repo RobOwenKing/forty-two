@@ -23,6 +23,11 @@
   cursor: pointer;
 }
 
+.chosen-mode {
+  color: #F17105;
+  font-weight: bold;
+}
+
 /* Calculator */
 
 .grid {
