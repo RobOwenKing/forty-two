@@ -30,6 +30,9 @@ const App = () => {
   }, []);
 
   useEffect(() => {
+    /*
+      When the user finds a new answer, update saved score history and day's answers
+    */
     storeAnswers(date, answers, answerDetails);
     storeHistory(date, answers.length) // Second param here is score
   }, [answers]);
