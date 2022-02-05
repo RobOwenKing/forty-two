@@ -1,3 +1,11 @@
+/* Variables */
+
+:root {
+  --colour-blue: #A2C1E0;
+  --colour-green: #036016;
+  --colour-orange: #F17105;
+}
+
 /* App */
 
 .App {
@@ -6,7 +14,7 @@
 
 .solved,
 .valid {
-  color: #036016;
+  color: var(--colour-green);
 }
 
 .not-solved {
@@ -24,7 +32,7 @@
 }
 
 .chosen-mode {
-  color: #F17105;
+  color: var(--colour-orange);
   font-weight: bold;
 }
 
@@ -86,11 +94,11 @@
 }
 
 .used {
-  background-color: #A2C1E0;
+  background-color: var(--colour-blue);
 }
 
 .equals {
-  background-color: #F17105;
+  background-color: var(--colour-orange);
 }
 
 /* Answers Grid */
