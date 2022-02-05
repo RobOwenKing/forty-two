@@ -17,7 +17,11 @@ const App = () => {
   const [isShowHowTo, setIsShowHowTo] = useState(false);
 
   useEffect(() => {
-    parseStoredAnswers(date, setAnswers, setAnswerDetails);
+    const returned = parseStoredAnswers(date);
+    if (!returned['answers']) { return; }
+
+    setAnswers(returned['answers']);
+    setAnswerDetails(returned['answerDetails']);
   }, []);
 
   useEffect(() => {
