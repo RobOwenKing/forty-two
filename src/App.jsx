@@ -8,6 +8,7 @@ import HowTo from './components/HowTo.jsx'
 
 import { parseStoredAnswers } from './helpers/parseStoredAnswers.js';
 import { storeAnswers } from './helpers/storeAnswers.js';
+import { storeHistory } from './helpers/storeHistory.js';
 
 const App = () => {
   const date = new Date().toDateString();
@@ -30,29 +31,7 @@ const App = () => {
 
   useEffect(() => {
     storeAnswers(date, answers, answerDetails);
-
-    const storedHistory = localStorage.getItem('history');
-    if (storedHistory) {
-      const parsedStoredHistory = JSON.parse(storedHistory);
-      if (parsedStoredHistory['lastPlayed'] === date) {
-        const lengthOfScores = parsedStoredHistory['scores'].length;
-        parsedStoredHistory['scores'][lengthOfScores - 1] = answers.length;
-      } else {
-        parsedStoredHistory['lastPlayed'] = date;
-        parsedStoredHistory['scores'].push(answers.length);
-      }
-      const storableHistory = JSON.stringify(parsedStoredHistory);
-      localStorage.setItem('history', storableHistory);
-    } else {
-      if (answers.length > 0) {
-        const storableHistory = JSON.stringify({
-          firstPlayed: new Date(),
-          lastPlayed: date,
-          scores: [answers.length]
-        });
-        localStorage.setItem('history', storableHistory);
-      }
-    }
+    storeHistory(date, answers.length) // Second param here is score
   }, [answers]);
 
   return (
