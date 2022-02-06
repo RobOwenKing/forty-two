@@ -129,13 +129,31 @@
   font-size: 18px;
 }
 
-.how-to {
+.text-page {
   width: 300px;
   margin: auto auto;
 }
 
-.how-to p {
+.text-page p {
   color: #333;
+}
+
+/* Stats and Share */
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 72px);
+  justify-content: center;
+  align-items: center;
+}
+
+.stats-number {
+  font-size: 24px;
+}
+
+.stats-label {
+  color: #333;
+  font-size: 15px;
 }
 
 /* Footer */

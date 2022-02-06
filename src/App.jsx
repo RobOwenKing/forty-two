@@ -5,6 +5,7 @@ import './App.css';
 import AnswersGrid from './components/AnswersGrid.jsx';
 import Calculator from './components/Calculator.jsx';
 import HowTo from './components/HowTo.jsx';
+import StatsAndShare from './components/StatsAndShare.jsx';
 import ViewToggle from './components/ViewToggle.jsx';
 
 import { parseStoredAnswers } from './helpers/parseStoredAnswers.js';
@@ -60,6 +61,7 @@ const App = () => {
             </div>
           )
       }
+      {view === 'stats' && <StatsAndShare answers={answers} />}
       <footer>
         <small>A ReactJS app by Rob Owen King. Here's <a href="http://www.robowenking.com/">my website</a>; I'm also on <a href="https://github.com/RobOwenKing/">GitHub</a> and <a href="https://twitter.com/RobOwenKing">Twitter</a>.</small>
       </footer>
