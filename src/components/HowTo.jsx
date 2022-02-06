@@ -1,6 +1,6 @@
 const HowTo = ({ input, clickHandler, classes = '' }) => {
   return (
-    <div className="how-to">
+    <div className="text-page">
       <h2>How To Play</h2>
       <p>This is a game about a strange calculator. A calculator with only four digits, which change every day.</p>
       <div className="how-to-grid">

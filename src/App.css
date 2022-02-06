@@ -1,3 +1,11 @@
+/* Variables */
+
+:root {
+  --colour-blue: #A2C1E0;
+  --colour-green: #036016;
+  --colour-orange: #F17105;
+}
+
 /* App */
 
 .App {
@@ -6,7 +14,7 @@
 
 .solved,
 .valid {
-  color: #036016;
+  color: var(--colour-green);
 }
 
 .not-solved {
@@ -21,6 +29,11 @@
 .clickable:hover {
   text-decoration: underline;
   cursor: pointer;
+}
+
+.chosen-mode {
+  color: var(--colour-orange);
+  font-weight: bold;
 }
 
 /* Calculator */
@@ -81,11 +94,11 @@
 }
 
 .used {
-  background-color: #A2C1E0;
+  background-color: var(--colour-blue);
 }
 
 .equals {
-  background-color: #F17105;
+  background-color: var(--colour-orange);
 }
 
 /* Answers Grid */
@@ -116,13 +129,31 @@
   font-size: 18px;
 }
 
-.how-to {
+.text-page {
   width: 300px;
   margin: auto auto;
 }
 
-.how-to p {
+.text-page p {
   color: #333;
+}
+
+/* Stats and Share */
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 72px);
+  justify-content: center;
+  align-items: center;
+}
+
+.stats-number {
+  font-size: 24px;
+}
+
+.stats-label {
+  color: #333;
+  font-size: 15px;
 }
 
 /* Footer */
