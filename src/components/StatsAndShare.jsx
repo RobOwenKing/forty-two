@@ -1,3 +1,5 @@
+import BarChart from './BarChart.jsx';
+
 const getScores = () => {
   const history = localStorage.getItem('history');
   if (!history) { return null; }
@@ -15,6 +17,14 @@ const StatsAndShare = ({ answers }) => {
     return (total / scores.length);
   };
 
+  const lastSevenScores = () => {
+    if (scores.length >= 7) { return scores.slice(-7); }
+
+    const copyOfScores = [...scores];
+    while (copyOfScores.length < 7) { copyOfScores.unshift(0); }
+    return copyOfScores;
+  };
+
   return (
     <div className="text-page">
       {scores && (
@@ -30,6 +40,10 @@ const StatsAndShare = ({ answers }) => {
             <div className="stats-label">Average</div>
           </div>
           <p>Apologies to those who started playing before I'd set up score saving!</p>
+          <h3>Last seven days</h3>
+          <BarChart
+            data={lastSevenScores()}
+          />
         </>
       )}
       {!scores && (

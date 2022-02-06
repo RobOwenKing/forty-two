@@ -156,6 +156,22 @@
   font-size: 15px;
 }
 
+.bar-chart {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.bar-chart div {
+  width: 40px;
+}
+
+.bar-chart .bar {
+  width: 32px;
+  margin-left: 4px;
+  background-color: var(--colour-orange);
+}
+
 /* Footer */
 
 footer {
