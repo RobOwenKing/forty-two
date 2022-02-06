@@ -10,11 +10,12 @@ const getScores = () => {
 
 const StatsAndShare = ({ answers }) => {
   const scores = getScores();
+  const nonZeros = scores.filter(entry => entry != 0);
 
   const averageScore = () => {
-    const total = scores.reduce((subtotal, entry) => subtotal + entry);
+    const total = nonZeros.reduce((subtotal, entry) => subtotal + entry);
 
-    return (total / scores.length);
+    return (total / nonZeros.length);
   };
 
   const lastSevenScores = () => {
@@ -30,7 +31,7 @@ const StatsAndShare = ({ answers }) => {
       {scores && (
         <>
           <div className="stats-grid">
-            <div className="stats-number">{scores.length /*Days played*/}</div>
+            <div className="stats-number">{nonZeros.length /*Days played*/}</div>
             <div className="stats-number">{answers.length /*Today's score*/}</div>
             <div className="stats-number">{Math.max(...scores) /*Highscore*/}</div>
             <div className="stats-number">{averageScore().toFixed(2) /*Average*/}</div>
