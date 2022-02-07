@@ -12,6 +12,10 @@ import { parseStoredAnswers } from './helpers/parseStoredAnswers.js';
 import { storeAnswers } from './helpers/storeAnswers.js';
 import { storeHistory } from './helpers/storeHistory.js';
 
+const initialView = () => {
+  return localStorage.getItem('history') ? 'game' : 'howto'
+};
+
 const App = () => {
   const date = new Date().toDateString();
 
@@ -19,7 +23,7 @@ const App = () => {
   const [answerDetails, setAnswerDetails] = useState(new Array(28));
 
   const [isShowHowTo, setIsShowHowTo] = useState(false);
-  const [view, setView] = useState('howto');
+  const [view, setView] = useState(initialView());
 
   useEffect(() => {
     /*
@@ -30,8 +34,6 @@ const App = () => {
 
     setAnswers(returned['answers']);
     setAnswerDetails(returned['answerDetails']);
-
-    if (localStorage.getItem('history')) { setView('game'); }
   }, []);
 
   useEffect(() => {

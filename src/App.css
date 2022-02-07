@@ -151,9 +151,47 @@
   font-size: 24px;
 }
 
-.stats-label {
-  color: #333;
+.stats-value {
+  color: #666;
   font-size: 15px;
+}
+
+.stats-label{
+  font-size: 15px;
+}
+
+.bar-chart {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.bar-chart .seven-days {
+  width: 40px;
+}
+
+.bar-chart .all-time {
+  width: 56px;
+}
+
+.bar {
+  width: 32px;
+}
+
+.seven-days .bar {
+  margin-left: 4px;
+}
+
+.all-time .bar {
+  margin-left: 12px;
+}
+
+.bar.orange {
+  background-color: var(--colour-orange);
+}
+
+.bar.blue {
+  background-color: var(--colour-blue);
 }
 
 /* Footer */
