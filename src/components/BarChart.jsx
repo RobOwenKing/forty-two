@@ -1,4 +1,4 @@
-const BarChart = ({ data, highlights, divClass }) => {
+const BarChart = ({ data, highlights, divClass, labels = null }) => {
   const max = Math.max(...data);
 
   return (
@@ -6,11 +6,15 @@ const BarChart = ({ data, highlights, divClass }) => {
       {data.map((value, i) => {
         return (
           <div key={i} className={divClass}>
+            <div className="stats-value">{value}</div>
             <div
                 className={`bar ${highlights[i] ? 'orange' : 'blue'}`}
                 style={{height: (value * 100) / max}}
             ></div>
-            <div className="stats-label">{value}</div>
+            {
+              labels &&
+                  <div className="stats-label">{labels[i]}</div>
+            }
           </div>
         )
       })}

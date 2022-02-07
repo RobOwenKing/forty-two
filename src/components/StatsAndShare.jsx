@@ -9,7 +9,6 @@ const getScores = () => {
 };
 
 const groupScores = (nonZeros) => {
-  console.log(nonZeros.filter(e => e >= 1 && e <= 14));
   return [
     nonZeros.filter(e => e >= 1 && e <= 14),
     nonZeros.filter(e => e >= 15 && e <= 21),
@@ -65,6 +64,7 @@ const StatsAndShare = ({ answers }) => {
               divClass="all-time"
               data={scoresByGroup.map(s => s.length)}
               highlights={scoresByGroup.map(s => s.includes(scores[scores.length-1]))}
+              labels={['1-14','15-21','21-25','26-27','28']}
           />
         </>
       )}

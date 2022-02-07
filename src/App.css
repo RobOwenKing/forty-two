@@ -151,9 +151,13 @@
   font-size: 24px;
 }
 
-.stats-label {
+.stats-value {
   color: #333;
   font-size: 15px;
+}
+
+.stats-label{
+  color: #333;
 }
 
 .bar-chart {
