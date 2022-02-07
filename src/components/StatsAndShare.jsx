@@ -64,7 +64,7 @@ const StatsAndShare = ({ answers }) => {
               divClass="all-time"
               data={scoresByGroup.map(s => s.length)}
               highlights={scoresByGroup.map(s => s.includes(scores[scores.length-1]))}
-              labels={['1-14','15-21','21-25','26-27','28']}
+              labels={['1-14','15-21','22-25','26-27','28']}
           />
         </>
       )}
