@@ -152,12 +152,12 @@
 }
 
 .stats-value {
-  color: #333;
+  color: #666;
   font-size: 15px;
 }
 
 .stats-label{
-  color: #333;
+  font-size: 15px;
 }
 
 .bar-chart {
