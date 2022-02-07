@@ -162,14 +162,32 @@
   align-items: flex-end;
 }
 
-.bar-chart div {
+.bar-chart .seven-days {
   width: 40px;
 }
 
-.bar-chart .bar {
+.bar-chart .all-time {
+  width: 56px;
+}
+
+.bar {
   width: 32px;
+}
+
+.seven-days .bar {
   margin-left: 4px;
+}
+
+.all-time .bar {
+  margin-left: 12px;
+}
+
+.bar.orange {
   background-color: var(--colour-orange);
+}
+
+.bar.blue {
+  background-color: var(--colour-blue);
 }
 
 /* Footer */
