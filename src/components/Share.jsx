@@ -30,7 +30,7 @@ const Share = ({ answers }) => {
       <FacebookShareButton url={url} quote={title} hashtag="#TwentyEight">
         <FacebookIcon size={iconSize} round />
       </FacebookShareButton>
-      <EmailShareButton url={url} subject="Have you tried this game?" body=`It's a simple daily numbers puzzle game. I've got ${answers.length} so far today. How about you?`>
+      <EmailShareButton url={url} subject="Have you tried this game?" body={`It's a simple daily numbers puzzle game. I've got ${answers.length} so far today. How about you?`}>
         <EmailIcon size={iconSize} round />
       </EmailShareButton>
       <PocketShareButton url={url} title="Twenty-Eight">
