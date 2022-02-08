@@ -24,7 +24,7 @@ const Share = ({ answers }) => {
   return (
     <div className="text-page">
       <h2>Share</h2>
-      <TwitterShareButton url={url} title={title}>
+      <TwitterShareButton url={url} title={title} hashtags={["TwentyEight"]} related={["RobOwenKing"]}>
         <TwitterIcon size={iconSize} round />
       </TwitterShareButton>
       <FacebookShareButton url={url} title={title}>
