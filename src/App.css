@@ -138,7 +138,7 @@
   color: #333;
 }
 
-/* Stats and Share */
+/* Stats */
 
 .stats-grid {
   display: grid;
@@ -192,6 +192,18 @@
 
 .bar.blue {
   background-color: var(--colour-blue);
+}
+
+/* Share */
+
+.react-share__ShareButton {
+  margin: auto 2px;
+  opacity: 0.8;
+}
+
+.react-share__ShareButton:hover,
+.react-share__ShareButton:focus {
+  opacity: 1;
 }
 
 /* Footer */
