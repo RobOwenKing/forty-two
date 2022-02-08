@@ -5,6 +5,7 @@ import './App.css';
 import AnswersGrid from './components/AnswersGrid.jsx';
 import Calculator from './components/Calculator.jsx';
 import HowTo from './components/HowTo.jsx';
+import Share from './components/Share.jsx';
 import Stats from './components/Stats.jsx';
 import ViewToggle from './components/ViewToggle.jsx';
 
@@ -62,7 +63,14 @@ const App = () => {
             </div>
           )
       }
-      {view === 'stats' && <Stats answers={answers} />}
+      {view === 'stats' &&
+          (
+            <>
+              <Stats answers={answers} />
+              <Share />
+            </>
+          )
+      }
       <footer>
         <small>A ReactJS app by Rob Owen King. Here's <a href="http://www.robowenking.com/">my website</a>; I'm also on <a href="https://github.com/RobOwenKing/">GitHub</a> and <a href="https://twitter.com/RobOwenKing">Twitter</a>.</small>
       </footer>
