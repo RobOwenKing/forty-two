@@ -17,7 +17,7 @@ import {
 } from "react-share";
 
 const Share = ({ answers }) => {
-  const title = "Twenty-Eight, Your Daily Numbers Game";
+  const title = answers.length === 28 ? `I've done my 28 for today already! How about you?` : `I've got ${answers.length} so far today. How about you?`;
   const url = "http://twenty-eight.robowenking.com/";
   const iconSize = 46;
 
