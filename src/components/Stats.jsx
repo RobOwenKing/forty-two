@@ -18,7 +18,7 @@ const groupScores = (nonZeros) => {
   ];
 };
 
-const StatsAndShare = ({ answers }) => {
+const Stats = ({ answers }) => {
   const scores = getScores();
   const nonZeros = scores.filter(entry => entry != 0);
   const scoresByGroup = groupScores(nonZeros);
@@ -75,4 +75,4 @@ const StatsAndShare = ({ answers }) => {
   );
 }
 
-export default StatsAndShare;
+export default Stats;
