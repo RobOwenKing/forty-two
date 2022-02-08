@@ -22,7 +22,6 @@ const App = () => {
   const [answers, setAnswers] = useState([]);
   const [answerDetails, setAnswerDetails] = useState(new Array(28));
 
-  const [isShowHowTo, setIsShowHowTo] = useState(false);
   const [view, setView] = useState(initialView());
 
   useEffect(() => {
