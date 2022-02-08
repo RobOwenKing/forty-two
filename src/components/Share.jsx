@@ -19,7 +19,7 @@ import {
 const Share = ({ answers }) => {
   const title = "Twenty-Eight, Your Daily Numbers Game";
   const url = "http://twenty-eight.robowenking.com/";
-  const iconSize = 48;
+  const iconSize = 46;
 
   return (
     <div className="text-page">

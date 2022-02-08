@@ -194,6 +194,12 @@
   background-color: var(--colour-blue);
 }
 
+/* Share */
+
+.react-share__ShareButton {
+  margin: auto 2px;
+}
+
 /* Footer */
 
 footer {
