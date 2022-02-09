@@ -17,7 +17,7 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
   const [currentInputVal, setCurrentInputVal] = useState(0);
 
   const updateInputVal = (newInputStr) => {
-    const whitelistedStr = newInputStr.replace(/[^0-9\(\)\+\-\*\/\.\!\^]/g, "");
+    const whitelistedStr = newInputStr.replace(/[^0-9()+\-*/.!^]/g, "");
 
     try {
       const newInputVal = evaluate(whitelistedStr);

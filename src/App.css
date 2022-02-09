@@ -211,3 +211,7 @@
 footer {
   margin: 16px auto;
 }
+
+footer small {
+  display: block;
+}

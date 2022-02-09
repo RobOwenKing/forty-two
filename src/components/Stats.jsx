@@ -52,7 +52,6 @@ const Stats = ({ answers }) => {
             <div className="stats-label">Highest</div>
             <div className="stats-label">Average</div>
           </div>
-          <p>Apologies to those who started playing before I'd set up score saving!</p>
           <h3>Last seven days</h3>
           <BarChart
               divClass="seven-days"
