@@ -67,7 +67,7 @@ const App = () => {
           (
             <>
               <Stats answers={answers} />
-              <Share answers={answers} />
+              <Share answers={answers} answerDetails={answerDetails} />
             </>
           )
       }

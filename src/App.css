@@ -196,6 +196,11 @@
 
 /* Share */
 
+.share-grid {
+  white-space: pre-wrap;
+  margin-bottom: 8px;
+}
+
 .react-share__ShareButton {
   margin: auto 2px;
   opacity: 0.8;
