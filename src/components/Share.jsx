@@ -28,7 +28,7 @@ const Share = ({ answers, answerDetails }) => {
     <div className="text-page">
       <h2>Share</h2>
       <div className="share-grid">{shareGrid}</div>
-      <p className="clickable" onClick={() => navigator.clipboard.writeText(shareGrid)}>Copy</p>
+      <p className="clickable" onClick={() => window.prompt("Press Ctrl+C to copy", shareGrid)}>Copy</p>
       <TwitterShareButton url={url} title={shareGrid} hashtags={["TwentyEight"]} related={["RobOwenKing"]}>
         <TwitterIcon size={iconSize} round />
       </TwitterShareButton>
