@@ -16,18 +16,23 @@ import {
   WhatsappIcon
 } from "react-share";
 
-const Share = ({ answers }) => {
-  const title = answers.length === 28 ? `I've done my 28 for today already! How about you?` : `I've got ${answers.length} so far today. How about you?`;
+import { createShareGrid } from '../helpers/createShareGrid.js';
+
+const Share = ({ answers, answerDetails }) => {
+  //const title = answers.length === 28 ? `I've done my 28 for today already! How about you?` : `I've got ${answers.length} so far today. How about you?`;
   const url = "http://twenty-eight.robowenking.com/";
   const iconSize = 46;
+  const shareGrid = createShareGrid(answerDetails);
 
   return (
     <div className="text-page">
       <h2>Share</h2>
-      <TwitterShareButton url={url} title={title} hashtags={["TwentyEight"]} related={["RobOwenKing"]}>
+      <div className="share-grid">{shareGrid}</div>
+      <p className="clickable" onClick={() => navigator.clipboard.writeText(shareGrid)}>Copy</p>
+      <TwitterShareButton url={url} title={shareGrid} hashtags={["TwentyEight"]} related={["RobOwenKing"]}>
         <TwitterIcon size={iconSize} round />
       </TwitterShareButton>
-      <FacebookShareButton url={url} quote={title} hashtag="#TwentyEight">
+      <FacebookShareButton url={url} hashtag="#TwentyEight">
         <FacebookIcon size={iconSize} round />
       </FacebookShareButton>
       <EmailShareButton url={url} subject="Have you tried this game?" body={`It's a simple daily numbers puzzle game. I've got ${answers.length} so far today. How about you?`}>
@@ -36,10 +41,10 @@ const Share = ({ answers }) => {
       <PocketShareButton url={url} title="Twenty-Eight">
         <PocketIcon size={iconSize} round />
       </PocketShareButton>
-      <TelegramShareButton url={url} title={title}>
+      <TelegramShareButton url={url} title={shareGrid}>
         <TelegramIcon size={iconSize} round />
       </TelegramShareButton>
-      <WhatsappShareButton url={url} title={title}>
+      <WhatsappShareButton url={url} title={shareGrid}>
         <WhatsappIcon size={iconSize} round />
       </WhatsappShareButton>
     </div>
