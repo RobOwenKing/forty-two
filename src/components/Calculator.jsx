@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { evaluate } from 'mathjs';
 
 import DigitButton from './DigitButton.jsx';
@@ -16,6 +16,8 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
 
   const [currentInputArr, setCurrentInputArr] = useState([]);
   const [currentInputVal, setCurrentInputVal] = useState(0);
+
+  const inputRef = useRef();
 
   useEffect(() => {
     updateInputVal(currentInputArr.join(''));
@@ -113,7 +115,7 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
 
   return (
     <>
-    <input type="text" value={currentInputArr.join('')} onChange={changeHandler} />
+    <input type="text" ref={inputRef} value={currentInputArr.join('')} onChange={changeHandler} />
     <div className="grid">
       <div className="output span-four">
         <div className="output-calculation">{currentInputArr.join('')}</div>
