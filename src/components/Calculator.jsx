@@ -18,9 +18,11 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
   const [currentInputVal, setCurrentInputVal] = useState(0);
 
   const inputRef = useRef();
+  const [cursorPos, setCursorPos] = useState(0);
 
   useEffect(() => {
     updateInputVal(currentInputArr.join(''));
+    setCursorPos(inputRef.current.selectionStart);
   }, [currentInputArr]);
 
   const updateInputVal = (newInputStr) => {
@@ -40,10 +42,7 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
   };
 
   const digitHandler = (id, input) => {
-    if (digitsUsed.includes(id)) { return false; }
 
-    inputHandler(input);
-    setDigitsUsed([...digitsUsed, id]);
   };
 
   const backspaceHandler = () => {
@@ -107,7 +106,12 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
 
   return (
     <>
-    <input type="text" ref={inputRef} value={currentInputArr.join('')} onChange={changeHandler} />
+    <input
+        type="text" ref={inputRef}
+        value={currentInputArr.join('')}
+        onChange={changeHandler}
+        onBlur={() => inputRef.current.setSelectionRange(cursorPos, cursorPos)}
+    />
     <div className="grid">
       <div className="output span-four">
         <div className="output-calculation">{currentInputArr.join('')}</div>
