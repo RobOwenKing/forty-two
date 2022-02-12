@@ -91,7 +91,7 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
   };
 
   useEventListener('keydown', (e) => {
-    if (!e.key === 'Enter') { return; }
+    if (e.key !== 'Enter') { return; }
 
     e.preventDefault();
     enterHandler();
