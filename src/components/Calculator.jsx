@@ -92,10 +92,14 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
   };
 
   useEventListener('keydown', (e) => {
-    if (e.key !== 'Enter') { return; }
-
-    e.preventDefault();
-    enterHandler();
+    console.log(e);
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      enterHandler();
+    } else if (e.key === 'Backspace') {
+      e.preventDefault();
+      backspaceHandler();
+    }
   });
 
   const changeHandler = (event) => {
