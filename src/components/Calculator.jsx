@@ -71,6 +71,7 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
         currentInputVal > 0 &&
         currentInputVal <= 28 &&
         digitsUsed.length === 4 &&
+        !digitsUsed.includes(-1) &&
         !answers.includes(currentInputVal);
   };
 
@@ -92,7 +93,6 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
   };
 
   useEventListener('keydown', (e) => {
-    console.log(e);
     if (e.key === 'Enter') {
       e.preventDefault();
       enterHandler();
