@@ -11,7 +11,7 @@ const firstNonUsedOccurence = (testee, digits, newDigitsUsed) => {
 const handleDigit = (char, newInputArr, digits, newDigitsUsed) => {
   const i = firstNonUsedOccurence(char, digits, newDigitsUsed);
 
-  if (i !== -1) {
+  if (i !== -1 || char === '1') {
     newInputArr.push(char);
     newDigitsUsed.push(i);
   }
@@ -19,22 +19,22 @@ const handleDigit = (char, newInputArr, digits, newDigitsUsed) => {
   return { newInputArr, newDigitsUsed };
 };
 
-/*const handleOne = (str, i, newInputArr, digits, newDigitsUsed) => {
+const handleOne = (str, i, newInputArr, digits, newDigitsUsed) => {
   let char;
 
   if (['0', '1', '2'].includes(str[i+1])) {
     const pair = str.slice(i, i+2);
-    if (digits.includes(pair)) {
-      char = pair
+    if (firstNonUsedOccurence(pair, digits, newDigitsUsed) !== -1) {
+      char = pair;
+    } else {
+      char = str[i];
     }
-    newInputArr.push(digits);
-    newDigitsUsed.push(digits);
-    i += 1
   } else {
-    newInputArr.push(char);
-    newDigitsUsed.push(char);
+    char = str[i];
   }
-};*/
+
+  return handleDigit(char, newInputArr, digits, newDigitsUsed);
+};
 
 export const handleInputElementInput = (str, operations, digits) => {
   let newInputArr = [];
@@ -50,9 +50,9 @@ export const handleInputElementInput = (str, operations, digits) => {
       newInputArr = newArrays['newInputArr'];
       newDigitsUsed = newArrays['newDigitsUsed'];
     } else if (char === '1') {
-      /*const newArrays = handleOne(str, i, newInputArr, digits, newDigitsUsed);
+      const newArrays = handleOne(str, i, newInputArr, digits, newDigitsUsed);
       newInputArr = newArrays['newInputArr'];
-      newDigitsUsed = newArrays['newDigitsUsed'];*/
+      newDigitsUsed = newArrays['newDigitsUsed'];
     }
   }
 
