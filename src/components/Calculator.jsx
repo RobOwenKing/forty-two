@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { evaluate } from 'mathjs';
 
 import DigitButton from './DigitButton.jsx';
@@ -17,6 +17,10 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
   const [currentInputArr, setCurrentInputArr] = useState([]);
   const [currentInputVal, setCurrentInputVal] = useState(0);
 
+  useEffect(() => {
+    updateInputVal(currentInputArr.join(''));
+  }, [currentInputArr]);
+
   const updateInputVal = (newInputStr) => {
     const whitelistedStr = newInputStr.replace(/[^0-9()+\-*/.!^]/g, "");
 
@@ -31,7 +35,6 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
   const inputHandler = (input) => {
     const newInputArr = [...currentInputArr, input];
     setCurrentInputArr(newInputArr);
-    updateInputVal(newInputArr.join(''));
   };
 
   const digitHandler = (id, input) => {
@@ -57,7 +60,6 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
     const newInputArr = [...currentInputArr];
     newInputArr.pop();
     setCurrentInputArr(newInputArr);
-    updateInputVal(newInputArr.join(''));
   };
 
   const acHandler = () => {
