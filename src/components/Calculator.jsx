@@ -99,15 +99,10 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
   });
 
   const changeHandler = (event) => {
-/*    const currentInputStr = event.target.value;
-    const newCurrentInputArr = [];
-    const newDigitsUsed = [];
+    const { newInputArr, newDigitsUsed } = handleInputElementInput(event.target.value, operations, digits);
 
-    for (let i = 0; i < currentInputStr.length; i += 1) {
-      newCurrentInputArr.push(currentInputStr[i]);
-    }*/
-
-    setCurrentInputArr(handleInputElementInput(event.target.value, operations));
+    setCurrentInputArr(newInputArr);
+    setDigitsUsed(newDigitsUsed);
   };
 
   return (
