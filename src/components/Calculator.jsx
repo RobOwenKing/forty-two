@@ -5,6 +5,7 @@ import DigitButton from './DigitButton.jsx';
 import InputButton from './InputButton.jsx';
 
 import { getTodaysDigits } from '../helpers/getTodaysDigits.js';
+import { handleInputElementInput } from '../helpers/handleInputElementInput.js';
 
 import { useEventListener } from '../hooks/useEventListener.js';
 
@@ -97,9 +98,21 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
     enterHandler();
   });
 
+  const changeHandler = (event) => {
+/*    const currentInputStr = event.target.value;
+    const newCurrentInputArr = [];
+    const newDigitsUsed = [];
+
+    for (let i = 0; i < currentInputStr.length; i += 1) {
+      newCurrentInputArr.push(currentInputStr[i]);
+    }*/
+
+    setCurrentInputArr(handleInputElementInput(event.target.value));
+  };
+
   return (
     <>
-    <input type="text" value={currentInputArr.join('')} />
+    <input type="text" value={currentInputArr.join('')} onChange={changeHandler} />
     <div className="grid">
       <div className="output span-four">
         <div className="output-calculation">{currentInputArr.join('')}</div>
