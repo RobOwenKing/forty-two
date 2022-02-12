@@ -46,14 +46,6 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
     setDigitsUsed([...digitsUsed, id]);
   };
 
-  const advancedDigitsHandler = (input) => {
-    for (let i = 0; i < 4; i += 1) {
-      if (digits[i] == input) {
-        if (digitHandler(i, input)) { break; }
-      }
-    };
-  }
-
   const backspaceHandler = () => {
     if (digits.includes(currentInputArr[currentInputArr.length - 1])) {
       setDigitsUsed(digitsUsed.slice(0, digitsUsed.length - 1));
