@@ -107,7 +107,7 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
       newCurrentInputArr.push(currentInputStr[i]);
     }*/
 
-    setCurrentInputArr(handleInputElementInput(event.target.value));
+    setCurrentInputArr(handleInputElementInput(event.target.value, operations));
   };
 
   return (
