@@ -91,11 +91,10 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
   };
 
   useEventListener('keydown', (e) => {
+    if (!e.key === 'Enter') { return; }
+
     e.preventDefault();
-    if (digits.includes(e.key)) { advancedDigitsHandler(e.key); }
-    if (operations.includes(e.key)) { inputHandler(e.key); }
-    if (e.key === 'Backspace') { backspaceHandler(); }
-    if (e.key === 'Enter') { enterHandler(); }
+    enterHandler();
   });
 
   return (
