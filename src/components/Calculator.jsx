@@ -50,15 +50,7 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
   const digitHandler = (id, input) => {
     if (digitsUsed.includes(id)) { return; }
 
-    inputRef.current.focus();
-    inputRef.current.setSelectionRange(cursorPos, cursorPos);
-
-    const inputStr = inputRef.current.value;
-    const targetInputStr = `${inputStr.slice(0, cursorPos)}${input}${inputStr.slice(cursorPos)}`;
-
-    const { newInputArr } = handleInputElementInput(targetInputStr, operations, digits);
-    setCurrentInputArr(newInputArr);
-
+    inputHandler(input);
     setDigitsUsed([...digitsUsed, id]);
   };
 
