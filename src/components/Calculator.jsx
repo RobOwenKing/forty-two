@@ -42,6 +42,8 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
   };
 
   const digitHandler = (id, input) => {
+    if (digitsUsed.includes(id)) { return; }
+
     inputRef.current.focus();
     inputRef.current.setSelectionRange(cursorPos, cursorPos);
 
@@ -50,6 +52,7 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
 
     const { newInputArr } = handleInputElementInput(targetInputStr, operations, digits);
     setCurrentInputArr(newInputArr);
+    setDigitsUsed([...digitsUsed, id]);
   };
 
   const backspaceHandler = () => {
