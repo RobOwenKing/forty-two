@@ -42,7 +42,14 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
   };
 
   const digitHandler = (id, input) => {
+    inputRef.current.focus();
+    inputRef.current.setSelectionRange(cursorPos, cursorPos);
 
+    const inputStr = inputRef.current.value;
+    const targetInputStr = `${inputStr.slice(0, cursorPos)}${input}${inputStr.slice(cursorPos)}`;
+
+    const { newInputArr } = handleInputElementInput(targetInputStr, operations, digits);
+    setCurrentInputArr(newInputArr);
   };
 
   const backspaceHandler = () => {
@@ -110,7 +117,7 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
         type="text" ref={inputRef}
         value={currentInputArr.join('')}
         onChange={changeHandler}
-        onBlur={() => inputRef.current.setSelectionRange(cursorPos, cursorPos)}
+        onBlur={() => setCursorPos(inputRef.current.selectionStart)}
     />
     <div className="grid">
       <div className="output span-four">
