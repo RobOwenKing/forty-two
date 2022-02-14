@@ -1,7 +1,10 @@
+/**
+  * @param {array} answers - Array of answers found by the user (strings), else null. Expected length = 28.
+*/
 const AnswersGrid = ({ answers }) => {
-  /*
-    If answers are too long, reduce the font size so they fit nicely into the layout
-    TODO: Make this less magic-number-y
+  /**
+    * If answers are too long, reduce the font size so they fit nicely into the layout
+    * @todo Make this less magic-number-y
   */
   const fontSize = (answer) => {
     if (!answer) { return 'inherit'; }
