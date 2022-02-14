@@ -18,7 +18,14 @@ const initialView = () => {
 };
 
 const App = () => {
-  const date = new Date().toDateString();
+  //const date = new Date().toDateString();
+  /*
+    IMPORTANT!
+    The date definition below can be used instead of that above for testing purposes
+    Before use, however, delete the localStorage related to the app at localhost:3000
+    Otherwise, you'll get infinite loops from fillScores(), etc
+  */
+  const date = new Date("Thu Feb 17 2022").toDateString();
 
   const [answers, setAnswers] = useState([]);
   const [answerDetails, setAnswerDetails] = useState(new Array(28));

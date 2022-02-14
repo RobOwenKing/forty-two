@@ -22,7 +22,8 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
 
   useEffect(() => {
     updateInputVal(currentInputArr.join(''));
-    setCursorPos(inputRef.current.selectionStart);
+    inputRef.current.focus();
+    inputRef.current.setSelectionRange(cursorPos, cursorPos);
   }, [currentInputArr]);
 
   const updateInputVal = (newInputStr) => {
@@ -37,14 +38,12 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
   };
 
   const inputHandler = (input) => {
-    inputRef.current.focus();
-    inputRef.current.setSelectionRange(cursorPos, cursorPos);
-
     const inputStr = inputRef.current.value;
     const targetInputStr = `${inputStr.slice(0, cursorPos)}${input}${inputStr.slice(cursorPos)}`;
 
     const { newInputArr } = handleInputElementInput(targetInputStr, operations, digits);
     setCurrentInputArr(newInputArr);
+    setCursorPos(cursorPos + newInputArr.join('').length - currentInputArr.join('').length);
   };
 
   const digitHandler = (id, input) => {
@@ -55,15 +54,13 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
   };
 
   const backspaceHandler = () => {
-    inputRef.current.focus();
-    inputRef.current.setSelectionRange(cursorPos, cursorPos);
-
     const inputStr = inputRef.current.value;
     const targetInputStr = `${inputStr.slice(0, cursorPos - 1)}${inputStr.slice(cursorPos)}`;
 
     const { newInputArr, newDigitsUsed } = handleInputElementInput(targetInputStr, operations, digits);
     setCurrentInputArr(newInputArr);
     setDigitsUsed(newDigitsUsed);
+    setCursorPos(cursorPos + newInputArr.length - currentInputArr.length);
   };
 
   const acHandler = () => {
@@ -108,6 +105,7 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
   const changeHandler = (event) => {
     const { newInputArr, newDigitsUsed } = handleInputElementInput(event.target.value, operations, digits);
 
+    setCursorPos(inputRef.current.selectionStart)
     setCurrentInputArr(newInputArr);
     setDigitsUsed(newDigitsUsed);
   };
