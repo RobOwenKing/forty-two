@@ -70,7 +70,7 @@ const App = () => {
                   answerDetails={answerDetails} setAnswerDetails={setAnswerDetails}
               />
               <h3>Score: {answers.length}/28</h3>
-              <AnswersGrid answers={answerDetails} />
+              <AnswersGrid answerDetails={answerDetails} />
             </div>
           )
       }

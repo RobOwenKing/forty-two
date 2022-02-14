@@ -1,7 +1,7 @@
 /**
-  * @param {array.<string>} answers - Answers found by the user (each with total index-1), else null. Expected length = 28.
+  * @param {array.<string>} answerDetails - Answers found by the user (each with total index-1), else null. Expected length = 28.
 */
-const AnswersGrid = ({ answers }) => {
+const AnswersGrid = ({ answerDetails }) => {
   /**
     * If answers are too long, reduce the font size so they fit nicely into the layout
     * @todo Make this less magic-number-y
@@ -16,7 +16,7 @@ const AnswersGrid = ({ answers }) => {
   return (
     <div className="answers-grid">
       {
-        answers.map((answer, id) => {
+        answerDetails.map((answer, id) => {
           return (
             <div
                 key={id}
