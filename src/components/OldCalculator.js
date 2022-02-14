@@ -1,11 +1,10 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState } from 'react';
 import { evaluate } from 'mathjs';
 
 import DigitButton from './DigitButton.jsx';
 import InputButton from './InputButton.jsx';
 
 import { getTodaysDigits } from '../helpers/getTodaysDigits.js';
-import { handleInputElementInput } from '../helpers/handleInputElementInput.js';
 
 import { useEventListener } from '../hooks/useEventListener.js';
 
@@ -16,15 +15,6 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
 
   const [currentInputArr, setCurrentInputArr] = useState([]);
   const [currentInputVal, setCurrentInputVal] = useState(0);
-
-  const inputRef = useRef();
-  const [cursorPos, setCursorPos] = useState(0);
-
-  useEffect(() => {
-    updateInputVal(currentInputArr.join(''));
-    inputRef.current.focus();
-    inputRef.current.setSelectionRange(cursorPos, cursorPos);
-  }, [currentInputArr]);
 
   const updateInputVal = (newInputStr) => {
     const whitelistedStr = newInputStr.replace(/[^0-9()+\-*/.!^]/g, "");
@@ -38,29 +28,35 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
   };
 
   const inputHandler = (input) => {
-    const inputStr = inputRef.current.value;
-    const targetInputStr = `${inputStr.slice(0, cursorPos)}${input}${inputStr.slice(cursorPos)}`;
-
-    const { newInputArr } = handleInputElementInput(targetInputStr, operations, digits);
+    const newInputArr = [...currentInputArr, input];
     setCurrentInputArr(newInputArr);
-    setCursorPos(cursorPos + newInputArr.join('').length - currentInputArr.join('').length);
+    updateInputVal(newInputArr.join(''));
   };
 
   const digitHandler = (id, input) => {
-    if (digitsUsed.includes(id)) { return; }
+    if (digitsUsed.includes(id)) { return false; }
 
     inputHandler(input);
     setDigitsUsed([...digitsUsed, id]);
   };
 
-  const backspaceHandler = () => {
-    const inputStr = inputRef.current.value;
-    const targetInputStr = `${inputStr.slice(0, cursorPos - 1)}${inputStr.slice(cursorPos)}`;
+  const advancedDigitsHandler = (input) => {
+    for (let i = 0; i < 4; i += 1) {
+      if (digits[i] == input) {
+        if (digitHandler(i, input)) { break; }
+      }
+    };
+  }
 
-    const { newInputArr, newDigitsUsed } = handleInputElementInput(targetInputStr, operations, digits);
+  const backspaceHandler = () => {
+    if (digits.includes(currentInputArr[currentInputArr.length - 1])) {
+      setDigitsUsed(digitsUsed.slice(0, digitsUsed.length - 1));
+    }
+
+    const newInputArr = [...currentInputArr];
+    newInputArr.pop();
     setCurrentInputArr(newInputArr);
-    setDigitsUsed(newDigitsUsed);
-    setCursorPos(cursorPos + newInputArr.join('').length - currentInputArr.join('').length);
+    updateInputVal(newInputArr.join(''));
   };
 
   const acHandler = () => {
@@ -74,7 +70,6 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
         currentInputVal > 0 &&
         currentInputVal <= 28 &&
         digitsUsed.length === 4 &&
-        !digitsUsed.includes(-1) &&
         !answers.includes(currentInputVal);
   };
 
@@ -96,30 +91,17 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
   };
 
   useEventListener('keydown', (e) => {
-    if (e.key === 'Enter') {
-      e.preventDefault();
-      enterHandler();
-    }
+    e.preventDefault();
+    if (digits.includes(e.key)) { advancedDigitsHandler(e.key); }
+    if (operations.includes(e.key)) { inputHandler(e.key); }
+    if (e.key === 'Backspace') { backspaceHandler(); }
+    if (e.key === 'Enter') { enterHandler(); }
   });
-
-  const changeHandler = (event) => {
-    const { newInputArr, newDigitsUsed } = handleInputElementInput(event.target.value, operations, digits);
-
-    setCursorPos(inputRef.current.selectionStart)
-    setCurrentInputArr(newInputArr);
-    setDigitsUsed(newDigitsUsed);
-  };
 
   return (
     <div className="grid">
       <div className="output span-four">
-        <input
-            type="text" ref={inputRef}
-            className="output-calculation"
-            value={currentInputArr.join('')}
-            onChange={changeHandler}
-            onBlur={() => setCursorPos(inputRef.current.selectionStart)}
-        />
+        <div className="output-calculation">{currentInputArr.join('')}</div>
         <div
             className={`output-value ${isValidAnswer() ? 'valid' : 'not-valid'}`}
         >
