@@ -111,16 +111,15 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
   };
 
   return (
-    <>
-    <input
-        type="text" ref={inputRef}
-        value={currentInputArr.join('')}
-        onChange={changeHandler}
-        onBlur={() => setCursorPos(inputRef.current.selectionStart)}
-    />
     <div className="grid">
       <div className="output span-four">
-        <div className="output-calculation">{currentInputArr.join('')}</div>
+        <input
+            type="text" ref={inputRef}
+            className="output-calculation"
+            value={currentInputArr.join('')}
+            onChange={changeHandler}
+            onBlur={() => setCursorPos(inputRef.current.selectionStart)}
+        />
         <div
             className={`output-value ${isValidAnswer() ? 'valid' : 'not-valid'}`}
         >
@@ -147,7 +146,6 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
       <div className="button span-two" role="button" tabIndex="0" onClick={acHandler}>A/C</div>
       <div className="button span-four equals" role="button" tabIndex="0" onClick={enterHandler}>=</div>
     </div>
-    </>
   );
 }
 
