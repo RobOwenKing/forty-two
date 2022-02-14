@@ -60,7 +60,7 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
     const { newInputArr, newDigitsUsed } = handleInputElementInput(targetInputStr, operations, digits);
     setCurrentInputArr(newInputArr);
     setDigitsUsed(newDigitsUsed);
-    setCursorPos(cursorPos + newInputArr.length - currentInputArr.length);
+    setCursorPos(cursorPos + newInputArr.join('').length - currentInputArr.join('').length);
   };
 
   const acHandler = () => {
