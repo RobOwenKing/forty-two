@@ -18,7 +18,7 @@ import { storeHistory } from './helpers/storeHistory.js';
   Only players who have made at least one number in <Calculator> before have localStorage.history
 */
 const initialView = () => {
-  return localStorage.getItem('history') ? 'game' : 'howto'
+  return localStorage.getItem('history') ? 'game' : 'howto';
 };
 
 const App = () => {
