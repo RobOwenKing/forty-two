@@ -1,5 +1,5 @@
 /**
-  * @param {array.string} answers - Answers found by the user (each with total index-1), else null. Expected length = 28.
+  * @param {array.<string>} answers - Answers found by the user (each with total index-1), else null. Expected length = 28.
 */
 const AnswersGrid = ({ answers }) => {
   /**
