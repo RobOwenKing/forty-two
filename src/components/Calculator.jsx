@@ -55,13 +55,15 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
   };
 
   const backspaceHandler = () => {
-    if (digits.includes(currentInputArr[currentInputArr.length - 1])) {
-      setDigitsUsed(digitsUsed.slice(0, digitsUsed.length - 1));
-    }
+    inputRef.current.focus();
+    inputRef.current.setSelectionRange(cursorPos, cursorPos);
 
-    const newInputArr = [...currentInputArr];
-    newInputArr.pop();
+    const inputStr = inputRef.current.value;
+    const targetInputStr = `${inputStr.slice(0, cursorPos - 1)}${inputStr.slice(cursorPos)}`;
+
+    const { newInputArr, newDigitsUsed } = handleInputElementInput(targetInputStr, operations, digits);
     setCurrentInputArr(newInputArr);
+    setDigitsUsed(newDigitsUsed);
   };
 
   const acHandler = () => {
@@ -100,9 +102,6 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
     if (e.key === 'Enter') {
       e.preventDefault();
       enterHandler();
-    } else if (e.key === 'Backspace') {
-      e.preventDefault();
-      backspaceHandler();
     }
   });
 
