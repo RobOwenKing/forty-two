@@ -1,4 +1,8 @@
 const AnswersGrid = ({ answers }) => {
+  /*
+    If answers are too long, reduce the font size so they fit nicely into the layout
+    TODO: Make this less magic-number-y
+  */
   const fontSize = (answer) => {
     if (!answer) { return 'inherit'; }
     if (answer.length < 9) { return 'inherit'; }
