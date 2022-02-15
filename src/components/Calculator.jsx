@@ -102,7 +102,7 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
   };
 
   /**
-    * @return {boolean} Whether the current inputVal is a valid, new answer or not
+    * @returns {boolean} Whether the current inputVal is a valid, new answer or not
   */
   const isValidAnswer = () => {
     return Number.isInteger(inputVal) &&
