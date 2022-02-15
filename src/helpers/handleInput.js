@@ -38,7 +38,7 @@ const handleDigit = (char, newInputArr, digits, newDigitsUsed) => {
   * @param {array.<string>} newInputArr - The array of digits and operations entered by the player
   * @param {array.<number>} digits - The digits available to the player. May include repeats. Expected length = 4
   * @param {array.<number>} newDigitsUsed - The indexes from digits of the digits already used by the player
-  * @returns {object} Containing two arrays, params newInputArr and newDigitsUsed updated as required, plus {number} increment - 0 or 1 whether the for loop in handleInputElementInput needs to skip next digit
+  * @returns {object} Containing two arrays, params newInputArr and newDigitsUsed updated as required, plus {number} increment - 0 or 1 whether the for loop in handleInput() needs to skip next digit
 */
 const handleOne = (str, i, newInputArr, digits, newDigitsUsed) => {
   let char, increment;
@@ -68,7 +68,7 @@ const handleOne = (str, i, newInputArr, digits, newDigitsUsed) => {
   * @param {array.<number>} digits - The digits available to the user
   * @returns {object} Two arrays, newInputArray and newDigitsUsed to update state in <Calculator>
 */
-export const handleInputElementInput = (str, operations, digits) => {
+export const handleInput = (str, operations, digits) => {
   let newInputArr = [];
   let newDigitsUsed = [];
 

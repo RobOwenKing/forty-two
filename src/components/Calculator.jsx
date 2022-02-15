@@ -5,7 +5,7 @@ import DigitButton from './DigitButton.jsx';
 import InputButton from './InputButton.jsx';
 
 import { getTodaysDigits } from '../helpers/getTodaysDigits.js';
-import { handleInputElementInput } from '../helpers/handleInputElementInput.js';
+import { handleInput } from '../helpers/handleInput.js';
 
 import { useEventListener } from '../hooks/useEventListener.js';
 
@@ -61,7 +61,7 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
     const inputStr = inputRef.current.value;
     const targetInputStr = `${inputStr.slice(0, cursorPos)}${input}${inputStr.slice(cursorPos)}`;
 
-    const { newInputArr } = handleInputElementInput(targetInputStr, operations, digits);
+    const { newInputArr } = handleInput(targetInputStr, operations, digits);
     setInputArr(newInputArr);
     setCursorPos(cursorPos + newInputArr.join('').length - inputArr.join('').length);
   };
@@ -86,7 +86,7 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
     const inputStr = inputRef.current.value;
     const targetInputStr = `${inputStr.slice(0, cursorPos - 1)}${inputStr.slice(cursorPos)}`;
 
-    const { newInputArr, newDigitsUsed } = handleInputElementInput(targetInputStr, operations, digits);
+    const { newInputArr, newDigitsUsed } = handleInput(targetInputStr, operations, digits);
     setInputArr(newInputArr);
     setDigitsUsed(newDigitsUsed);
     setCursorPos(cursorPos + newInputArr.join('').length - inputArr.join('').length);
@@ -150,7 +150,7 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
     * @param {Event} event - The onChange event prompting this handler to be called
   */
   const changeHandler = (event) => {
-    const { newInputArr, newDigitsUsed } = handleInputElementInput(event.target.value, operations, digits);
+    const { newInputArr, newDigitsUsed } = handleInput(event.target.value, operations, digits);
 
     setCursorPos(inputRef.current.selectionStart)
     setInputArr(newInputArr);
