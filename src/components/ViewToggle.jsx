@@ -1,3 +1,7 @@
+/**
+  * @param {string} view - Current tab chosen by user to highlight name ['howto', 'game', 'stats']
+  * @param {function} setView - Function that takes a string to set as new value of view
+*/
 const ViewToggle = ({ view, setView }) => {
   return (
     <p>
