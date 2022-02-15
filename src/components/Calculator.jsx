@@ -9,6 +9,13 @@ import { handleInputElementInput } from '../helpers/handleInputElementInput.js';
 
 import { useEventListener } from '../hooks/useEventListener.js';
 
+/**
+  * @param {string} date - Used to seed digit generation
+  * @param {array.<number>} answers - Answers found by the user (values)
+  * @param {function} setAnswers - Function that takes an array to set as new value of answers
+  * @param {array.<string>} answerDetails - Answers found by the user (equations, each with total index-1), else null. Expected length = 28
+  * @param {function} setAnswerDetails -Function that takes an array to set as new value of answerDetails
+*/
 const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails }) => {
   const digits = getTodaysDigits(date);
   const [digitsUsed, setDigitsUsed] = useState([]);
@@ -20,12 +27,20 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
   const inputRef = useRef();
   const [cursorPos, setCursorPos] = useState(0);
 
+  /**
+    * When inputArr changes, update inputVal (preview of calculation total)
+    * also, for when using on screen buttons, return focus to input with correct selectionStart
+  */
   useEffect(() => {
     updateInputVal(inputArr.join(''));
     inputRef.current.focus();
     inputRef.current.setSelectionRange(cursorPos, cursorPos);
   }, [inputArr]);
 
+  /**
+    * Either updates inputVal in the try block if valid calculation passed, else does nothing
+    * @param {string} newInputStr - Calculation as string to be evaluated
+  */
   const updateInputVal = (newInputStr) => {
     const whitelistedStr = newInputStr.replace(/[^0-9()+\-*/.!^]/g, "");
 
@@ -37,6 +52,11 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
     }
   };
 
+  /**
+    * Adds input in relevant position in the inputStr then
+    * parses result to update inputArr and cursorPos as necessary
+    * @param {string} input - The character(s) the user wishes to add to inputArr
+  */
   const inputHandler = (input) => {
     const inputStr = inputRef.current.value;
     const targetInputStr = `${inputStr.slice(0, cursorPos)}${input}${inputStr.slice(cursorPos)}`;
@@ -46,6 +66,11 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
     setCursorPos(cursorPos + newInputArr.join('').length - inputArr.join('').length);
   };
 
+  /**
+    * Call inputHandler() and update digitsUsed with given input if digit not already used
+    * @param {number} id - The index of the input in digits
+    * @param {string} input - The digit(s) the user wishes to add to inputArr
+  */
   const digitHandler = (id, input) => {
     if (digitsUsed.includes(id)) { return; }
 
@@ -53,6 +78,10 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
     setDigitsUsed([...digitsUsed, id]);
   };
 
+  /**
+    * Deletes the relevant character from the inputStr
+    * parses result to update inputArr, digitsUsed and cursorPos as necessary
+  */
   const backspaceHandler = () => {
     const inputStr = inputRef.current.value;
     const targetInputStr = `${inputStr.slice(0, cursorPos - 1)}${inputStr.slice(cursorPos)}`;
@@ -63,12 +92,18 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
     setCursorPos(cursorPos + newInputArr.join('').length - inputArr.join('').length);
   };
 
+  /**
+    * Clears out everything relating to the current input
+  */
   const acHandler = () => {
     setDigitsUsed([]);
     setInputArr([]);
     setInputVal(0);
   };
 
+  /**
+    * @return {boolean} Whether the current inputVal is a valid, new answer or not
+  */
   const isValidAnswer = () => {
     return Number.isInteger(inputVal) &&
         inputVal > 0 &&
@@ -78,12 +113,20 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
         !answers.includes(inputVal);
   };
 
+  /**
+    * Adds a new total's inputStr to the correct position in the answerDetails array
+    * @param {string} inputStr - The equation to be added to answerDetails
+    * @param {number} inputVal - The equation's total to find the correct index in answerDetails
+  */
   const updateAnswerDetails = (inputStr, inputVal) => {
     const newAnswerDetails = [...answerDetails];
     newAnswerDetails[inputVal - 1] = inputStr;
     setAnswerDetails(newAnswerDetails);
   };
 
+  /**
+    * Checks if the current input is a new, valid answer, if so updates everything relevant
+  */
   const enterHandler = () => {
     if (isValidAnswer()) {
       const newAnswers = [...answers, inputVal].sort((a, b) => a - b);
@@ -102,6 +145,10 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
     }
   });
 
+  /**
+    * Updates everything necessary when the user changes the value of the <input> element
+    * @param {Event} event - The onChange event prompting this handler to be called
+  */
   const changeHandler = (event) => {
     const { newInputArr, newDigitsUsed } = handleInputElementInput(event.target.value, operations, digits);
 
