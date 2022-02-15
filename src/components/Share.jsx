@@ -18,6 +18,10 @@ import {
 
 import { createShareGrid } from '../helpers/createShareGrid.js';
 
+/**
+  * @param {array.<number>} answers - Answers found by the user (values)
+  * @param {array.<string>} answerDetails - Answers found by the user (equations, each with total index-1), else null. Expected length = 28
+*/
 const Share = ({ answers, answerDetails }) => {
   //const title = answers.length === 28 ? `I've done my 28 for today already! How about you?` : `I've got ${answers.length} so far today. How about you?`;
   const url = "http://twenty-eight.robowenking.com/";
