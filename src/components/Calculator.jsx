@@ -10,7 +10,7 @@ import { handleInputElementInput } from '../helpers/handleInputElementInput.js';
 import { useEventListener } from '../hooks/useEventListener.js';
 
 /**
-  * @param {string} date - Used to seed digit generation
+  * @param {string} date - String representing the current date, used to seed the random number generator
   * @param {array.<number>} answers - Answers found by the user (values)
   * @param {function} setAnswers - Function that takes an array to set as new value of answers
   * @param {array.<string|null>} answerDetails - Answers found by the user (equations, each with total index-1), else null. Expected length = 28
