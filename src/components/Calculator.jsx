@@ -10,7 +10,7 @@ import { handleInputElementInput } from '../helpers/handleInputElementInput.js';
 import { useEventListener } from '../hooks/useEventListener.js';
 
 const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails }) => {
-  const [digits, setDigits] = useState(getTodaysDigits(date));
+  const digits = getTodaysDigits(date);
   const [digitsUsed, setDigitsUsed] = useState([]);
   const operations = ['+', '-', '*', '/', '!', '^', '(', ')'];
 
