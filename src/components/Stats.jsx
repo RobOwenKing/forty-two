@@ -30,7 +30,7 @@ const groupScores = (scores) => {
 */
 const Stats = ({ answers }) => {
   const scores = getScores();
-  const nonZeros = scores.filter(entry => entry != 0);
+  const nonZeros = scores.filter(entry => entry !== 0);
   const scoresByGroup = groupScores(nonZeros);
 
 /**
