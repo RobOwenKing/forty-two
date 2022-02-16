@@ -42,7 +42,7 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
     * @param {string} newInputStr - Calculation as string to be evaluated
   */
   const updateInputVal = (newInputStr) => {
-    const whitelistedStr = newInputStr.replace(/[^0-9()+\-*/.!^]/g, "");
+    const whitelistedStr = newInputStr.replace(/[^0-9()+\-*/!^]/g, "");
 
     try {
       const newInputVal = evaluate(whitelistedStr);
