@@ -13,17 +13,21 @@ import { parseStoredAnswers } from './helpers/parseStoredAnswers.js';
 import { storeAnswers } from './helpers/storeAnswers.js';
 import { storeHistory } from './helpers/storeHistory.js';
 
+/**
+  * Show <HowTo> to new players, otherwise go straight to the <Calculator>
+  * Only players who have made at least one number in <Calculator> before have localStorage.history
+*/
 const initialView = () => {
-  return localStorage.getItem('history') ? 'game' : 'howto'
+  return localStorage.getItem('history') ? 'game' : 'howto';
 };
 
 const App = () => {
   const date = new Date().toDateString();
-  /*
-    IMPORTANT!
-    The date definition below can be used instead of that above for testing purposes
-    Before use, however, delete the localStorage related to the app at localhost:3000
-    Otherwise, you'll get infinite loops from fillScores(), etc
+  /**
+    * IMPORTANT!
+    * The date definition below can be used instead of that above for testing purposes
+    * Before use, however, delete the localStorage related to the app at localhost:3000
+    * Otherwise, you'll get infinite loops from fillScores(), etc
   */
   // const date = new Date("Thu Feb 17 2022").toDateString();
 
@@ -32,10 +36,10 @@ const App = () => {
 
   const [view, setView] = useState(initialView());
 
+  /**
+    * When the app loads, check for saved state from earlier the same day
+  */
   useEffect(() => {
-    /*
-      When the app loads, check for saved state from earlier the same day
-    */
     const returned = parseStoredAnswers(date);
     if (!returned['answers']) { return; } // eg: New player or first time playing that day
 
@@ -43,10 +47,10 @@ const App = () => {
     setAnswerDetails(returned['answerDetails']);
   }, []);
 
+  /**
+    * When the user finds a new answer, update saved score history and day's answers
+  */
   useEffect(() => {
-    /*
-      When the user finds a new answer, update saved score history and day's answers
-    */
     storeAnswers(date, answers, answerDetails);
     storeHistory(date, answers.length) // Second param here is score
   }, [answers]);
@@ -66,7 +70,7 @@ const App = () => {
                   answerDetails={answerDetails} setAnswerDetails={setAnswerDetails}
               />
               <h3>Score: {answers.length}/28</h3>
-              <AnswersGrid answers={answerDetails} />
+              <AnswersGrid answerDetails={answerDetails} />
             </div>
           )
       }

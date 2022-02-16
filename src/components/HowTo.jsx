@@ -1,4 +1,4 @@
-const HowTo = ({ input, clickHandler, classes = '' }) => {
+const HowTo = () => {
   return (
     <div className="text-page">
       <h2>How To Play</h2>

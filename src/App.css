@@ -85,9 +85,11 @@
 }
 
 .output-value {
-  font-size: 16px;
   margin-top: 8px;
   margin-bottom: 16px;
+
+  line-height: 16px;
+  font-size: 16px;
 }
 
 .output-value.valid {

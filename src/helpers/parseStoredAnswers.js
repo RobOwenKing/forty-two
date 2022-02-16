@@ -1,6 +1,8 @@
 /*
-  For use when the app loads
-  Parse any saved state from earlier the same day
+  * For use when the app loads
+  * Parse any saved state from earlier the same day
+  * @param {string} date - String representing the current date, used to seed the random number generator
+  * @returns {object} - Either empty (no stored data found), or containing keys {array.<number>} answers and {array.<string>} answerDetails
 */
 export const parseStoredAnswers = (date) => {
   const storedAnswers = localStorage.getItem('answers');

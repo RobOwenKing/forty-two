@@ -1,22 +1,36 @@
-const seedrandom = require('seedrandom');          // So all players on same day get same digits
+const seedrandom = require('seedrandom'); // So all players on same day get same digits
 
+/**
+  * @param {function} rng - Random number generator from seedrandom
+  * @returns {number} Random whole number from 1 to 12 inclusive
+*/
 const getCandidate = (rng) => {
-  return Math.floor(rng.call() * 12) + 1;  // Random number from 1 to 12
+  return Math.floor(rng.call() * 12) + 1;
 };
 
-const countMatchesInArray = (array, matchable) => {
-  return array.filter(e => e === matchable).length;
+/**
+  * @param {array.<any>} arr - The array to be checked for matches
+  * @param {any} matchable - The term to be looked for in arr
+  * @returns {number} Number of entries of arr that match matchable
+*/
+const countMatchesInArray = (arr, matchable) => {
+  return arr.filter(e => e === matchable).length;
 };
 
 const reducer = (currentTotal, currentValue) => currentTotal + currentValue;
 
-const isCandidateValid = (array, candidate) => {
-  if (array.reduce(reducer, 0) + candidate < array.length + 2) { return false; }  // Total can't be too small (too difficult to make larger numbers then)
+/**
+  * @param {array.<number>} arr - The array of digits so far
+  * @param {number} candidate - The candidate for the next entry in arr
+  * @returns {boolean} Whether or not the candidate should be added into the array
+*/
+const isCandidateValid = (arr, candidate) => {
+  if (arr.reduce(reducer, 0) + candidate < arr.length + 2) { return false; } // Total can't be too small (too difficult to make larger numbers then)
 
-  const numberOfMatches = countMatchesInArray(array, candidate);
-  if (candidate === 1 && numberOfMatches >= 1) { return false; }  // 1 can only appear once
-  if (numberOfMatches >= 2) { return false; }  // No number can appear more than twice
-  if (numberOfMatches === 1 && array.some(e => countMatchesInArray(array, e) > 1)) {
+  const numberOfMatches = countMatchesInArray(arr, candidate);
+  if (candidate === 1 && numberOfMatches >= 1) { return false; } // 1 can only appear once
+  if (numberOfMatches >= 2) { return false; } // No number can appear more than twice
+  if (numberOfMatches === 1 && arr.some(e => countMatchesInArray(arr, e) > 1)) {
     // You can have at most one repeated digit i.e. [a, a, b, c] = valid; [a, a, b, b] != valid
     return false;
   }
@@ -24,9 +38,13 @@ const isCandidateValid = (array, candidate) => {
   return true;
 };
 
+/**
+  * @param {string} date - String representing the current date, used to seed the random number generator
+  * @returns {array.<string>} Array of random digits determined by the date passed. Length = 4
+*/
 export const getTodaysDigits = (date) => {
   const rng = seedrandom(date);
-  let candidate = 0;
+  let candidate;
   const returnable = [];
 
   while (returnable.length < 4) {
