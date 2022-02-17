@@ -57,9 +57,14 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
     * @param {string} input - The character(s) the user wishes to add to inputArr
   */
   const inputHandler = (input) => {
-    const { newInputArr, newDigitsUsed } = handleInput(inputArr, digitsUsed, input, cursorPos, operations, digits);
+    const {
+      newInputArr,
+      newDigitsUsed,
+      newCursorPos
+    } = handleInput(inputArr, digitsUsed, input, cursorPos, operations, digits);
     setInputArr(newInputArr);
     setDigitsUsed(newDigitsUsed);
+    setCursorPos(newCursorPos);
   };
 
   /**

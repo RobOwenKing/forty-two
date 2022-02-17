@@ -9,7 +9,7 @@ import InputButton from './InputButton.jsx';
 const DigitButton = ({ id, input, clickHandler, digitsUsed }) => {
   const inputHandler = () => {
     clickHandler(input);
-  }
+  };
 
   return (
     <InputButton

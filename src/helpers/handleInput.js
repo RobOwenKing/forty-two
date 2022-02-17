@@ -75,6 +75,7 @@ export const handleInput = (inputArr, digitsUsed, newInput, cursorPos, operation
     ...inputArr.slice(cursorPos)
   ];
   const newDigitsUsed = digitsUsed;
+  const newCursorPos = cursorPos + 1;
 
-  return {newInputArr, newDigitsUsed};
+  return {newInputArr, newDigitsUsed, newCursorPos};
 };
