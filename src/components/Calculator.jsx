@@ -70,12 +70,12 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
     * @param {number} id - The index of the input in digits
     * @param {string} input - The digit(s) the user wishes to add to inputArr
   */
-  const digitHandler = (id, input) => {
-    /*if (digitsUsed.includes(id)) { return; }
+/*  const digitHandler = (id, input) => {
+    if (digitsUsed.includes(id)) { return; }
 
     inputHandler(input);
-    setDigitsUsed([...digitsUsed, id]);*/
-  };
+    setDigitsUsed([...digitsUsed, id]);
+  };*/
 
   /**
     * Deletes the relevant character from the inputStr
@@ -117,11 +117,11 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
     * @param {string} inputStr - The equation to be added to answerDetails
     * @param {number} inputVal - The equation's total to find the correct index in answerDetails
   */
-/*  const updateAnswerDetails = (inputStr, inputVal) => {
-    const newAnswerDetails = [...answerDetails];
+  const updateAnswerDetails = (inputStr, inputVal) => {
+    /*const newAnswerDetails = [...answerDetails];
     newAnswerDetails[inputVal - 1] = inputStr;
-    setAnswerDetails(newAnswerDetails);
-  };*/
+    setAnswerDetails(newAnswerDetails);*/
+  };
 
   /**
     * Checks if the current input is a new, valid answer, if so updates everything relevant
@@ -174,7 +174,7 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
           return (
             <DigitButton
                 key={id} id={id} input={input}
-                clickHandler={digitHandler}
+                clickHandler={inputHandler}
                 digitsUsed={digitsUsed}
             />
           );
