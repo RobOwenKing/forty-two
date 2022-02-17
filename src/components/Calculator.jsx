@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { evaluate } from 'mathjs';
 
 import DigitButton from './DigitButton.jsx';
+import EquationInput from './EquationInput.jsx';
 import InputButton from './InputButton.jsx';
 
 import { getTodaysDigits } from '../helpers/getTodaysDigits.js';
@@ -158,6 +159,11 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
   };
 
   return (
+    <>
+    <EquationInput
+      cursorPos={cursorPos} setCursorPos={setCursorPos}
+      inputArr={inputArr}
+    />
     <div className="grid">
       <div className="output span-four">
         <input
@@ -193,6 +199,7 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
       <div className="button span-two" role="button" tabIndex="0" onClick={acHandler}>A/C</div>
       <div className="button span-four equals" role="button" tabIndex="0" onClick={enterHandler}>=</div>
     </div>
+    </>
   );
 }
 
