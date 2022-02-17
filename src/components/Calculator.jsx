@@ -25,7 +25,7 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
   const [inputArr, setInputArr] = useState([]);
   const [inputVal, setInputVal] = useState(0);
 
-  const inputRef = useRef();
+  // const inputRef = useRef();
   const [cursorPos, setCursorPos] = useState(0);
 
   /**
@@ -34,8 +34,6 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
   */
   useEffect(() => {
     updateInputVal(inputArr.join(''));
-    inputRef.current.focus();
-    inputRef.current.setSelectionRange(cursorPos, cursorPos);
   }, [inputArr]);
 
   /**
@@ -59,12 +57,12 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
     * @param {string} input - The character(s) the user wishes to add to inputArr
   */
   const inputHandler = (input) => {
-    const inputStr = inputRef.current.value;
+    /*const inputStr = inputRef.current.value;
     const targetInputStr = `${inputStr.slice(0, cursorPos)}${input}${inputStr.slice(cursorPos)}`;
 
     const { newInputArr } = handleInput(targetInputStr, operations, digits);
     setInputArr(newInputArr);
-    setCursorPos(cursorPos + newInputArr.join('').length - inputArr.join('').length);
+    setCursorPos(cursorPos + newInputArr.join('').length - inputArr.join('').length);*/
   };
 
   /**
@@ -73,10 +71,10 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
     * @param {string} input - The digit(s) the user wishes to add to inputArr
   */
   const digitHandler = (id, input) => {
-    if (digitsUsed.includes(id)) { return; }
+    /*if (digitsUsed.includes(id)) { return; }
 
     inputHandler(input);
-    setDigitsUsed([...digitsUsed, id]);
+    setDigitsUsed([...digitsUsed, id]);*/
   };
 
   /**
@@ -84,13 +82,13 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
     * parses result to update inputArr, digitsUsed and cursorPos as necessary
   */
   const backspaceHandler = () => {
-    const inputStr = inputRef.current.value;
+    /*const inputStr = inputRef.current.value;
     const targetInputStr = `${inputStr.slice(0, cursorPos - 1)}${inputStr.slice(cursorPos)}`;
 
     const { newInputArr, newDigitsUsed } = handleInput(targetInputStr, operations, digits);
     setInputArr(newInputArr);
     setDigitsUsed(newDigitsUsed);
-    setCursorPos(cursorPos + newInputArr.join('').length - inputArr.join('').length);
+    setCursorPos(cursorPos + newInputArr.join('').length - inputArr.join('').length);*/
   };
 
   /**
@@ -119,24 +117,24 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
     * @param {string} inputStr - The equation to be added to answerDetails
     * @param {number} inputVal - The equation's total to find the correct index in answerDetails
   */
-  const updateAnswerDetails = (inputStr, inputVal) => {
+/*  const updateAnswerDetails = (inputStr, inputVal) => {
     const newAnswerDetails = [...answerDetails];
     newAnswerDetails[inputVal - 1] = inputStr;
     setAnswerDetails(newAnswerDetails);
-  };
+  };*/
 
   /**
     * Checks if the current input is a new, valid answer, if so updates everything relevant
   */
   const enterHandler = () => {
-    if (isValidAnswer()) {
+/*    if (isValidAnswer()) {
       const newAnswers = [...answers, inputVal].sort((a, b) => a - b);
       setAnswers(newAnswers);
       updateAnswerDetails(inputArr.join(''), inputVal);
       setDigitsUsed([]);
       setInputArr([]);
       setInputVal(0);
-    }
+    }*/
   };
 
   useEventListener('keydown', (e) => {
@@ -150,13 +148,13 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
     * Updates everything necessary when the user changes the value of the <input> element
     * @param {Event} event - The onChange event prompting this handler to be called
   */
-  const changeHandler = (event) => {
+/*  const changeHandler = (event) => {
     const { newInputArr, newDigitsUsed } = handleInput(event.target.value, operations, digits);
 
     setCursorPos(inputRef.current.selectionStart)
     setInputArr(newInputArr);
     setDigitsUsed(newDigitsUsed);
-  };
+  };*/
 
   return (
     <div className="grid">
@@ -164,16 +162,6 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
         <EquationInput
           cursorPos={cursorPos} setCursorPos={setCursorPos}
           inputArr={inputArr}
-        />
-
-      </div>
-      <div className="output span-four">
-        <input
-            type="text" ref={inputRef}
-            className="output-calculation"
-            value={inputArr.join('')}
-            onChange={changeHandler}
-            onBlur={() => setCursorPos(inputRef.current.selectionStart)}
         />
         <div
             className={`output-value ${isValidAnswer() ? 'valid' : 'not-valid'}`}
