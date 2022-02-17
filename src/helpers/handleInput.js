@@ -68,26 +68,13 @@ const handleOne = (str, i, newInputArr, digits, newDigitsUsed) => {
   * @param {array.<number>} digits - The digits available to the user
   * @returns {object} Two arrays, newInputArray and newDigitsUsed to update state in <Calculator>
 */
-export const handleInput = (str, operations, digits) => {
-  let newInputArr = [];
-  let newDigitsUsed = [];
-
-  for (let i = 0; i < str.length; i += 1) {
-    const char = str[i];
-
-    if (operations.includes(char)) {
-      newInputArr.push(char);
-    } else if (['0', '2', '3', '4', '5', '6', '7', '8', '9'].includes(char)) {
-      const newArrays = handleDigit(char, newInputArr, digits, newDigitsUsed);
-      newInputArr = newArrays['newInputArr'];
-      newDigitsUsed = newArrays['newDigitsUsed'];
-    } else if (char === '1') {
-      const newArrays = handleOne(str, i, newInputArr, digits, newDigitsUsed);
-      newInputArr = newArrays['newInputArr'];
-      newDigitsUsed = newArrays['newDigitsUsed'];
-      i += newArrays['increment'];
-    }
-  }
+export const handleInput = (inputArr, digitsUsed, newInput, cursorPos, operations, digits) => {
+  const newInputArr = [
+    ...inputArr.slice(0, cursorPos),
+    newInput,
+    ...inputArr.slice(cursorPos)
+  ];
+  const newDigitsUsed = digitsUsed;
 
   return {newInputArr, newDigitsUsed};
 };
