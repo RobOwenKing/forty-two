@@ -84,6 +84,26 @@
   border-width: 0;
 }
 
+.caret {
+  background: black;
+  color: transparent;
+  display: inline-block;
+  height: 1em;
+  width: 1px;
+
+  animation-duration: 1s;
+  animation-name: blink;
+  animation-iteration-count: infinite;
+}
+
+@keyframes blink {
+  from { opacity: 1; }
+  49% { opacity: 1; }
+  50% { opacity: 0; }
+  99% { opacity: 0; }
+  to { opacity: 1; }
+ }
+
 .output-value {
   margin-top: 8px;
   margin-bottom: 16px;
