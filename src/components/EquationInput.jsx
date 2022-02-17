@@ -7,11 +7,6 @@ const EquationInput = ({ cursorPos, setCursorPos, inputArr }) => {
   const clickHandler = (e, id, entry) => {
     const isOnLeftHalf = e.nativeEvent.pageX - e.target.offsetLeft < 0.5*e.target.offsetWidth
 
-    console.log(entry);
-    console.log(id);
-    console.log(e.nativeEvent.pageX - e.target.offsetLeft);
-    console.log(0.5*e.target.offsetWidth);
-
     if (isOnLeftHalf) {
       setCursorPos(id);
     } else {

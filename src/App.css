@@ -85,11 +85,18 @@
 }
 
 .caret {
+  display: inline-block;
+  width: 0px;
+  position: relative;
+}
+
+.caret::before {
   background: black;
   color: transparent;
-  display: inline-block;
   height: 1em;
   width: 1px;
+  position: absolute;
+  content: "";
 
   animation-duration: 1s;
   animation-name: blink;
