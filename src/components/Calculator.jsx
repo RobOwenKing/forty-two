@@ -163,20 +163,11 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
     } else if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
       e.preventDefault();
       arrowHandler(e.key);
-    };
+    } else if (operations.includes(e.key)) {
+      e.preventDefault();
+      inputHandler(e.key);
+    }
   });
-
-  /**
-    * Updates everything necessary when the user changes the value of the <input> element
-    * @param {Event} event - The onChange event prompting this handler to be called
-  */
-/*  const changeHandler = (event) => {
-    const { newInputArr, newDigitsUsed } = handleInput(event.target.value, operations, digits);
-
-    setCursorPos(inputRef.current.selectionStart)
-    setInputArr(newInputArr);
-    setDigitsUsed(newDigitsUsed);
-  };*/
 
   return (
     <div className="grid">
