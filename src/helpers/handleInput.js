@@ -94,8 +94,6 @@ const handlePotentialSecondDigit = (inputArr, digitsUsed, newInput, cursorPos, d
   * @returns {object|false}
 */
 const handleOne = (inputArr, digitsUsed, newInput, cursorPos, digits) => {
-  let returnable = false;
-
   if (digitsUsed.filter(x => x === -1).length > digitsUsed.filter(x => ['10', '11', '12'].includes(x)).length) {
     return false;
   }
@@ -104,11 +102,11 @@ const handleOne = (inputArr, digitsUsed, newInput, cursorPos, digits) => {
     const digitsUsedIndex = firstNonUsedOccurence(candidate, digits, digitsUsed);
 
     if (digitsUsedIndex !== -1) {
-      returnable = insertDigitIntoArray(inputArr, digitsUsed, newInput, cursorPos, -1);
+      return insertDigitIntoArray(inputArr, digitsUsed, newInput, cursorPos, -1);
     }
   });
 
-  return returnable;
+  return false;
 };
 
 /**
