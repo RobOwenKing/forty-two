@@ -31,7 +31,7 @@ const insertInputIntoArray = (inputArr, newInput, cursorPos) => {
 
 /**
   * @param {number} testee - A digit that may or may not have been used already
-  * @param {array.<number>} digits - The digits available to the player. May include repeats. Expected length = 4
+  * @param {array.<string>} digits - The digits available to the player. May include repeats. Expected length = 4
   * @param {array.<number>} digitsUsed - The indexes from digits of the digits already used by the player
   * @returns {number} The first id in digits that matches the testee and isn't yet used, else -1
 */
@@ -66,7 +66,7 @@ const insertDigitIntoArray = (inputArr, digitsUsed, newInput, cursorPos, digitsU
   * @param {array.<number>} digitsUsed - The indexes from digits of the digits already used by the player
   * @param {string} newInput - The input to be added to inputArr
   * @param {number} cursorPos - The position of the cursor (relative to inputArr)
-  * @param {array.<number>} digits - The digits available to the player. May include repeats. Expected length = 4
+  * @param {array.<string>} digits - The digits available to the player. May include repeats. Expected length = 4
   * @returns {object|false}
 */
 const handlePotentialSecondDigit = (inputArr, digitsUsed, newInput, cursorPos, digits) => {
@@ -90,7 +90,7 @@ const handlePotentialSecondDigit = (inputArr, digitsUsed, newInput, cursorPos, d
   * @param {array.<number>} digitsUsed - The indexes from digits of the digits already used by the player
   * @param {string} newInput - The input to be added to inputArr
   * @param {number} cursorPos - The position of the cursor (relative to inputArr)
-  * @param {array.<number>} digits - The digits available to the player. May include repeats. Expected length = 4
+  * @param {array.<string>} digits - The digits available to the player. May include repeats. Expected length = 4
   * @returns {object|false}
 */
 const handleOne = (inputArr, digitsUsed, newInput, cursorPos, digits) => {
@@ -115,14 +115,20 @@ const handleOne = (inputArr, digitsUsed, newInput, cursorPos, digits) => {
   * @param {array.<number>} digitsUsed - The indexes from digits of the digits already used by the player
   * @param {string} newInput - The input to be added to inputArr
   * @param {number} cursorPos - The position of the cursor (relative to inputArr)
-  * @param {array.<number>} digits - The digits available to the player. May include repeats. Expected length = 4
+  * @param {array.<string>} digits - The digits available to the player. May include repeats. Expected length = 4
   * @returns {object}
 */
 const handleDigit = (inputArr, digitsUsed, newInput, cursorPos, digits) => {
-  if (['0', '1', '2'].includes(newInput)) {
-    const returnable = handlePotentialSecondDigit(inputArr, digitsUsed, newInput, cursorPos, digits);
-    if (returnable) { return returnable; }
+  if (inputArr[cursorPos-1] === '1') {
+    if (['0', '1', '2'].includes(newInput)) {
+      const returnable = handlePotentialSecondDigit(inputArr, digitsUsed, newInput, cursorPos, digits);
+      if (returnable) { return returnable; }
+    } else if (inputArr.filter(x => x === '1').length > digits.filter(x => x === '1').length) {
+
+      return buildInputReturn(inputArr, digitsUsed, cursorPos);
+    }
   }
+
   if (newInput === '1') {
     const returnable = handleOne(inputArr, digitsUsed, newInput, cursorPos, digits);
     if (returnable) { return returnable; }
@@ -144,7 +150,7 @@ const handleDigit = (inputArr, digitsUsed, newInput, cursorPos, digits) => {
   * @param {string} newInput - The input to be added to inputArr
   * @param {number} cursorPos - The position of the cursor (relative to inputArr)
   * @param {array.<string>} operations - The operations available to the user
-  * @param {array.<number>} digits - The digits available to the player. May include repeats. Expected length = 4
+  * @param {array.<string>} digits - The digits available to the player. May include repeats. Expected length = 4
   * @returns {object}
 */
 export const handleInput = (inputArr, digitsUsed, newInput, cursorPos, operations, digits) => {
