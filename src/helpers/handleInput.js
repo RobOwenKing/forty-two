@@ -1,3 +1,9 @@
+/**
+  * @param {array.<string>} inputArr - The array of digits and operations entered by the player
+  * @param {array.<number>} digitsUsed - The indexes from digits of the digits already used by the player
+  * @param {number} cursorPos - The position of the cursor (relative to inputArr)
+  * @returns {object}
+*/
 const buildInputReturn = (inputArr, digitsUsed, cursorPos) => {
   return {
       newInputArr: inputArr,
@@ -6,6 +12,12 @@ const buildInputReturn = (inputArr, digitsUsed, cursorPos) => {
     };
 };
 
+/**
+  * @param {array.<string>} inputArr - The array of digits and operations entered by the player
+  * @param {string} newInput - The input to be added to inputArr
+  * @param {number} cursorPos - The position of the cursor (relative to inputArr)
+  * @returns {object}
+*/
 const insertInputIntoArray = (inputArr, newInput, cursorPos) => {
   const newInputArr = [
     ...inputArr.slice(0, cursorPos),
@@ -33,6 +45,14 @@ const firstNonUsedOccurence = (testee, digits, digitsUsed) => {
   return -1;
 };
 
+/**
+  * @param {array.<string>} inputArr - The array of digits and operations entered by the player
+  * @param {array.<number>} digitsUsed - The indexes from digits of the digits already used by the player
+  * @param {string} newInput - The input to be added to inputArr
+  * @param {number} cursorPos - The position of the cursor (relative to inputArr)
+  * @param {number} digitsUsedIndex - The index of newInput in digitsUsed
+  * @returns {object}
+*/
 const insertDigitIntoArray = (inputArr, digitsUsed, newInput, cursorPos, digitsUsedIndex) => {
     const returnable = insertInputIntoArray(inputArr, newInput, cursorPos);
     digitsUsed.push(digitsUsedIndex)
@@ -41,7 +61,15 @@ const insertDigitIntoArray = (inputArr, digitsUsed, newInput, cursorPos, digitsU
     return returnable;
 };
 
-const handleDigit = (inputArr, digitsUsed, newInput, cursorPos, operations, digits) => {
+/**
+  * @param {array.<string>} inputArr - The array of digits and operations entered by the player
+  * @param {array.<number>} digitsUsed - The indexes from digits of the digits already used by the player
+  * @param {string} newInput - The input to be added to inputArr
+  * @param {number} cursorPos - The position of the cursor (relative to inputArr)
+  * @param {array.<number>} digits - The digits available to the player. May include repeats. Expected length = 4
+  * @returns {object}
+*/
+const handleDigit = (inputArr, digitsUsed, newInput, cursorPos, digits) => {
   let returnable;
 
   if (digits.includes(newInput)) {
@@ -57,9 +85,13 @@ const handleDigit = (inputArr, digitsUsed, newInput, cursorPos, operations, digi
 };
 
 /**
+  * @param {array.<string>} inputArr - The array of digits and operations entered by the player
+  * @param {array.<number>} digitsUsed - The indexes from digits of the digits already used by the player
+  * @param {string} newInput - The input to be added to inputArr
+  * @param {number} cursorPos - The position of the cursor (relative to inputArr)
   * @param {array.<string>} operations - The operations available to the user
-  * @param {array.<number>} digits - The digits available to the user
-  * @returns {object} Two arrays, newInputArray and newDigitsUsed to update state in <Calculator>
+  * @param {array.<number>} digits - The digits available to the player. May include repeats. Expected length = 4
+  * @returns {object}
 */
 export const handleInput = (inputArr, digitsUsed, newInput, cursorPos, operations, digits) => {
   let returnable;
@@ -68,7 +100,7 @@ export const handleInput = (inputArr, digitsUsed, newInput, cursorPos, operation
     returnable = insertInputIntoArray(inputArr, newInput, cursorPos);
     returnable['newDigitsUsed'] = digitsUsed;
   } else {
-    returnable = handleDigit(inputArr, digitsUsed, newInput, cursorPos, operations, digits);
+    returnable = handleDigit(inputArr, digitsUsed, newInput, cursorPos, digits);
   }
 
   return returnable;
