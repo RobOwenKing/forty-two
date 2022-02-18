@@ -81,10 +81,10 @@ const insertInputIntoArray = (inputArr, newInput, cursorPos) => {
 export const handleInput = (inputArr, digitsUsed, newInput, cursorPos, operations, digits) => {
   let returnable;
 
-  if (operations.includes(newInput)) {
+  //if (operations.includes(newInput)) {
     returnable = insertInputIntoArray(inputArr, newInput, cursorPos);
     returnable['newDigitsUsed'] = digitsUsed;
-  }
+  //};
 
   return returnable;
 };

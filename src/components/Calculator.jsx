@@ -139,11 +139,31 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
     }*/
   };
 
+  const arrowHandler = (arrow) => {
+    switch (arrow) {
+      case 'ArrowUp':
+        setCursorPos(0);
+        break;
+      case 'ArrowDown':
+        setCursorPos(inputArr.length);
+        break;
+      case 'ArrowLeft':
+        if (cursorPos > 0) { setCursorPos(cursorPos-1); }
+        break;
+      case 'ArrowRight':
+        if (cursorPos < inputArr.length) { setCursorPos(cursorPos+1); }
+        break;
+    };
+  };
+
   useEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
       e.preventDefault();
       enterHandler();
-    }
+    } else if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
+      e.preventDefault();
+      arrowHandler(e.key);
+    };
   });
 
   /**
