@@ -163,7 +163,8 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
     } else if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
       e.preventDefault();
       arrowHandler(e.key);
-    } else if (operations.includes(e.key)) {
+    } else if (operations.includes(e.key)
+          || ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'].includes(e.key)) {
       e.preventDefault();
       inputHandler(e.key);
     }
