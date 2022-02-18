@@ -43,6 +43,8 @@ const handleDigit = (inputArr, digitsUsed, newInput, cursorPos, operations, digi
     returnable = insertInputIntoArray(inputArr, newInput, cursorPos);
     digitsUsed.push(digitsUsedIndex)
     returnable['newDigitsUsed'] = digitsUsed;
+  } else {
+    return buildInputReturn(inputArr, digitsUsed, cursorPos);
   }
 
   return returnable;
