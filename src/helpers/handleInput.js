@@ -33,6 +33,14 @@ const firstNonUsedOccurence = (testee, digits, digitsUsed) => {
   return -1;
 };
 
+const insertDigitIntoArray = (inputArr, digitsUsed, newInput, cursorPos, digitsUsedIndex) => {
+    const returnable = insertInputIntoArray(inputArr, newInput, cursorPos);
+    digitsUsed.push(digitsUsedIndex)
+    returnable['newDigitsUsed'] = digitsUsed;
+
+    return returnable;
+};
+
 const handleDigit = (inputArr, digitsUsed, newInput, cursorPos, operations, digits) => {
   let returnable;
 
@@ -40,9 +48,7 @@ const handleDigit = (inputArr, digitsUsed, newInput, cursorPos, operations, digi
     const digitsUsedIndex = firstNonUsedOccurence(newInput, digits, digitsUsed);
     if (digitsUsedIndex === -1) { return buildInputReturn(inputArr, digitsUsed, cursorPos); }
 
-    returnable = insertInputIntoArray(inputArr, newInput, cursorPos);
-    digitsUsed.push(digitsUsedIndex)
-    returnable['newDigitsUsed'] = digitsUsed;
+    return insertDigitIntoArray(inputArr, digitsUsed, newInput, cursorPos, digitsUsedIndex);
   } else {
     return buildInputReturn(inputArr, digitsUsed, cursorPos);
   }
