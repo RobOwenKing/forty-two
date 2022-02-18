@@ -61,7 +61,7 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
         newInputArr,
         newDigitsUsed,
         newCursorPos
-      } = handleInput(inputArr, digitsUsed, input, cursorPos, operations, digits);
+      } = handleInput([...inputArr], [...digitsUsed], input, cursorPos, operations, digits);
     setInputArr(newInputArr);
     setDigitsUsed(newDigitsUsed);
     setCursorPos(newCursorPos);
@@ -100,6 +100,7 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
     setDigitsUsed([]);
     setInputArr([]);
     setInputVal(0);
+    setCursorPos(0);
   };
 
   /**

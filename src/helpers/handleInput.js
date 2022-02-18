@@ -67,10 +67,67 @@ const insertDigitIntoArray = (inputArr, digitsUsed, newInput, cursorPos, digitsU
   * @param {string} newInput - The input to be added to inputArr
   * @param {number} cursorPos - The position of the cursor (relative to inputArr)
   * @param {array.<number>} digits - The digits available to the player. May include repeats. Expected length = 4
+  * @returns {object|false}
+*/
+const handlePotentialSecondDigit = (inputArr, digitsUsed, newInput, cursorPos, digits) => {
+  if (inputArr[cursorPos-1] !== '1') { return false; }
+
+  const digitsUsedIndex = firstNonUsedOccurence(`1${newInput}`, digits, digitsUsed);
+  if (digitsUsedIndex === -1) { return false; }
+
+  inputArr[cursorPos-1] = `1${newInput}`;
+  digitsUsed[digitsUsed.indexOf(-1)] = digitsUsedIndex;
+
+  return {
+    newInputArr: inputArr,
+    newDigitsUsed: digitsUsed,
+    newCursorPos: cursorPos
+  };
+};
+
+/**
+  * @param {array.<string>} inputArr - The array of digits and operations entered by the player
+  * @param {array.<number>} digitsUsed - The indexes from digits of the digits already used by the player
+  * @param {string} newInput - The input to be added to inputArr
+  * @param {number} cursorPos - The position of the cursor (relative to inputArr)
+  * @param {array.<number>} digits - The digits available to the player. May include repeats. Expected length = 4
+  * @returns {object|false}
+*/
+const handleOne = (inputArr, digitsUsed, newInput, cursorPos, digits) => {
+  let returnable = false;
+
+  if (digitsUsed.filter(x => x === -1).length > digitsUsed.filter(x => ['10', '11', '12'].includes(x)).length) {
+    return false;
+  }
+
+  ['10', '11', '12'].forEach((candidate) => {
+    const digitsUsedIndex = firstNonUsedOccurence(candidate, digits, digitsUsed);
+
+    if (digitsUsedIndex !== -1) {
+      returnable = insertDigitIntoArray(inputArr, digitsUsed, newInput, cursorPos, -1);
+    }
+  });
+
+  return returnable;
+};
+
+/**
+  * @param {array.<string>} inputArr - The array of digits and operations entered by the player
+  * @param {array.<number>} digitsUsed - The indexes from digits of the digits already used by the player
+  * @param {string} newInput - The input to be added to inputArr
+  * @param {number} cursorPos - The position of the cursor (relative to inputArr)
+  * @param {array.<number>} digits - The digits available to the player. May include repeats. Expected length = 4
   * @returns {object}
 */
 const handleDigit = (inputArr, digitsUsed, newInput, cursorPos, digits) => {
-  let returnable;
+  if (['0', '1', '2'].includes(newInput)) {
+    const returnable = handlePotentialSecondDigit(inputArr, digitsUsed, newInput, cursorPos, digits);
+    if (returnable) { return returnable; }
+  }
+  if (newInput === '1') {
+    const returnable = handleOne(inputArr, digitsUsed, newInput, cursorPos, digits);
+    if (returnable) { return returnable; }
+  }
 
   if (digits.includes(newInput)) {
     const digitsUsedIndex = firstNonUsedOccurence(newInput, digits, digitsUsed);
@@ -80,8 +137,6 @@ const handleDigit = (inputArr, digitsUsed, newInput, cursorPos, digits) => {
   } else {
     return buildInputReturn(inputArr, digitsUsed, cursorPos);
   }
-
-  return returnable;
 };
 
 /**
