@@ -94,17 +94,18 @@ const handlePotentialSecondDigit = (inputArr, digitsUsed, newInput, cursorPos, d
   * @returns {object|false}
 */
 const handleOne = (inputArr, digitsUsed, newInput, cursorPos, digits) => {
-  if (digitsUsed.filter(x => x === -1).length > digitsUsed.filter(x => ['10', '11', '12'].includes(x)).length) {
+  if (digitsUsed.filter(x => x === -1).length > digits.filter(x => ['10', '11', '12'].includes(x)).length) {
     return false;
   }
 
-  ['10', '11', '12'].forEach((candidate) => {
+  for (let i = 0; i <= 2; i += 1) {
+    const candidate = `1${i}`;
     const digitsUsedIndex = firstNonUsedOccurence(candidate, digits, digitsUsed);
 
     if (digitsUsedIndex !== -1) {
       return insertDigitIntoArray(inputArr, digitsUsed, newInput, cursorPos, -1);
     }
-  });
+  }
 
   return false;
 };
