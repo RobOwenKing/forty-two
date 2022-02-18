@@ -58,10 +58,10 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
   */
   const inputHandler = (input) => {
     const {
-      newInputArr,
-      newDigitsUsed,
-      newCursorPos
-    } = handleInput(inputArr, digitsUsed, input, cursorPos, operations, digits);
+        newInputArr,
+        newDigitsUsed,
+        newCursorPos
+      } = handleInput(inputArr, digitsUsed, input, cursorPos, operations, digits);
     setInputArr(newInputArr);
     setDigitsUsed(newDigitsUsed);
     setCursorPos(newCursorPos);

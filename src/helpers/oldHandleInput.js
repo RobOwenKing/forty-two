@@ -1,20 +1,4 @@
 /**
-  * @param {number} testee - A digit that may or may not have been used already
-  * @param {array.<number>} digits - The digits available to the player. May include repeats. Expected length = 4
-  * @param {array.<number>} newDigitsUsed - The indexes from digits of the digits already used by the player
-  * @returns {number} The first id in digits that matches the testee and isn't yet used, else -1
-*/
-const firstNonUsedOccurence = (testee, digits, newDigitsUsed) => {
-  for (let i = 0; i < 4; i += 1) {
-    if (digits[i] == testee && !newDigitsUsed.includes(i)) {
-      return i;
-    }
-  };
-
-  return -1;
-};
-
-/**
   * @param {string} char - The digit(s) the user wants to play
   * @param {array.<string>} newInputArr - The array of digits and operations entered by the player
   * @param {array.<number>} digits - The digits available to the player. May include repeats. Expected length = 4
