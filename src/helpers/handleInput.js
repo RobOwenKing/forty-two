@@ -62,6 +62,17 @@ const handleOne = (str, i, newInputArr, digits, newDigitsUsed) => {
   return returnable;
 };
 
+const insertInputIntoArray = (inputArr, newInput, cursorPos) => {
+  const newInputArr = [
+    ...inputArr.slice(0, cursorPos),
+    newInput,
+    ...inputArr.slice(cursorPos)
+  ];
+  const newCursorPos = cursorPos + 1;
+
+  return {newInputArr, newCursorPos};
+}
+
 /**
   * @param {string} str - The user's target equation as a string
   * @param {array.<string>} operations - The operations available to the user
@@ -69,13 +80,10 @@ const handleOne = (str, i, newInputArr, digits, newDigitsUsed) => {
   * @returns {object} Two arrays, newInputArray and newDigitsUsed to update state in <Calculator>
 */
 export const handleInput = (inputArr, digitsUsed, newInput, cursorPos, operations, digits) => {
-  const newInputArr = [
-    ...inputArr.slice(0, cursorPos),
-    newInput,
-    ...inputArr.slice(cursorPos)
-  ];
-  const newDigitsUsed = digitsUsed;
-  const newCursorPos = cursorPos + 1;
+  let returnable;
 
-  return {newInputArr, newDigitsUsed, newCursorPos};
+  returnable = insertInputIntoArray(inputArr, newInput, cursorPos);
+  returnable['newDigitsUsed'] = digitsUsed;
+
+  return returnable;
 };
