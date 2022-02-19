@@ -61,6 +61,10 @@ const insertDigitIntoArray = (inputArr, digitsUsed, newInput, cursorPos, digitsU
     return returnable;
 };
 
+const oneFilter = (x) => {
+  return x === '1' || x === '10' || x === '11' || x === '12';
+}
+
 /**
   * @param {array.<string>} inputArr - The array of digits and operations entered by the player
   * @param {array.<number>} digitsUsed - The indexes from digits of the digits already used by the player
@@ -78,16 +82,19 @@ const handlePotentialSecondDigit = (inputArr, digitsUsed, newInput, cursorPos, d
   inputArr[cursorPos-1] = `1${newInput}`;
   digitsUsed[digitsUsed.indexOf(-1)] = digitsUsedIndex;
 
+  /*If we have a 1 left in inputArr which should be just that, a 1, update digitsUsed*/
+  if (inputArr.filter(oneFilter).length === digits.filter(oneFilter).length &&
+      digits.includes('1') &&
+      inputArr.filter(x => x === '1').length === 1) {
+    digitsUsed[digitsUsed.indexOf(-1)] = digits.indexOf('1');
+  }
+
   return {
     newInputArr: inputArr,
     newDigitsUsed: digitsUsed,
     newCursorPos: cursorPos
   };
 };
-
-const oneFilter = (x) => {
-  return x === '1' || x === '10' || x === '11' || x === '12';
-}
 
 /**
   * @param {array.<string>} inputArr - The array of digits and operations entered by the player

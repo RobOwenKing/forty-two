@@ -19,7 +19,7 @@ import { useEventListener } from '../hooks/useEventListener.js';
 */
 const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails }) => {
   //const digits = getTodaysDigits(date);
-  const digits = ['1', '4', '2', '12']
+  const digits = ['1', '11', '12', '12']
   const [digitsUsed, setDigitsUsed] = useState([]);
   const operations = ['+', '-', '*', '/', '!', '^', '(', ')'];
 
