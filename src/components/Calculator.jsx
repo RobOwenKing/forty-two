@@ -18,8 +18,8 @@ import { useEventListener } from '../hooks/useEventListener.js';
   * @param {function} setAnswerDetails -Function that takes an array to set as new value of answerDetails
 */
 const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails }) => {
-  //const digits = getTodaysDigits(date);
-  const digits = ['1', '11', '12', '12']
+  const digits = getTodaysDigits(date);
+  // const digits = ['1', '11', '12', '12']
   const [digitsUsed, setDigitsUsed] = useState([]);
   const operations = ['+', '-', '*', '/', '!', '^', '(', ')'];
 
@@ -113,7 +113,6 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
   const acHandler = () => {
     setDigitsUsed([]);
     setInputArr([]);
-    setInputVal(0);
     setCursorPos(0);
   };
 
@@ -144,14 +143,14 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
     * Checks if the current input is a new, valid answer, if so updates everything relevant
   */
   const enterHandler = () => {
-/*    if (isValidAnswer()) {
+    if (isValidAnswer()) {
       const newAnswers = [...answers, inputVal].sort((a, b) => a - b);
       setAnswers(newAnswers);
       updateAnswerDetails(inputArr.join(''), inputVal);
       setDigitsUsed([]);
       setInputArr([]);
-      setInputVal(0);
-    }*/
+      setCursorPos(0);
+    }
   };
 
   const arrowHandler = (arrow) => {
@@ -182,6 +181,9 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
           || ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'].includes(e.key)) {
       e.preventDefault();
       inputHandler(e.key);
+    } else if (e.key === 'Backspace') {
+      e.preventDefault();
+      backspaceHandler();
     }
   });
 
