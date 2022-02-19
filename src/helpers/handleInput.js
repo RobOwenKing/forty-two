@@ -123,13 +123,9 @@ const handleOne = (inputArr, digitsUsed, newInput, cursorPos, digits) => {
   * @returns {object}
 */
 const handleDigit = (inputArr, digitsUsed, newInput, cursorPos, digits) => {
-  if (inputArr[cursorPos-1] === '1') {
-    if (['0', '1', '2'].includes(newInput)) {
-      const returnable = handlePotentialSecondDigit(inputArr, digitsUsed, newInput, cursorPos, digits);
-      if (returnable) { return returnable; }
-    } else if (inputArr.filter(x => x === '1').length > digits.filter(x => x === '1').length) {
-      return buildInputReturn(inputArr, digitsUsed, cursorPos);
-    }
+  if (inputArr[cursorPos-1] === '1' && ['0', '1', '2'].includes(newInput)) {
+    const returnable = handlePotentialSecondDigit(inputArr, digitsUsed, newInput, cursorPos, digits);
+    if (returnable) { return returnable; }
   }
 
   if (newInput === '1') {
