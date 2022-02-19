@@ -134,9 +134,9 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
     * @param {number} inputVal - The equation's total to find the correct index in answerDetails
   */
   const updateAnswerDetails = (inputStr, inputVal) => {
-    /*const newAnswerDetails = [...answerDetails];
+    const newAnswerDetails = [...answerDetails];
     newAnswerDetails[inputVal - 1] = inputStr;
-    setAnswerDetails(newAnswerDetails);*/
+    setAnswerDetails(newAnswerDetails);
   };
 
   /**
