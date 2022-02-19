@@ -21,7 +21,7 @@ const EquationInput = ({ cursorPos, setCursorPos, inputArr }) => {
           <span key={id} onClick={(e) => clickHandler(e, id, entry)}>{entry}</span>
         )
       })}
-      <span className="caret"></span>
+      <span key={`caret-${Math.random()}`} className="caret"></span>
       {inputArr.map((entry, id) => {
         if (id < cursorPos) {
           return null;
