@@ -75,18 +75,6 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
   };
 
   /**
-    * Call inputHandler() and update digitsUsed with given input if digit not already used
-    * @param {number} id - The index of the input in digits
-    * @param {string} input - The digit(s) the user wishes to add to inputArr
-  */
-/*  const digitHandler = (id, input) => {
-    if (digitsUsed.includes(id)) { return; }
-
-    inputHandler(input);
-    setDigitsUsed([...digitsUsed, id]);
-  };*/
-
-  /**
     * Deletes the relevant character from the inputStr
     * parses result to update inputArr, digitsUsed and cursorPos as necessary
   */
@@ -153,6 +141,10 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
     }
   };
 
+  /**
+    * Updates cursorPos appropriately based on arrow key pressed by user
+    * @param {string} arrow - As in Event, one of "ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"
+  */
   const arrowHandler = (arrow) => {
     switch (arrow) {
       case 'ArrowUp':
