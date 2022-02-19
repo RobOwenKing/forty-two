@@ -8,6 +8,8 @@ import InputButton from './InputButton.jsx';
 */
 const DigitButton = ({ id, input, clickHandler, digitsUsed }) => {
   const inputHandler = () => {
+    if (digitsUsed.includes(id)) { return false; }
+
     clickHandler(input.toString());
   };
 
