@@ -128,7 +128,6 @@ const handleDigit = (inputArr, digitsUsed, newInput, cursorPos, digits) => {
       const returnable = handlePotentialSecondDigit(inputArr, digitsUsed, newInput, cursorPos, digits);
       if (returnable) { return returnable; }
     } else if (inputArr.filter(x => x === '1').length > digits.filter(x => x === '1').length) {
-
       return buildInputReturn(inputArr, digitsUsed, cursorPos);
     }
   }
@@ -136,16 +135,14 @@ const handleDigit = (inputArr, digitsUsed, newInput, cursorPos, digits) => {
   if (newInput === '1') {
     const returnable = handleOne(inputArr, digitsUsed, newInput, cursorPos, digits);
     if (returnable) { return returnable; }
-  }
-
-  if (digits.includes(newInput)) {
+  } else if (digits.includes(newInput)) {
     const digitsUsedIndex = firstNonUsedOccurence(newInput, digits, digitsUsed);
     if (digitsUsedIndex === -1) { return buildInputReturn(inputArr, digitsUsed, cursorPos); }
 
     return insertDigitIntoArray(inputArr, digitsUsed, newInput, cursorPos, digitsUsedIndex);
-  } else {
-    return buildInputReturn(inputArr, digitsUsed, cursorPos);
   }
+
+  return buildInputReturn(inputArr, digitsUsed, cursorPos);
 };
 
 /**

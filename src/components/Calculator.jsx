@@ -85,13 +85,20 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
     * parses result to update inputArr, digitsUsed and cursorPos as necessary
   */
   const backspaceHandler = () => {
-    /*const inputStr = inputRef.current.value;
-    const targetInputStr = `${inputStr.slice(0, cursorPos - 1)}${inputStr.slice(cursorPos)}`;
+    if (cursorPos === 0) { return false; }
 
-    const { newInputArr, newDigitsUsed } = handleInput(targetInputStr, operations, digits);
+    const deletable = inputArr[cursorPos-1];
+    const newInputArr = [...inputArr.slice(0, cursorPos-1), ...inputArr.slice(cursorPos)];
+
+    let digitsIndex = 9;
+    for (let i = 0; i <= digits.length; i += 1) {
+      if (digits[i] === deletable && digitsUsed.includes(i)) { digitsIndex = i; }
+    }
+    if (deletable === '1' && digitsUsed.includes(-1)) { digitsIndex = -1 }
+
     setInputArr(newInputArr);
-    setDigitsUsed(newDigitsUsed);
-    setCursorPos(cursorPos + newInputArr.join('').length - inputArr.join('').length);*/
+    setDigitsUsed(digitsUsed.filter(x => x !== digitsIndex))
+    setCursorPos(cursorPos-1);
   };
 
   /**
