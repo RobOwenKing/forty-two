@@ -54,11 +54,11 @@ const firstNonUsedOccurence = (testee, digits, digitsUsed) => {
   * @returns {object}
 */
 const insertDigitIntoArray = (inputArr, digitsUsed, newInput, cursorPos, digitsUsedIndex) => {
-    const returnable = insertInputIntoArray(inputArr, newInput, cursorPos);
-    digitsUsed.push(digitsUsedIndex)
-    returnable['newDigitsUsed'] = digitsUsed;
+  const returnable = insertInputIntoArray(inputArr, newInput, cursorPos);
+  digitsUsed.push(digitsUsedIndex)
+  returnable['newDigitsUsed'] = digitsUsed;
 
-    return returnable;
+  return returnable;
 };
 
 const oneFilter = (x) => {
@@ -80,7 +80,14 @@ const handlePotentialSecondDigit = (inputArr, digitsUsed, newInput, cursorPos, d
   if (digitsUsedIndex === -1) { return false; }
 
   inputArr[cursorPos-1] = `1${newInput}`;
-  digitsUsed[digitsUsed.indexOf(-1)] = digitsUsedIndex;
+  if (digitsUsed.includes(-1)) {
+    digitsUsed[digitsUsed.indexOf(-1)] = digitsUsedIndex;
+  } else {
+    const indexOf1InDigits = digits.indexOf('1');
+    if (digitsUsed.includes(indexOf1InDigits)) {
+      digitsUsed[digitsUsed.indexOf(indexOf1InDigits)] = digitsUsedIndex;
+    }
+  }
 
   /*If we have a 1 left in inputArr which should be just that, a 1, update digitsUsed*/
   if (inputArr.filter(oneFilter).length === digits.filter(oneFilter).length &&
@@ -109,16 +116,7 @@ const handleOne = (inputArr, digitsUsed, newInput, cursorPos, digits) => {
     return false;
   }
 
-  for (let i = 0; i <= 2; i += 1) {
-    const candidate = `1${i}`;
-    const digitsUsedIndex = firstNonUsedOccurence(candidate, digits, digitsUsed);
-
-    if (digitsUsedIndex !== -1) {
-      return insertDigitIntoArray(inputArr, digitsUsed, newInput, cursorPos, -1);
-    }
-  }
-
-  return false;
+  return insertDigitIntoArray(inputArr, digitsUsed, newInput, cursorPos, -1);
 };
 
 /**
