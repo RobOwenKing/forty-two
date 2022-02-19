@@ -89,13 +89,6 @@ const handlePotentialSecondDigit = (inputArr, digitsUsed, newInput, cursorPos, d
     }
   }
 
-  /*If we have a 1 left in inputArr which should be just that, a 1, update digitsUsed*/
-  if (inputArr.filter(oneFilter).length === digits.filter(oneFilter).length &&
-      digits.includes('1') &&
-      inputArr.filter(x => x === '1').length === 1) {
-    digitsUsed[digitsUsed.indexOf(-1)] = digits.indexOf('1');
-  }
-
   return {
     newInputArr: inputArr,
     newDigitsUsed: digitsUsed,
@@ -163,6 +156,14 @@ export const handleInput = (inputArr, digitsUsed, newInput, cursorPos, operation
     returnable['newDigitsUsed'] = digitsUsed;
   } else {
     returnable = handleDigit(inputArr, digitsUsed, newInput, cursorPos, digits);
+  }
+
+  /*If we have a 1 left in inputArr which should be just that, a 1, update digitsUsed*/
+  if (returnable['newInputArr'].filter(oneFilter).length === digits.filter(oneFilter).length &&
+      digits.includes('1') &&
+      returnable['newInputArr'].filter(x => x === '1').length === 1) {
+    const index = returnable['newDigitsUsed'].indexOf(-1);
+    returnable['newDigitsUsed'][index] = digits.indexOf('1');
   }
 
   return returnable;
