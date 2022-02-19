@@ -10,7 +10,7 @@ const DigitButton = ({ id, input, clickHandler, digitsUsed }) => {
   const inputHandler = () => {
     if (digitsUsed.includes(id)) { return false; }
 
-    clickHandler(input.toString());
+    clickHandler(input.toString(), id);
   };
 
   return (
