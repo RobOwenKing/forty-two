@@ -104,6 +104,17 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
     setCursorPos(0);
   };
 
+  const areBracketsBalanced = (str) => {
+    const stack = [];
+
+    for (let i = 0; i < str.length; i += 1) {
+      if (str[i] === '(') { stack.push('('); }
+      if (str[i] === ')' && !stack.pop()) { return false; }
+    }
+
+    return stack.length === 0;
+  };
+
   /**
     * @returns {boolean} Whether the current inputVal is a valid, new answer or not
   */
@@ -113,6 +124,7 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
         inputVal <= 28 &&
         digitsUsed.length === 4 &&
         !digitsUsed.includes(-1) &&
+        areBracketsBalanced(inputArr.join('')) &&
         !answers.includes(inputVal);
   };
 
