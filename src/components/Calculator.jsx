@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { evaluate } from 'mathjs';
 
 import DigitButton from './DigitButton.jsx';
@@ -171,6 +171,8 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
       case 'ArrowRight':
         if (cursorPos < inputArr.length) { setCursorPos(cursorPos+1); }
         break;
+      default:
+        return;
     };
   };
 
