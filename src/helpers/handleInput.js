@@ -37,7 +37,7 @@ const insertInputIntoArray = (inputArr, newInput, cursorPos) => {
 */
 const firstNonUsedOccurence = (testee, digits, digitsUsed) => {
   for (let i = 0; i < 4; i += 1) {
-    if (digits[i] == testee && !digitsUsed.includes(i)) {
+    if (digits[i] === testee && !digitsUsed.includes(i)) {
       return i;
     }
   };
