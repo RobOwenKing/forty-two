@@ -18,8 +18,8 @@ import { useEventListener } from '../hooks/useEventListener.js';
   * @param {function} setAnswerDetails -Function that takes an array to set as new value of answerDetails
 */
 const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails }) => {
-  // const digits = getTodaysDigits(date);
-  const digits = ['1', '11', '12', '12']
+  const digits = getTodaysDigits(date);
+  // const digits = ['1', '11', '12', '12']
   const [digitsUsed, setDigitsUsed] = useState([]);
   const operations = ['+', '-', '*', '/', '!', '^', '(', ')'];
 
