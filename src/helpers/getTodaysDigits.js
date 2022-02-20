@@ -24,7 +24,7 @@ const reducer = (currentTotal, currentValue) => currentTotal + currentValue;
   * @param {number} candidate - The candidate for the next entry in arr
   * @returns {boolean} Whether or not the candidate should be added into the array
 */
-const isCandidateValid = (arr, candidate) => {
+const isCandidateValid = (arr, candidate, rng) => {
   if (arr.reduce(reducer, 0) + candidate < arr.length + 2) { return false; } // Total can't be too small (too difficult to make larger numbers then)
 
   const numberOfMatches = countMatchesInArray(arr, candidate);
@@ -34,6 +34,7 @@ const isCandidateValid = (arr, candidate) => {
     // You can have at most one repeated digit i.e. [a, a, b, c] = valid; [a, a, b, b] != valid
     return false;
   }
+  if (numberOfMatches === 1 && rng.call() < 0.25) { return false; }
 
   return true;
 };
@@ -49,7 +50,7 @@ export const getTodaysDigits = (date) => {
 
   while (returnable.length < 4) {
     candidate = getCandidate(rng);
-    if (isCandidateValid(returnable, candidate)) { returnable.push(candidate); }
+    if (isCandidateValid(returnable, candidate, rng)) { returnable.push(candidate); }
   };
 
   return returnable.map(d => d.toString());
