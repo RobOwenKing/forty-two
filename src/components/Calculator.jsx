@@ -171,6 +171,8 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
       case 'ArrowRight':
         if (cursorPos < inputArr.length) { setCursorPos(cursorPos+1); }
         break;
+      default:
+        return;
     };
   };
 
