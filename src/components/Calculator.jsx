@@ -25,6 +25,7 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
 
   const [inputArr, setInputArr] = useState([]);
   const [inputVal, setInputVal] = useState(0);
+  const [previewVal, setPreviewVal] = useState('');
 
   // const inputRef = useRef();
   const [cursorPos, setCursorPos] = useState(0);
@@ -36,6 +37,13 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
   useEffect(() => {
     updateInputVal(inputArr.join(''));
   }, [inputArr]);
+
+  /**
+    * When inputVal changes, update previewVal
+  */
+  useEffect(() => {
+    setPreviewVal(inputVal);
+  }, [inputVal]);
 
   /**
     * Either updates inputVal in the try block if valid calculation passed, else does nothing
@@ -203,7 +211,7 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
         <div
             className={`output-value ${isValidAnswer() ? 'valid' : 'not-valid'}`}
         >
-          {inputVal}
+          {previewVal}
         </div>
       </div>
       {
