@@ -127,13 +127,14 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
     * @returns {boolean} Whether the current inputVal is a valid, new answer or not
   */
   const isValidAnswer = () => {
-    return Number.isInteger(inputVal) &&
-        inputVal > 0 &&
-        inputVal <= 28 &&
-        digitsUsed.length === 4 &&
-        !digitsUsed.includes(-1) &&
-        areBracketsBalanced(inputArr.join('')) &&
-        !answers.includes(inputVal);
+    if (!Number.isInteger(inputVal)) { return 'Not an integer'; }
+    if (inputVal <= 0) { return 'Too small'; }
+    if (inputVal > 28) { return 'Too large'; }
+    if (digitsUsed.length !== 4 || digitsUsed.includes(-1) ) { return 'Use each given digit once'; }
+    if (!areBracketsBalanced(inputArr.join(''))) { return 'Check your brackets'; }
+    if (answers.includes(inputVal)) { return 'Already found'; }
+
+    return 'valid';
   };
 
   /**
@@ -151,13 +152,17 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
     * Checks if the current input is a new, valid answer, if so updates everything relevant
   */
   const enterHandler = () => {
-    if (isValidAnswer()) {
+    const answerCheck = isValidAnswer();
+
+    if (answerCheck === 'valid') {
       const newAnswers = [...answers, inputVal].sort((a, b) => a - b);
       setAnswers(newAnswers);
       updateAnswerDetails(inputArr.join(''), inputVal);
       setDigitsUsed([]);
       setInputArr([]);
       setCursorPos(0);
+    } else {
+      setPreviewVal(answerCheck);
     }
   };
 
