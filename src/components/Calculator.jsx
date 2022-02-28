@@ -206,6 +206,16 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
     }
   });
 
+  const previewValClass = () => {
+    if (typeof previewVal === 'number') {
+      if (checkAnswer() === 'valid') { return 'valid'; }
+
+      return 'wip';
+    } else {
+      return 'not-valid';
+    }
+  };
+
   return (
     <div className="grid">
       <div className="output span-four">
@@ -214,7 +224,7 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
           inputArr={inputArr}
         />
         <div
-            className={`output-value ${checkAnswer() ? 'valid' : 'not-valid'}`}
+            className={`output-value ${previewValClass()}`}
         >
           {previewVal}
         </div>
