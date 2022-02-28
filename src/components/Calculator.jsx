@@ -124,9 +124,9 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
   };
 
   /**
-    * @returns {boolean} Whether the current inputVal is a valid, new answer or not
+    * @returns {string} Whether the current inputVal is a valid, new answer or not
   */
-  const isValidAnswer = () => {
+  const checkAnswer = () => {
     if (!Number.isInteger(inputVal)) { return 'Not an integer'; }
     if (inputVal <= 0) { return 'Too small'; }
     if (inputVal > 28) { return 'Too large'; }
@@ -152,7 +152,7 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
     * Checks if the current input is a new, valid answer, if so updates everything relevant
   */
   const enterHandler = () => {
-    const answerCheck = isValidAnswer();
+    const answerCheck = checkAnswer();
 
     if (answerCheck === 'valid') {
       const newAnswers = [...answers, inputVal].sort((a, b) => a - b);
@@ -214,7 +214,7 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
           inputArr={inputArr}
         />
         <div
-            className={`output-value ${isValidAnswer() ? 'valid' : 'not-valid'}`}
+            className={`output-value ${checkAnswer() ? 'valid' : 'not-valid'}`}
         >
           {previewVal}
         </div>
