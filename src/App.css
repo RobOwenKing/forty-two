@@ -21,9 +21,14 @@
   font-weight: bold;
 }
 
-.not-valid {
+.wip {
   /*color: #81171B;*/
   color: #666;
+}
+
+.not-valid {
+  color: #81171B;
+  font-weight: bold;
 }
 
 .clickable:hover {
@@ -34,6 +39,12 @@
 .chosen-mode {
   color: var(--colour-orange);
   font-weight: bold;
+}
+
+lottie-player {
+  position: fixed;
+  left: 50vw;
+  transform: translateX(-50%);
 }
 
 /* Calculator */
