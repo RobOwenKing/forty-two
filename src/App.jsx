@@ -64,6 +64,7 @@ const App = () => {
       {view === 'game' &&
           (
             <div>
+              <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_jEMHbp.json" background="transparent" speed="1" style={{width: "300px", height: "300px"}} autoplay></lottie-player>
               <Calculator
                   date={date}
                   answers={answers} setAnswers={setAnswers}

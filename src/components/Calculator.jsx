@@ -220,8 +220,8 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
     <div className="grid">
       <div className="output span-four">
         <EquationInput
-          cursorPos={cursorPos} setCursorPos={setCursorPos}
-          inputArr={inputArr}
+            cursorPos={cursorPos} setCursorPos={setCursorPos}
+            inputArr={inputArr}
         />
         <div
             className={`output-value ${previewValClass()}`}

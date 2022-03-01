@@ -41,6 +41,12 @@
   font-weight: bold;
 }
 
+lottie-player {
+  position: fixed;
+  left: 50vw;
+  transform: translateX(-50%);
+}
+
 /* Calculator */
 
 .grid {
