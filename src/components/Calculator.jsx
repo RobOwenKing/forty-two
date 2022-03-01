@@ -219,10 +219,15 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
   return (
     <div className="grid">
       <div className="output span-four">
-        <EquationInput
-            cursorPos={cursorPos} setCursorPos={setCursorPos}
-            inputArr={inputArr}
-        />
+        {answers.length < 28 &&
+            <EquationInput
+                cursorPos={cursorPos} setCursorPos={setCursorPos}
+                inputArr={inputArr}
+            />
+        }
+        {answers.length >= 28 &&
+            <div className="output-calculation">CONGRATS!</div>
+        }
         <div
             className={`output-value ${previewValClass()}`}
         >
