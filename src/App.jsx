@@ -86,6 +86,7 @@ const App = () => {
       <footer>
         <small>A ReactJS app by Rob Owen King.</small>
         <small>Here's <a href="http://www.robowenking.com/">my website</a>; I'm also on <a href="https://github.com/RobOwenKing/">GitHub</a> and <a href="https://twitter.com/RobOwenKing">Twitter</a>.</small>
+        <small>Animation by <a href="https://lottiefiles.com/user/61955">Emily Zhou</a>, used under the <a href="https://lottiefiles.com/page/license">Lottie Simple License</a>.</small>
       </footer>
     </div>
   );
