@@ -9,6 +9,7 @@ import Share from './components/Share.jsx';
 import Stats from './components/Stats.jsx';
 import ViewToggle from './components/ViewToggle.jsx';
 
+import { getTodaysDigits } from './helpers/getTodaysDigits.js';
 import { parseStoredAnswers } from './helpers/parseStoredAnswers.js';
 import { storeAnswers } from './helpers/storeAnswers.js';
 import { storeHistory } from './helpers/storeHistory.js';
@@ -33,6 +34,8 @@ const App = () => {
 
   const [answers, setAnswers] = useState([]);
   const [answerDetails, setAnswerDetails] = useState(new Array(28));
+
+  const digits = getTodaysDigits(date);
 
   const [view, setView] = useState(initialView());
 
@@ -69,6 +72,7 @@ const App = () => {
                   date={date}
                   answers={answers} setAnswers={setAnswers}
                   answerDetails={answerDetails} setAnswerDetails={setAnswerDetails}
+                  digits={digits}
               />
               <h3>Score: {answers.length}/28</h3>
               <AnswersGrid answerDetails={answerDetails} />

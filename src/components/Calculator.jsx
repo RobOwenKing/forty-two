@@ -5,7 +5,6 @@ import DigitButton from './DigitButton.jsx';
 import EquationInput from './EquationInput.jsx';
 import InputButton from './InputButton.jsx';
 
-import { getTodaysDigits } from '../helpers/getTodaysDigits.js';
 import { handleInput } from '../helpers/handleInput.js';
 
 import { useEventListener } from '../hooks/useEventListener.js';
@@ -17,8 +16,7 @@ import { useEventListener } from '../hooks/useEventListener.js';
   * @param {array.<string|null>} answerDetails - Answers found by the user (equations, each with total index-1), else null. Expected length = 28
   * @param {function} setAnswerDetails -Function that takes an array to set as new value of answerDetails
 */
-const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails }) => {
-  const digits = getTodaysDigits(date);
+const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails, digits }) => {
   // const digits = ['1', '11', '12', '12']
   const [digitsUsed, setDigitsUsed] = useState([]);
   const operations = ['+', '-', '*', '/', '!', '^', '(', ')'];
