@@ -36,9 +36,10 @@ const App = () => {
   const [answerDetails, setAnswerDetails] = useState(new Array(28));
 
   const digits = getTodaysDigits(date);
+
   const data = require('./data/all_totals_all_numbers.json');
-  console.log(data);
-  console.log(JSON.stringify(digits.map(d => parseInt(d))))
+  const digitsAsKey = JSON.stringify(digits.map(d => parseInt(d)).sort((a, b) => a - b));
+  const impossibles = data[digitsAsKey];
 
   const [view, setView] = useState(initialView());
 
@@ -78,7 +79,7 @@ const App = () => {
                   digits={digits}
               />
               <h3>Score: {answers.length}/28</h3>
-              <AnswersGrid answerDetails={answerDetails} />
+              <AnswersGrid answerDetails={answerDetails} impossibles={impossibles} />
             </div>
           )
       }

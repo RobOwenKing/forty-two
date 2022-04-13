@@ -1,7 +1,15 @@
+
 /**
   * @param {array.<string|null>} answerDetails - Answers found by the user (equations, each with total index-1), else null. Expected length = 28
+  * @param {array.<number>} impossibles - Totals (out of 1..28) that cannot be made with the current digits
 */
-const AnswersGrid = ({ answerDetails }) => {
+const AnswersGrid = ({ answerDetails, impossibles }) => {
+  const returnClass = (answer, id) => {
+    if (impossibles.includes(id + 1)) { return 'impossible' }
+
+    return answer ? "solved" : "not-solved";
+  };
+
   /**
     * If answers are too long, reduce the font size so they fit nicely into the layout
     * @todo Make this less magic-number-y
@@ -20,7 +28,7 @@ const AnswersGrid = ({ answerDetails }) => {
           return (
             <div
                 key={id}
-                className={answer ? "solved" : "not-solved"}
+                className={returnClass(answer, id)}
                 style={{fontSize: fontSize(answer)}}
             >
               {answer ? answer : id+1}

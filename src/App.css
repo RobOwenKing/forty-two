@@ -21,8 +21,8 @@
   font-weight: bold;
 }
 
-.wip {
-  /*color: #81171B;*/
+.wip,
+.impossible {
   color: #666;
 }
 
