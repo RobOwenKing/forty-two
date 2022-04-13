@@ -14,7 +14,8 @@ import { useEventListener } from '../hooks/useEventListener.js';
   * @param {array.<number>} answers - Answers found by the user (values)
   * @param {function} setAnswers - Function that takes an array to set as new value of answers
   * @param {array.<string|null>} answerDetails - Answers found by the user (equations, each with total index-1), else null. Expected length = 28
-  * @param {function} setAnswerDetails -Function that takes an array to set as new value of answerDetails
+  * @param {function} setAnswerDetails - Function that takes an array to set as new value of answerDetails
+  * @param {array.<number>} digits - The four numbers available for today's puzzle
 */
 const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails, digits }) => {
   // const digits = ['1', '11', '12', '12']
