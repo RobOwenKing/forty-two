@@ -36,6 +36,9 @@ const App = () => {
   const [answerDetails, setAnswerDetails] = useState(new Array(28));
 
   const digits = getTodaysDigits(date);
+  const data = require('./data/all_totals_all_numbers.json');
+  console.log(data);
+  console.log(JSON.stringify(digits.map(d => parseInt(d))))
 
   const [view, setView] = useState(initialView());
 
