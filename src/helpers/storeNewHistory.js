@@ -24,12 +24,9 @@ const updateStoredNewHistory = (date, score, max, newHistory = {}) => {
 
 /**
   * Converts history from old to new format
-  * @param {string} date - String representing the current date, used to seed the random number generator
-  * @param {number} score - User's current score for the day
-  * @param {boolean} max - Whether the player has reached the day's max score or not
   * @param {string} storedHistory - Unparsed contents of localStorage.history
 */
-export const convertStoredHistory = (storedHistory, date, score, max) => {
+export const convertStoredHistory = (storedHistory) => {
   const newHistory = {};
 
   let start = false;
@@ -66,7 +63,7 @@ export const storeNewHistory = (date, score, max) => {
   } else {
     if (score <= 0) { return; } // Streak should only start with a score > 0
 
-    if (storedHistory) { newHistory = convertStoredHistory(storedHistory, date, score, max); }
+    if (storedHistory) { newHistory = convertStoredHistory(storedHistory); }
     newHistory = updateStoredNewHistory(date, score, max, newHistory);
   }
 
