@@ -25,8 +25,6 @@ const groupScores = (scores) => {
   ];
 };
 
-
-
 /**
   * @returns {object} User's play history saved in localStorage
 */
@@ -69,6 +67,7 @@ const NewStats = ({ answers }) => {
 
   /**
     * @returns {array.<number>} User's last seven scores (representing last seven days)
+    * @todo Refactor to use newHistory? And remove last need for old history format
   */
   const lastSevenScores = () => {
     if (scores.length >= 7) { return scores.slice(-7); }
