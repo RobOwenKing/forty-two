@@ -37,6 +37,22 @@ const getHistory = () => {
   return JSON.parse(history);
 };
 
+const playStreak = (newHistory) => {
+  let d = new Date();
+  let count = 0;
+
+  while (newHistory[d.toDateString()]) {
+    count += 1;
+    d.setDate(d.getDate() - 1);
+  }
+
+  return count;
+};
+
+const countMaxes = (newHistoryAsArray) => {
+  return newHistoryAsArray.filter(e => e[1]['m']).length;
+}
+
 /**
   * @param {array.<number>} answers - Answers found by the user (values)
 */
@@ -47,23 +63,11 @@ const NewStats = ({ answers }) => {
 
   const newHistory = getHistory();
   const newHistoryAsArray = Object.entries(newHistory);
+  const daysPlayed = newHistoryAsArray.length;
   const newScores = newHistoryAsArray.map(e => e[1]['s']);
+  const streak = playStreak(newHistory);
+  const maxCount = countMaxes(newHistoryAsArray);
 
-  const playStreak = () => {
-    let d = new Date();
-    let count = 0;
-
-    while (newHistory[d.toDateString()]) {
-      count += 1;
-      d.setDate(d.getDate() - 1);
-    }
-
-    return count;
-  };
-
-  const countMaxes = () => {
-    return newHistoryAsArray.filter(e => e[1]['m']).length;
-  }
 
   /**
     * @returns {<number>} User's average score on days played (well, days score > 0)
@@ -97,14 +101,14 @@ const NewStats = ({ answers }) => {
       {scores && (
         <>
           <div className="stats-grid">
-            <div className="stats-number">{newHistoryAsArray.length /*Days played*/}</div>
-            <div className="stats-number">{playStreak() /*Play streak*/}</div>
-            <div className="stats-number">{countMaxes() /*Max scores*/}</div>
-            <div className="stats-number">{averageScore().toFixed(2) /*Average*/}</div>
+            <div className="stats-number">{daysPlayed}</div>
+            <div className="stats-number">{streak}</div>
+            <div className="stats-number">{maxCount}</div>
+            <div className="stats-number">{(maxCount * 100 / daysPlayed).toFixed() /*% maxes*/}%</div>
             <div className="stats-label">Days played</div>
             <div className="stats-label">Play streak</div>
-            <div className="stats-label">Max scores</div>
-            <div className="stats-label">Average</div>
+            <div className="stats-label">Total maxes</div>
+            <div className="stats-label">Maxes</div>
           </div>
           <h3>Last seven days</h3>
           <BarChart
