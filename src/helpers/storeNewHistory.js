@@ -1,3 +1,6 @@
+import { getImpossibles } from './getImpossibles.js';
+import { getTodaysDigits } from './getTodaysDigits.js';
+
 /**
   * Saves the passed newHistory to localStorage
   * @param {object} newHistory - Player's score history to be saved to localStorage
@@ -13,8 +16,7 @@ const saveHistory = (newHistory) => {
   * @param {boolean} max - Whether the player has reached the day's max score or not
   * @param {string} storedHistory - Unparsed contents of localStorage.history
 */
-const updateStoredNewHistory = (date, score, max, storedNewHistory = '{}') => {
-  const newHistory = JSON.parse(storedNewHistory);
+const updateStoredNewHistory = (date, score, max, newHistory = {}) => {
   newHistory[date] = { 's': score, 'm': max };
 
   return newHistory;
@@ -30,13 +32,18 @@ const updateStoredNewHistory = (date, score, max, storedNewHistory = '{}') => {
 export const convertStoredHistory = (storedHistory, date, score, max) => {
   const newHistory = {};
 
-  const oldHistory = JSON.parse(storedHistory);
   let start = false;
   let d = new Date();
-  while (d.toDateString() !== oldHistory['lastPlayed']) { d.setDate(d.getDate() - 1); }
-  while (oldHistory['scores'].length > 0) {
-    const e = oldHistory['scores'].pop();
-    if (e > 0) { newHistory[d.toDateString()] = e; }
+  while (d.toDateString() !== storedHistory['lastPlayed']) { d.setDate(d.getDate() - 1); }
+  while (storedHistory['scores'].length > 0) {
+    const s = storedHistory['scores'].pop();
+    if (s > 0) {
+      const dateString = d.toDateString();
+      newHistory[dateString] = {
+        's': s,
+        'm': s >= 28 - getImpossibles(getTodaysDigits(dateString)).length
+      };
+    }
     d.setDate(d.getDate() - 1);
   }
 
@@ -50,8 +57,8 @@ export const convertStoredHistory = (storedHistory, date, score, max) => {
   * @param {boolean} max - Whether the player has reached the day's max score or not
 */
 export const storeNewHistory = (date, score, max) => {
-  const storedNewHistory = localStorage.getItem('newHistory'); // New format
-  const storedHistory = localStorage.getItem('history');       // Old format
+  const storedNewHistory = JSON.parse(localStorage.getItem('newHistory')); // New format
+  const storedHistory = JSON.parse(localStorage.getItem('history'));       // Old format
   let newHistory = {};
 
   if (storedNewHistory) {
