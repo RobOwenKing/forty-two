@@ -27,7 +27,7 @@ const updateStoredNewHistory = (date, score, max, storedNewHistory = '{}') => {
   * @param {boolean} max - Whether the player has reached the day's max score or not
   * @param {string} storedHistory - Unparsed contents of localStorage.history
 */
-const convertStoredHistory = (storedHistory, date, score, max) => {
+export const convertStoredHistory = (storedHistory, date, score, max) => {
   const newHistory = {};
 
   const oldHistory = JSON.parse(storedHistory);
