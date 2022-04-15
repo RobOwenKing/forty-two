@@ -58,7 +58,6 @@ const countMaxes = (newHistoryAsArray) => {
 */
 const NewStats = ({ answers }) => {
   const scores = getScores();
-  const nonZeros = scores.filter(entry => entry !== 0);
 
   const newHistory = getHistory();
   const newHistoryAsArray = Object.entries(newHistory);
@@ -67,16 +66,6 @@ const NewStats = ({ answers }) => {
   const scoresByGroup = groupScores(newScores);
   const streak = playStreak(newHistory);
   const maxCount = countMaxes(newHistoryAsArray);
-
-
-  /**
-    * @returns {<number>} User's average score on days played (well, days score > 0)
-  */
-  const averageScore = () => {
-    const total = newScores.reduce((subtotal, entry) => subtotal + entry);
-
-    return (total / newScores.length);
-  };
 
   /**
     * @returns {array.<number>} User's last seven scores (representing last seven days)
