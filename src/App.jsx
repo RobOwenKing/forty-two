@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 import './App.css';
 
@@ -26,7 +26,7 @@ const initialView = () => {
 };
 
 const App = () => {
-  const date = new Date().toDateString();
+  const date = useRef(new Date().toDateString());
 
   /**
     * IMPORTANT!
@@ -39,7 +39,7 @@ const App = () => {
   const [answers, setAnswers] = useState([]);
   const [answerDetails, setAnswerDetails] = useState(new Array(28));
 
-  const digits = getTodaysDigits(date);
+  const digits = getTodaysDigits(date.current);
   const impossibles = getImpossibles(digits);
 
   const [view, setView] = useState(initialView());
@@ -48,7 +48,7 @@ const App = () => {
     * When the app loads, check for saved state from earlier the same day
   */
   useEffect(() => {
-    const returned = parseStoredAnswers(date);
+    const returned = parseStoredAnswers(date.current);
     if (!returned['answers']) { return; } // eg: New player or first time playing that day
 
     setAnswers(returned['answers']);
@@ -59,9 +59,9 @@ const App = () => {
     * When the user finds a new answer, update saved score history and day's answers
   */
   useEffect(() => {
-    storeAnswers(date, answers, answerDetails);
-    storeHistory(date, answers.length) // Second param here is score
-    storeNewHistory(date, answers.length, answers.length === 28 - impossibles.length) // Second param here is score
+    storeAnswers(date.current, answers, answerDetails);
+    storeHistory(date.current, answers.length) // Second param here is score
+    storeNewHistory(date.current, answers.length, answers.length >= 28 - impossibles.length) // Second param here is score
   }, [answers]);
 
   return (
@@ -75,7 +75,7 @@ const App = () => {
             <div>
               {answers.length === 28 && <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_jEMHbp.json" background="transparent" count="2" loop speed="1" style={{width: "300px", height: "300px"}} autoplay></lottie-player>}
               <Calculator
-                  date={date}
+                  date={date.current}
                   answers={answers} setAnswers={setAnswers}
                   answerDetails={answerDetails} setAnswerDetails={setAnswerDetails}
                   digits={digits}
