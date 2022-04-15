@@ -49,20 +49,34 @@ const NewStats = ({ answers }) => {
   const newHistoryAsArray = Object.entries(newHistory);
   const newScores = newHistoryAsArray.map(e => e[1]['s']);
 
+  const playStreak = () => {
+    let d = new Date();
+    let count = 0;
 
+    while (newHistory[d.toDateString()]) {
+      count += 1;
+      d.setDate(d.getDate() - 1);
+    }
 
-/**
-  * @returns {<number>} User's average score on days played (well, days score > 0)
-*/
+    return count;
+  };
+
+  const countMaxes = () => {
+    return newHistoryAsArray.filter(e => e[1]['m']).length;
+  }
+
+  /**
+    * @returns {<number>} User's average score on days played (well, days score > 0)
+  */
   const averageScore = () => {
     const total = nonZeros.reduce((subtotal, entry) => subtotal + entry);
 
     return (total / nonZeros.length);
   };
 
-/**
-  * @returns {array.<number>} User's last seven scores (representing last seven days)
-*/
+  /**
+    * @returns {array.<number>} User's last seven scores (representing last seven days)
+  */
   const lastSevenScores = () => {
     if (scores.length >= 7) { return scores.slice(-7); }
 
@@ -84,12 +98,12 @@ const NewStats = ({ answers }) => {
         <>
           <div className="stats-grid">
             <div className="stats-number">{newHistoryAsArray.length /*Days played*/}</div>
-            <div className="stats-number">{answers.length /*Today's score*/}</div>
-            <div className="stats-number">{Math.max(...scores) /*Highscore*/}</div>
+            <div className="stats-number">{playStreak() /*Play streak*/}</div>
+            <div className="stats-number">{countMaxes() /*Max scores*/}</div>
             <div className="stats-number">{averageScore().toFixed(2) /*Average*/}</div>
             <div className="stats-label">Days played</div>
-            <div className="stats-label">Today</div>
-            <div className="stats-label">Highest</div>
+            <div className="stats-label">Play streak</div>
+            <div className="stats-label">Max scores</div>
             <div className="stats-label">Average</div>
           </div>
           <h3>Last seven days</h3>
