@@ -9,9 +9,11 @@ import Share from './components/Share.jsx';
 import Stats from './components/Stats.jsx';
 import ViewToggle from './components/ViewToggle.jsx';
 
+import { getImpossibles } from './helpers/getImpossibles.js';
 import { getTodaysDigits } from './helpers/getTodaysDigits.js';
 import { parseStoredAnswers } from './helpers/parseStoredAnswers.js';
 import { storeAnswers } from './helpers/storeAnswers.js';
+import { storeNewHistory } from './helpers/storeNewHistory.js';
 import { storeHistory } from './helpers/storeHistory.js';
 
 /**
@@ -24,6 +26,7 @@ const initialView = () => {
 
 const App = () => {
   const date = new Date().toDateString();
+
   /**
     * IMPORTANT!
     * The date definition below can be used instead of that above for testing purposes
@@ -36,10 +39,9 @@ const App = () => {
   const [answerDetails, setAnswerDetails] = useState(new Array(28));
 
   const digits = getTodaysDigits(date);
-
-  const data = require('./data/all_totals_all_numbers.json');
-  const digitsAsKey = JSON.stringify(digits.map(d => parseInt(d)).sort((a, b) => a - b));
-  const impossibles = data[digitsAsKey];
+  const impossibles = getImpossibles(digits);
+  console.log(digits);
+  console.log(impossibles);
 
   const [view, setView] = useState(initialView());
 
@@ -60,6 +62,7 @@ const App = () => {
   useEffect(() => {
     storeAnswers(date, answers, answerDetails);
     storeHistory(date, answers.length) // Second param here is score
+    storeNewHistory(date, answers.length, false) // Second param here is score
   }, [answers]);
 
   return (
