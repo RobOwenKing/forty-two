@@ -1,5 +1,13 @@
 /**
-  * Updates localStorage history (given it exists) with new score
+  * Saves the passed newHistory to localStorage
+  * @param {object} newHistory - Player's score history to be saved to localStorage
+*/
+const saveHistory = (newHistory) => {
+  localStorage.setItem('newHistory', JSON.stringify(newHistory));
+};
+
+/**
+  * Returns new history ready for storage
   * @param {string} date - String representing the current date, used to seed the random number generator
   * @param {number} score - User's current score for the day
   * @param {boolean} max - Whether the player has reached the day's max score or not
@@ -8,11 +16,12 @@
 const updateStoredNewHistory = (date, score, max, storedNewHistory = '{}') => {
   const newHistory = JSON.parse(storedNewHistory);
   newHistory[date] = { 'score': score, 'max': max };
-  localStorage.setItem('newHistory', JSON.stringify(newHistory));
+
+  return newHistory;
 };
 
 /**
-  * Updates localStorage history (given it exists) with new score
+  * Converts history from old to new format
   * @param {string} date - String representing the current date, used to seed the random number generator
   * @param {number} score - User's current score for the day
   * @param {boolean} max - Whether the player has reached the day's max score or not
@@ -31,7 +40,7 @@ const convertStoredHistory = (storedHistory, date, score, max) => {
     d.setDate(d.getDate() - 1);
   }
 
-  updateStoredNewHistory(date, score, max, JSON.stringify(newHistory));
+  return newHistory;
 };
 
 /**
@@ -43,16 +52,16 @@ const convertStoredHistory = (storedHistory, date, score, max) => {
 export const storeNewHistory = (date, score, max) => {
   const storedNewHistory = localStorage.getItem('newHistory'); // New format
   const storedHistory = localStorage.getItem('history');       // Old format
+  let newHistory = {};
 
   if (storedNewHistory) {
-    updateStoredNewHistory(date, score, max, storedNewHistory);
+    newHistory = updateStoredNewHistory(date, score, max, storedNewHistory);
   } else {
     if (score <= 0) { return; } // Streak should only start with a score > 0
 
-    if (storedHistory) {
-      convertStoredHistory(storedHistory, date, score, max);
-    } else {
-      updateStoredNewHistory(date, score, max);
-    }
+    if (storedHistory) { newHistory = convertStoredHistory(storedHistory, date, score, max); }
+    newHistory = updateStoredNewHistory(date, score, max, newHistory);
   }
+
+  saveHistory(newHistory);
 };
