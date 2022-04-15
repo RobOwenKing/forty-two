@@ -15,7 +15,7 @@ const saveHistory = (newHistory) => {
 */
 const updateStoredNewHistory = (date, score, max, storedNewHistory = '{}') => {
   const newHistory = JSON.parse(storedNewHistory);
-  newHistory[date] = { 'score': score, 'max': max };
+  newHistory[date] = { 's': score, 'm': max };
 
   return newHistory;
 };
