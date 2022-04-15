@@ -1,5 +1,3 @@
-import { useRef } from 'react';
-
 import BarChart from './BarChart.jsx';
 
 /**
@@ -47,7 +45,8 @@ const NewStats = ({ answers }) => {
   const nonZeros = scores.filter(entry => entry !== 0);
   const scoresByGroup = groupScores(nonZeros);
 
-  const newHistory = useRef(getHistory());
+  const newHistory = Object.entries(getHistory());
+  const newScores = newHistory.map(e => e[1]['s']);
 
 /**
   * @returns {<number>} User's average score on days played (well, days score > 0)
@@ -81,7 +80,7 @@ const NewStats = ({ answers }) => {
       {scores && (
         <>
           <div className="stats-grid">
-            <div className="stats-number">{nonZeros.length /*Days played*/}</div>
+            <div className="stats-number">{newHistory.length /*Days played*/}</div>
             <div className="stats-number">{answers.length /*Today's score*/}</div>
             <div className="stats-number">{Math.max(...scores) /*Highscore*/}</div>
             <div className="stats-number">{averageScore().toFixed(2) /*Average*/}</div>
