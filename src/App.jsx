@@ -5,6 +5,7 @@ import './App.css';
 import AnswersGrid from './components/AnswersGrid.jsx';
 import Calculator from './components/Calculator.jsx';
 import HowTo from './components/HowTo.jsx';
+import NewStats from './components/NewStats.jsx';
 import Share from './components/Share.jsx';
 import Stats from './components/Stats.jsx';
 import ViewToggle from './components/ViewToggle.jsx';
@@ -87,7 +88,7 @@ const App = () => {
       {view === 'stats' &&
           (
             <>
-              <Stats answers={answers} />
+              <NewStats answers={answers} />
               <Share answers={answers} answerDetails={answerDetails} />
             </>
           )

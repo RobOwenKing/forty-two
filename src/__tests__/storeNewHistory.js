@@ -58,9 +58,9 @@ describe('convertStoredHistory()', () => {
       'scores': [24, 27, 27, 28]
     };
     const newHistory = convertStoredHistory(oldHistory);
-    expect(newHistory["Fri Apr 15 2022"]['m']).toBeTruthy();
-    expect(newHistory["Thu Apr 14 2022"]['m']).toBeFalsy();
-    expect(newHistory["Wed Apr 13 2022"]['m']).toBeTruthy();
-    expect(newHistory["Tue Apr 12 2022"]['m']).toBeFalsy();
+    expect(newHistory["Fri Apr 15 2022"]['m']).toBeTruthy(); // Max was 28
+    expect(newHistory["Thu Apr 14 2022"]['m']).toBeFalsy();  // Max was 28
+    expect(newHistory["Wed Apr 13 2022"]['m']).toBeTruthy(); // Max was 27
+    expect(newHistory["Tue Apr 12 2022"]['m']).toBeFalsy();  // Max was 26
   });
 })
