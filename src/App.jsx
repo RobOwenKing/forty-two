@@ -61,7 +61,7 @@ const App = () => {
   useEffect(() => {
     storeAnswers(date, answers, answerDetails);
     storeHistory(date, answers.length) // Second param here is score
-    storeNewHistory(date, answers.length, false) // Second param here is score
+    storeNewHistory(date, answers.length, answers.length === 28 - impossibles.length) // Second param here is score
   }, [answers]);
 
   return (
