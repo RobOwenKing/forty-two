@@ -25,6 +25,17 @@ describe('convertStoredHistory()', () => {
     expect(newHistory["Sat Apr 09 2022"]['s']).toBe(4);
     expect(Object.entries(newHistory).length).toBe(3);
   });
-  /* it('should work over month boundaries') */
+  it('should work over month boundaries', () => {
+    const oldHistory = {
+      'lastPlayed': "Wed Mar 02 2022",
+      'scores': [7, 8, 9, 10]
+    };
+    const newHistory = convertStoredHistory(oldHistory);
+    expect(newHistory["Wed Mar 02 2022"]['s']).toBe(10);
+    expect(newHistory["Tue Mar 01 2022"]['s']).toBe(9);
+    expect(newHistory["Mon Feb 28 2022"]['s']).toBe(8);
+    expect(newHistory["Sun Feb 27 2022"]['s']).toBe(7);
+    expect(Object.entries(newHistory).length).toBe(4);
+  });
   /* it('should ignore days when 0 was scored') */
 })
