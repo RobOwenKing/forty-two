@@ -73,9 +73,9 @@ const NewStats = ({ answers }) => {
     * @returns {<number>} User's average score on days played (well, days score > 0)
   */
   const averageScore = () => {
-    const total = nonZeros.reduce((subtotal, entry) => subtotal + entry);
+    const total = newScores.reduce((subtotal, entry) => subtotal + entry);
 
-    return (total / nonZeros.length);
+    return (total / newScores.length);
   };
 
   /**
@@ -105,9 +105,9 @@ const NewStats = ({ answers }) => {
             <div className="stats-number">{streak}</div>
             <div className="stats-number">{maxCount}</div>
             <div className="stats-number">{(maxCount * 100 / daysPlayed).toFixed() /*% maxes*/}%</div>
-            <div className="stats-label">Days played</div>
-            <div className="stats-label">Play streak</div>
-            <div className="stats-label">Total maxes</div>
+            <div className="stats-label">Days <br />played</div>
+            <div className="stats-label">Day <br />streak</div>
+            <div className="stats-label">Max <br />scores</div>
             <div className="stats-label">Maxes</div>
           </div>
           <h3>Last seven days</h3>
