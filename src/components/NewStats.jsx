@@ -1,3 +1,5 @@
+import { useRef } from 'react';
+
 import BarChart from './BarChart.jsx';
 
 /**
@@ -25,6 +27,18 @@ const groupScores = (scores) => {
   ];
 };
 
+
+
+/**
+  * @returns {object} User's play history saved in localStorage
+*/
+const getHistory = () => {
+  const history = localStorage.getItem('newHistory');
+  if (!history) { return null; }
+
+  return JSON.parse(history);
+};
+
 /**
   * @param {array.<number>} answers - Answers found by the user (values)
 */
@@ -32,6 +46,8 @@ const NewStats = ({ answers }) => {
   const scores = getScores();
   const nonZeros = scores.filter(entry => entry !== 0);
   const scoresByGroup = groupScores(nonZeros);
+
+  const newHistory = useRef(getHistory());
 
 /**
   * @returns {<number>} User's average score on days played (well, days score > 0)
