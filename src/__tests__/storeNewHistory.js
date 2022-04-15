@@ -52,4 +52,15 @@ describe('convertStoredHistory()', () => {
     expect(newHistory[d.toDateString()]['s']).toBe(3);
     expect(Object.entries(newHistory).length).toBe(3);
   });
+  it('should set correct max value', () => {
+    const oldHistory = {
+      'lastPlayed': "Fri Apr 15 2022",
+      'scores': [24, 27, 27, 28]
+    };
+    const newHistory = convertStoredHistory(oldHistory);
+    expect(newHistory["Fri Apr 15 2022"]['m']).toBeTruthy();
+    expect(newHistory["Thu Apr 14 2022"]['m']).toBeFalsy();
+    expect(newHistory["Wed Apr 13 2022"]['m']).toBeTruthy();
+    expect(newHistory["Tue Apr 12 2022"]['m']).toBeFalsy();
+  });
 })

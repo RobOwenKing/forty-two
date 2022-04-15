@@ -40,8 +40,6 @@ const App = () => {
 
   const digits = getTodaysDigits(date);
   const impossibles = getImpossibles(digits);
-  console.log(digits);
-  console.log(impossibles);
 
   const [view, setView] = useState(initialView());
 
