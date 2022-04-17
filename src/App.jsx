@@ -7,7 +7,6 @@ import Calculator from './components/Calculator.jsx';
 import HowTo from './components/HowTo.jsx';
 import NewStats from './components/NewStats.jsx';
 import Share from './components/Share.jsx';
-import Stats from './components/Stats.jsx';
 import ViewToggle from './components/ViewToggle.jsx';
 
 import { getImpossibles } from './helpers/getImpossibles.js';
