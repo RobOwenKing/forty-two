@@ -64,7 +64,8 @@ lottie-player {
 }
 
 .grid > div,
-.how-to-grid > div {
+.how-to-grid > div,
+.how-to-calc > div {
   outline: solid black 2px;
   height: 100%;
   width: 100%;
@@ -75,6 +76,15 @@ lottie-player {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.how-to-calc {
+  display: grid;
+  grid-template-columns: repeat(4, 64px);
+  grid-template-rows: minmax(96px, auto);
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
 }
 
 .span-four {
