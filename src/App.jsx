@@ -5,6 +5,7 @@ import './App.css';
 import AnswersGrid from './components/AnswersGrid.jsx';
 import Calculator from './components/Calculator.jsx';
 import HowTo from './components/HowTo.jsx';
+import NewShare from './components/NewShare.jsx';
 import NewStats from './components/NewStats.jsx';
 import Share from './components/Share.jsx';
 import ViewToggle from './components/ViewToggle.jsx';
@@ -81,6 +82,9 @@ const App = () => {
               />
               <h3>Score: {answers.length}/{possibles.length}</h3>
               <AnswersGrid answerDetails={answerDetails} impossibles={impossibles} />
+              {answers.length > 0 &&
+                  <NewShare answers={answers} possibles={possibles} />
+              }
             </div>
           )
       }
