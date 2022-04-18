@@ -1,16 +1,20 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 import './App.css';
 
 import AnswersGrid from './components/AnswersGrid.jsx';
 import Calculator from './components/Calculator.jsx';
 import HowTo from './components/HowTo.jsx';
+import NewShare from './components/NewShare.jsx';
+import NewStats from './components/NewStats.jsx';
 import Share from './components/Share.jsx';
-import Stats from './components/Stats.jsx';
 import ViewToggle from './components/ViewToggle.jsx';
 
+import { getImpossibles } from './helpers/getImpossibles.js';
+import { getTodaysDigits } from './helpers/getTodaysDigits.js';
 import { parseStoredAnswers } from './helpers/parseStoredAnswers.js';
 import { storeAnswers } from './helpers/storeAnswers.js';
+import { storeNewHistory } from './helpers/storeNewHistory.js';
 import { storeHistory } from './helpers/storeHistory.js';
 
 /**
@@ -22,7 +26,8 @@ const initialView = () => {
 };
 
 const App = () => {
-  const date = new Date().toDateString();
+  const date = useRef(new Date().toDateString());
+
   /**
     * IMPORTANT!
     * The date definition below can be used instead of that above for testing purposes
@@ -34,13 +39,16 @@ const App = () => {
   const [answers, setAnswers] = useState([]);
   const [answerDetails, setAnswerDetails] = useState(new Array(28));
 
+  const digits = getTodaysDigits(date.current);
+  const [impossibles, possibles] = getImpossibles(digits);
+
   const [view, setView] = useState(initialView());
 
   /**
     * When the app loads, check for saved state from earlier the same day
   */
   useEffect(() => {
-    const returned = parseStoredAnswers(date);
+    const returned = parseStoredAnswers(date.current);
     if (!returned['answers']) { return; } // eg: New player or first time playing that day
 
     setAnswers(returned['answers']);
@@ -51,8 +59,9 @@ const App = () => {
     * When the user finds a new answer, update saved score history and day's answers
   */
   useEffect(() => {
-    storeAnswers(date, answers, answerDetails);
-    storeHistory(date, answers.length) // Second param here is score
+    storeAnswers(date.current, answers, answerDetails);
+    storeHistory(date.current, answers.length) // Second param here is score
+    storeNewHistory(date.current, answers.length, answers.length >= 28 - impossibles.length) // Second param here is score
   }, [answers]);
 
   return (
@@ -64,21 +73,25 @@ const App = () => {
       {view === 'game' &&
           (
             <div>
-              {answers.length === 28 && <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_jEMHbp.json" background="transparent" count="2" loop speed="1" style={{width: "300px", height: "300px"}} autoplay></lottie-player>}
+              {answers.length === possibles.length && <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_jEMHbp.json" background="transparent" count="2" loop speed="1" style={{width: "300px", height: "300px"}} autoplay></lottie-player>}
               <Calculator
-                  date={date}
+                  date={date.current}
                   answers={answers} setAnswers={setAnswers}
                   answerDetails={answerDetails} setAnswerDetails={setAnswerDetails}
+                  digits={digits} possibles={possibles}
               />
-              <h3>Score: {answers.length}/28</h3>
-              <AnswersGrid answerDetails={answerDetails} />
+              <h3>Score: {answers.length}/{possibles.length}</h3>
+              <AnswersGrid answerDetails={answerDetails} impossibles={impossibles} />
+              {answers.length > 0 &&
+                  <NewShare answers={answers} possibles={possibles} />
+              }
             </div>
           )
       }
       {view === 'stats' &&
           (
             <>
-              <Stats answers={answers} />
+              <NewStats answers={answers} />
               <Share answers={answers} answerDetails={answerDetails} />
             </>
           )

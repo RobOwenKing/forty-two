@@ -21,8 +21,8 @@
   font-weight: bold;
 }
 
-.wip {
-  /*color: #81171B;*/
+.wip,
+.impossible {
   color: #666;
 }
 
@@ -39,6 +39,10 @@
 .chosen-mode {
   color: var(--colour-orange);
   font-weight: bold;
+}
+
+.italics {
+  font-style: italic;
 }
 
 lottie-player {
