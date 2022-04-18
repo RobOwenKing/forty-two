@@ -17,7 +17,7 @@ import { useEventListener } from '../hooks/useEventListener.js';
   * @param {function} setAnswerDetails - Function that takes an array to set as new value of answerDetails
   * @param {array.<number>} digits - The four numbers available for today's puzzle
 */
-const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails, digits }) => {
+const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails, digits, possibles }) => {
   // const digits = ['1', '11', '12', '12']
   const [digitsUsed, setDigitsUsed] = useState([]);
   const operations = ['+', '-', '*', '/', '!', '^', '(', ')'];
@@ -215,16 +215,20 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
     }
   };
 
+  const isAllFound = () => {
+    return possibles.every(e => answers.includes(e));
+  };
+
   return (
     <div className="grid">
       <div className="output span-four">
-        {answers.length < 28 &&
+        {!isAllFound() &&
             <EquationInput
                 cursorPos={cursorPos} setCursorPos={setCursorPos}
                 inputArr={inputArr}
             />
         }
-        {answers.length >= 28 &&
+        {isAllFound() &&
             <div className="output-calculation">CONGRATS!</div>
         }
         <div

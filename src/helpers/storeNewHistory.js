@@ -29,7 +29,6 @@ const updateStoredNewHistory = (date, score, max, newHistory = {}) => {
 export const convertStoredHistory = (storedHistory) => {
   const newHistory = {};
 
-  let start = false;
   let d = new Date();
   while (d.toDateString() !== storedHistory['lastPlayed']) { d.setDate(d.getDate() - 1); }
   while (storedHistory['scores'].length > 0) {
@@ -38,7 +37,7 @@ export const convertStoredHistory = (storedHistory) => {
       const dateString = d.toDateString();
       newHistory[dateString] = {
         's': s,
-        'm': s >= 28 - getImpossibles(getTodaysDigits(dateString)).length
+        'm': s >= getImpossibles(getTodaysDigits(dateString))[1].length
       };
     }
     d.setDate(d.getDate() - 1);

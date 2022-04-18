@@ -39,7 +39,7 @@ const App = () => {
   const [answerDetails, setAnswerDetails] = useState(new Array(28));
 
   const digits = getTodaysDigits(date.current);
-  const impossibles = getImpossibles(digits);
+  const [impossibles, possibles] = getImpossibles(digits);
 
   const [view, setView] = useState(initialView());
 
@@ -72,14 +72,14 @@ const App = () => {
       {view === 'game' &&
           (
             <div>
-              {answers.length === 28 && <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_jEMHbp.json" background="transparent" count="2" loop speed="1" style={{width: "300px", height: "300px"}} autoplay></lottie-player>}
+              {answers.length === possibles.length && <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_jEMHbp.json" background="transparent" count="2" loop speed="1" style={{width: "300px", height: "300px"}} autoplay></lottie-player>}
               <Calculator
                   date={date.current}
                   answers={answers} setAnswers={setAnswers}
                   answerDetails={answerDetails} setAnswerDetails={setAnswerDetails}
-                  digits={digits}
+                  digits={digits} possibles={possibles}
               />
-              <h3>Score: {answers.length}/28</h3>
+              <h3>Score: {answers.length}/{possibles.length}</h3>
               <AnswersGrid answerDetails={answerDetails} impossibles={impossibles} />
             </div>
           )
