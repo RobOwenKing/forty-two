@@ -12,7 +12,7 @@ const HowTo = () => {
       <p>Each digit button must be used exactly once in every calculation. You can use the other symbols as many or as few times as you wish.</p>
       <div className="how-to-calc">
         <div className="span-four">
-          <div className="output-calculation">(4-2)*11+6</div>
+          <div className="output-calculation">(4-2)*11+6<span className="caret"></span></div>
           <div className="output-value valid">28</div>
         </div>
       </div>
