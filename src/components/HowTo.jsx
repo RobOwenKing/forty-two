@@ -13,7 +13,7 @@ const HowTo = () => {
       <div className="how-to-calc">
         <div className="span-four">
           <div className="output-calculation">(4-2)*11+6</div>
-          <div className="output-value">28</div>
+          <div className="output-value valid">28</div>
         </div>
       </div>
       <p>Your challenge is to make as many of the numbers from 1 to 28 as you can.</p>
