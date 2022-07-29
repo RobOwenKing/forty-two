@@ -5,6 +5,7 @@ import DigitButton from './DigitButton.jsx';
 import EquationInput from './EquationInput.jsx';
 import InputButton from './InputButton.jsx';
 
+import { areBracketsBalanced } from '../helpers/areBracketsBalanced.js';
 import { handleInput } from '../helpers/handleInput.js';
 
 import { useEventListener } from '../hooks/useEventListener.js';
@@ -109,17 +110,6 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
     setDigitsUsed([]);
     setInputArr([]);
     setCursorPos(0);
-  };
-
-  const areBracketsBalanced = (str) => {
-    const stack = [];
-
-    for (let i = 0; i < str.length; i += 1) {
-      if (str[i] === '(') { stack.push('('); }
-      if (str[i] === ')' && !stack.pop()) { return false; }
-    }
-
-    return stack.length === 0;
   };
 
   /**
