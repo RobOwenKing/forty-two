@@ -86,16 +86,11 @@ const App = () => {
 
     setAnswers(newAnswers);
     setAnswerDetails(newAnswerDetails);
-  };
 
-  /**
-    * When the user finds a new answer, update saved score history and day's answers
-  */
-  useEffect(() => {
-    storeAnswers(date.current, answers, answerDetails);
-    storeHistory(date.current, answers.length) // Second param here is score
-    storeNewHistory(date.current, answers.length, answers.length >= 28 - impossibles.length) // Second param here is score
-  }, [answers]);
+    storeAnswers(date.current, newAnswers, newAnswerDetails);
+    storeHistory(date.current, newAnswers.length) // Second param here is score
+    storeNewHistory(date.current, newAnswers.length, newAnswers.length >= 28 - impossibles.length) // Second param here is score
+  };
 
   return (
     <div className="App">
