@@ -76,7 +76,7 @@ const App = () => {
   };
 
   /**
-    *
+    * Update game state and localStorage with new answer
     * @param {array} inputArr - The array of strings to join to form the current equation
     * @param {number} inputVal - The equation's total to find the correct index in answerDetails
   */
