@@ -18,7 +18,7 @@ import { useEventListener } from '../hooks/useEventListener.js';
   * @param {function} setAnswerDetails - Function that takes an array to set as new value of answerDetails
   * @param {array.<number>} digits - The four numbers available for today's puzzle
 */
-const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails, digits, possibles }) => {
+const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails, digits, possibles, handleValidAnswer }) => {
   // const digits = ['1', '11', '12', '12']
   const [digitsUsed, setDigitsUsed] = useState([]);
   const operations = ['+', '-', '*', '/', '!', '^', '(', ')'];
@@ -127,35 +127,13 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
   };
 
   /**
-    * Adds a new total's inputStr to the correct position in the answerDetails array
-    * @param {string} inputStr - The equation to be added to answerDetails
-    * @param {number} inputVal - The equation's total to find the correct index in answerDetails
-  */
-  const updateAnswerDetails = (inputStr, inputVal) => {
-    const newAnswerDetails = [...answerDetails];
-    newAnswerDetails[inputVal - 1] = inputStr;
-    setAnswerDetails(newAnswerDetails);
-  };
-
-  /**
-    *
-    * @param {array} inputArr - The array of strings to join to form the current equation
-    * @param {number} inputVal - The equation's total to find the correct index in answerDetails
-  */
-  const handleValidAnswer = (inputVal) => {
-    const newAnswers = [...answers, inputVal].sort((a, b) => a - b);
-    setAnswers(newAnswers);
-    updateAnswerDetails(inputArr.join(''), inputVal);
-  };
-
-  /**
    * Checks if the current input is a new, valid answer, if so updates everything relevant
    */
   const enterHandler = () => {
     const answerCheck = checkAnswer();
 
     if (answerCheck === 'valid') {
-      handleValidAnswer(inputVal);
+      handleValidAnswer(inputArr, inputVal);
       setDigitsUsed([]);
       setInputArr([]);
       setCursorPos(0);

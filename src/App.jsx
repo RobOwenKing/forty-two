@@ -56,6 +56,28 @@ const App = () => {
   }, []);
 
   /**
+    * Adds a new total's inputStr to the correct position in the answerDetails array
+    * @param {string} inputStr - The equation to be added to answerDetails
+    * @param {number} inputVal - The equation's total to find the correct index in answerDetails
+  */
+  const updateAnswerDetails = (inputStr, inputVal) => {
+    const newAnswerDetails = [...answerDetails];
+    newAnswerDetails[inputVal - 1] = inputStr;
+    setAnswerDetails(newAnswerDetails);
+  };
+
+  /**
+    *
+    * @param {array} inputArr - The array of strings to join to form the current equation
+    * @param {number} inputVal - The equation's total to find the correct index in answerDetails
+  */
+  const handleValidAnswer = (inputArr, inputVal) => {
+    const newAnswers = [...answers, inputVal].sort((a, b) => a - b);
+    setAnswers(newAnswers);
+    updateAnswerDetails(inputArr.join(''), inputVal);
+  };
+
+  /**
     * When the user finds a new answer, update saved score history and day's answers
   */
   useEffect(() => {
@@ -79,6 +101,7 @@ const App = () => {
                   answers={answers} setAnswers={setAnswers}
                   answerDetails={answerDetails} setAnswerDetails={setAnswerDetails}
                   digits={digits} possibles={possibles}
+                  handleValidAnswer={handleValidAnswer}
               />
               <h3>Score: {answers.length}/{possibles.length}</h3>
               <AnswersGrid answerDetails={answerDetails} impossibles={impossibles} />
