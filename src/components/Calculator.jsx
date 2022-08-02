@@ -138,15 +138,24 @@ const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails
   };
 
   /**
-    * Checks if the current input is a new, valid answer, if so updates everything relevant
+    *
+    * @param {array} inputArr - The array of strings to join to form the current equation
+    * @param {number} inputVal - The equation's total to find the correct index in answerDetails
   */
+  const handleValidAnswer = (inputVal) => {
+    const newAnswers = [...answers, inputVal].sort((a, b) => a - b);
+    setAnswers(newAnswers);
+    updateAnswerDetails(inputArr.join(''), inputVal);
+  };
+
+  /**
+   * Checks if the current input is a new, valid answer, if so updates everything relevant
+   */
   const enterHandler = () => {
     const answerCheck = checkAnswer();
 
     if (answerCheck === 'valid') {
-      const newAnswers = [...answers, inputVal].sort((a, b) => a - b);
-      setAnswers(newAnswers);
-      updateAnswerDetails(inputArr.join(''), inputVal);
+      handleValidAnswer(inputVal);
       setDigitsUsed([]);
       setInputArr([]);
       setCursorPos(0);
