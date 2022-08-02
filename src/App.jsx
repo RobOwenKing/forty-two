@@ -56,14 +56,23 @@ const App = () => {
   }, []);
 
   /**
-    * Adds a new total's inputStr to the correct position in the answerDetails array
+    * @param {number} inputVal - The equation's total to find the correct index in answerDetails
+    * @returns {array.<number>}
+  */
+  const getNewAnswers = (inputVal) => {
+    return [...answers, inputVal].sort((a, b) => a - b);
+  };
+
+  /**
     * @param {string} inputStr - The equation to be added to answerDetails
     * @param {number} inputVal - The equation's total to find the correct index in answerDetails
+    * @returns {array.<string>}
   */
-  const updateAnswerDetails = (inputStr, inputVal) => {
+  const getNewAnswerDetails = (inputStr, inputVal) => {
     const newAnswerDetails = [...answerDetails];
     newAnswerDetails[inputVal - 1] = inputStr;
-    setAnswerDetails(newAnswerDetails);
+
+    return newAnswerDetails;
   };
 
   /**
@@ -72,9 +81,11 @@ const App = () => {
     * @param {number} inputVal - The equation's total to find the correct index in answerDetails
   */
   const handleValidAnswer = (inputArr, inputVal) => {
-    const newAnswers = [...answers, inputVal].sort((a, b) => a - b);
+    const newAnswers = getNewAnswers();
+    const newAnswerDetails = getNewAnswerDetails(inputArr.join(''), inputVal);
+
     setAnswers(newAnswers);
-    updateAnswerDetails(inputArr.join(''), inputVal);
+    setAnswerDetails(newAnswerDetails);
   };
 
   /**
