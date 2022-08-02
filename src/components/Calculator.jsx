@@ -11,14 +11,12 @@ import { handleInput } from '../helpers/handleInput.js';
 import { useEventListener } from '../hooks/useEventListener.js';
 
 /**
-  * @param {string} date - String representing the current date, used to seed the random number generator
   * @param {array.<number>} answers - Answers found by the user (values)
-  * @param {function} setAnswers - Function that takes an array to set as new value of answers
-  * @param {array.<string|null>} answerDetails - Answers found by the user (equations, each with total index-1), else null. Expected length = 28
-  * @param {function} setAnswerDetails - Function that takes an array to set as new value of answerDetails
   * @param {array.<number>} digits - The four numbers available for today's puzzle
+  * @param {array.<number>} possibles - The totals that can't be achieved with today's digits
+  * @param {function} handleValidAnswer - Callback for when the user gets a new, valid answer
 */
-const Calculator = ({ date, answers, setAnswers, answerDetails, setAnswerDetails, digits, possibles, handleValidAnswer }) => {
+const Calculator = ({ answers, digits, possibles, handleValidAnswer }) => {
   // const digits = ['1', '11', '12', '12']
   const [digitsUsed, setDigitsUsed] = useState([]);
   const operations = ['+', '-', '*', '/', '!', '^', '(', ')'];
