@@ -77,7 +77,7 @@ const App = () => {
 
   /**
     * Update game state and localStorage with new answer
-    * @param {array} inputArr - The array of strings to join to form the current equation
+    * @param {array.<string>} inputArr - The array of strings to join to form the current equation
     * @param {number} inputVal - The equation's total to find the correct index in answerDetails
   */
   const handleValidAnswer = (inputArr, inputVal) => {
@@ -103,10 +103,9 @@ const App = () => {
             <div>
               {answers.length === possibles.length && <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_jEMHbp.json" background="transparent" count="2" loop speed="1" style={{width: "300px", height: "300px"}} autoplay></lottie-player>}
               <Calculator
-                  date={date.current}
-                  answers={answers} setAnswers={setAnswers}
-                  answerDetails={answerDetails} setAnswerDetails={setAnswerDetails}
-                  digits={digits} possibles={possibles}
+                  answers={answers}
+                  digits={digits}
+                  possibles={possibles}
                   handleValidAnswer={handleValidAnswer}
               />
               <h3>Score: {answers.length}/{possibles.length}</h3>
