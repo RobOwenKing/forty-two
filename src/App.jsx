@@ -56,13 +56,41 @@ const App = () => {
   }, []);
 
   /**
-    * When the user finds a new answer, update saved score history and day's answers
+    * @param {number} inputVal - The equation's total to find the correct index in answerDetails
+    * @returns {array.<number>}
   */
-  useEffect(() => {
-    storeAnswers(date.current, answers, answerDetails);
-    storeHistory(date.current, answers.length) // Second param here is score
-    storeNewHistory(date.current, answers.length, answers.length >= 28 - impossibles.length) // Second param here is score
-  }, [answers]);
+  const getNewAnswers = (inputVal) => {
+    return [...answers, inputVal].sort((a, b) => a - b);
+  };
+
+  /**
+    * @param {string} inputStr - The equation to be added to answerDetails
+    * @param {number} inputVal - The equation's total to find the correct index in answerDetails
+    * @returns {array.<string>}
+  */
+  const getNewAnswerDetails = (inputStr, inputVal) => {
+    const newAnswerDetails = [...answerDetails];
+    newAnswerDetails[inputVal - 1] = inputStr;
+
+    return newAnswerDetails;
+  };
+
+  /**
+    * Update game state and localStorage with new answer
+    * @param {array.<string>} inputArr - The array of strings to join to form the current equation
+    * @param {number} inputVal - The equation's total to find the correct index in answerDetails
+  */
+  const handleValidAnswer = (inputArr, inputVal) => {
+    const newAnswers = getNewAnswers();
+    const newAnswerDetails = getNewAnswerDetails(inputArr.join(''), inputVal);
+
+    setAnswers(newAnswers);
+    setAnswerDetails(newAnswerDetails);
+
+    storeAnswers(date.current, newAnswers, newAnswerDetails);
+    storeHistory(date.current, newAnswers.length) // Second param here is score
+    storeNewHistory(date.current, newAnswers.length, newAnswers.length >= 28 - impossibles.length) // Second param here is score
+  };
 
   return (
     <div className="App">
@@ -75,10 +103,10 @@ const App = () => {
             <div>
               {answers.length === possibles.length && <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_jEMHbp.json" background="transparent" count="2" loop speed="1" style={{width: "300px", height: "300px"}} autoplay></lottie-player>}
               <Calculator
-                  date={date.current}
-                  answers={answers} setAnswers={setAnswers}
-                  answerDetails={answerDetails} setAnswerDetails={setAnswerDetails}
-                  digits={digits} possibles={possibles}
+                  answers={answers}
+                  digits={digits}
+                  possibles={possibles}
+                  handleValidAnswer={handleValidAnswer}
               />
               <h3>Score: {answers.length}/{possibles.length}</h3>
               <AnswersGrid answerDetails={answerDetails} impossibles={impossibles} />
