@@ -58,7 +58,7 @@ const NewStats = ({ answers }) => {
   const scores = getScores();
 
   const newHistory = getHistory();
-  const newHistoryAsArray = Object.entries(newHistory);
+  const newHistoryAsArray = newHistory ? Object.entries(newHistory) : [];
   const daysPlayed = newHistoryAsArray.length;
   const newScores = newHistoryAsArray.map(e => e[1]['s']);
   const scoresByGroup = groupScores(newScores);
