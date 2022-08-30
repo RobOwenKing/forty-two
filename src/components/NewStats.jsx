@@ -30,7 +30,7 @@ const groupScores = (scores) => {
 */
 const getHistory = () => {
   const history = localStorage.getItem('newHistory');
-  if (!history) { return null; }
+  if (!history) { return {}; }
 
   return JSON.parse(history);
 };
@@ -59,6 +59,7 @@ const NewStats = ({ answers }) => {
 
   const newHistory = getHistory();
   const newHistoryAsArray = Object.entries(newHistory);
+
   const daysPlayed = newHistoryAsArray.length;
   const newScores = newHistoryAsArray.map(e => e[1]['s']);
   const scoresByGroup = groupScores(newScores);
