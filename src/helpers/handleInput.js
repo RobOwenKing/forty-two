@@ -140,31 +140,15 @@ const handleOne = (inputArr, digitsUsed, newInput, cursorPos, digits) => {
  * @param {array.<string>} digits - The digits available to the player. May include repeats. Expected length = 4
  * @returns {object}
  */
-const handleDigit = (inputArr, digitsUsed, newInput, cursorPos, digits) => {
+function handleDigit(inputArr, digitsUsed, newInput, cursorPos, digits) {
   if (inputArr[cursorPos - 1] === "1" && ["0", "1", "2"].includes(newInput)) {
-    const returnable = handlePotentialSecondDigit(
-      inputArr,
-      digitsUsed,
-      newInput,
-      cursorPos,
-      digits
-    );
-    if (returnable) {
-      return returnable;
-    }
+    const returnable = handlePotentialSecondDigit(...arguments);
+    if (returnable) return returnable;
   }
 
   if (newInput === "1") {
-    const returnable = handleOne(
-      inputArr,
-      digitsUsed,
-      newInput,
-      cursorPos,
-      digits
-    );
-    if (returnable) {
-      return returnable;
-    }
+    const returnable = handleOne(...arguments);
+    if (returnable) return returnable;
   } else if (digits.includes(newInput)) {
     const digitsUsedIndex = firstNonUsedOccurence(newInput, digits, digitsUsed);
     if (digitsUsedIndex === -1) {
@@ -172,16 +156,13 @@ const handleDigit = (inputArr, digitsUsed, newInput, cursorPos, digits) => {
     }
 
     return insertDigitIntoArray(
-      inputArr,
-      digitsUsed,
-      newInput,
-      cursorPos,
+      ...Array.from(arguments).slice(0, 4),
       digitsUsedIndex
     );
   }
 
   return buildInputReturn(inputArr, digitsUsed, cursorPos);
-};
+}
 
 /**
  * @param {array.<string>} inputArr - The array of digits and operations entered by the player
