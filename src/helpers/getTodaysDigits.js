@@ -30,17 +30,19 @@ const isCandidateValid = (arr, candidate, rng) => {
   } // Total can't be too small (too difficult to make larger numbers then)
 
   const numberOfMatches = countMatchesInArray(arr, candidate);
+  // 1 can only appear once
   if (candidate === 1 && numberOfMatches >= 1) {
     return false;
-  } // 1 can only appear once
+  }
+  // No number can appear more than twice
   if (numberOfMatches >= 2) {
     return false;
-  } // No number can appear more than twice
+  }
+  // You can have at most one repeated digit i.e. [a, a, b, c] = valid; [a, a, b, b] != valid
   if (
     numberOfMatches === 1 &&
     arr.some((e) => countMatchesInArray(arr, e) > 1)
   ) {
-    // You can have at most one repeated digit i.e. [a, a, b, c] = valid; [a, a, b, b] != valid
     return false;
   }
   if (numberOfMatches === 1 && rng.call() < 0.25) {
