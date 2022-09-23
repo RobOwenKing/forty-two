@@ -141,14 +141,14 @@ const App = () => {
           <Share answers={answers} answerDetails={answerDetails} />
         </>
       )}
-      <footer>
-        <small>A ReactJS app by Rob Owen King.</small>
-        <small>
+      <footer className="footer">
+        <p className="footer__p">A ReactJS app by Rob Owen King.</p>
+        <p className="footer__p">
           Here's <a href="http://www.robowenking.com/">my website</a>; I'm also
           on <a href="https://github.com/RobOwenKing/">GitHub</a> and{" "}
           <a href="https://twitter.com/RobOwenKing">Twitter</a>.
-        </small>
-        <small>
+        </p>
+        <p className="footer__p">
           Animation by{" "}
           <a href="https://lottiefiles.com/user/61955">Emily Zhou</a>, used
           under the{" "}
@@ -156,7 +156,7 @@ const App = () => {
             Lottie Simple License
           </a>
           .
-        </small>
+        </p>
       </footer>
     </div>
   );

@@ -1,9 +1,9 @@
 /* Variables */
 
 :root {
-  --colour-blue: #A2C1E0;
+  --colour-blue: #a2c1e0;
   --colour-green: #036016;
-  --colour-orange: #F17105;
+  --colour-orange: #f17105;
 }
 
 /* App */
@@ -27,7 +27,7 @@
 }
 
 .not-valid {
-  color: #81171B;
+  color: #81171b;
   font-weight: bold;
 }
 
@@ -63,16 +63,16 @@ lottie-player {
   font-size: 18px;
 }
 
-.grid>div,
-.how-to-grid>div,
-.how-to-calc>div {
+.grid > div,
+.how-to-grid > div,
+.how-to-calc > div {
   outline: solid black 2px;
   height: 100%;
   width: 100%;
 }
 
 .button,
-.how-to-grid>div {
+.how-to-grid > div {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -289,10 +289,12 @@ lottie-player {
 
 /* Footer */
 
-footer {
+.footer {
   margin: 16px auto;
+  font-size: smaller;
 }
 
-footer small {
-  display: block;
+.footer__p {
+  margin-block-start: 0.2em;
+  margin-block-end: 0.2em;
 }
