@@ -83,7 +83,7 @@ lottie-player {
   justify-content: center;
   align-items: center;
   gap: 2px;
-  font-size: 18px;
+  font-size: 1.125rem;
 }
 
 .grid > div,
