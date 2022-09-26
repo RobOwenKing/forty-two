@@ -8,9 +8,12 @@
 /* Variables */
 
 :root {
-  --colour-blue: #a2c1e0;
-  --colour-green: #036016;
-  --colour-orange: #f17105;
+  --c-blue: #a2c1e0;
+  --c-green: #036016;
+  --c-dark-grey: #333333;
+  --c-grey: #666666;
+  --c-orange: #f17105;
+  --c-red: #81171b;
 }
 
 /* Blocks */
@@ -37,7 +40,7 @@
 
 .solved,
 .valid {
-  color: var(--colour-green);
+  color: var(--c-green);
 }
 
 .not-solved {
@@ -46,11 +49,11 @@
 
 .wip,
 .impossible {
-  color: #666;
+  color: var(--c-grey);
 }
 
 .not-valid {
-  color: #81171b;
+  color: var(--c-red);
   font-weight: bold;
 }
 
@@ -60,7 +63,7 @@
 }
 
 .chosen-mode {
-  color: var(--colour-orange);
+  color: var(--c-orange);
   font-weight: bold;
 }
 
@@ -194,11 +197,11 @@ lottie-player {
 }
 
 .used {
-  background-color: var(--colour-blue);
+  background-color: var(--c-blue);
 }
 
 .equals {
-  background-color: var(--colour-orange);
+  background-color: var(--c-orange);
 }
 
 /* Answers Grid */
@@ -235,7 +238,7 @@ lottie-player {
 }
 
 .text-page p {
-  color: #333;
+  color: var(--c-dark-grey);
 }
 
 /* Stats */
@@ -252,7 +255,7 @@ lottie-player {
 }
 
 .stats-value {
-  color: #666;
+  color: var(--c-grey);
   font-size: 15px;
 }
 
@@ -287,11 +290,11 @@ lottie-player {
 }
 
 .bar.orange {
-  background-color: var(--colour-orange);
+  background-color: var(--c-orange);
 }
 
 .bar.blue {
-  background-color: var(--colour-blue);
+  background-color: var(--c-blue);
 }
 
 /* Share */
