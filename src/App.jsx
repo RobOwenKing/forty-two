@@ -99,7 +99,7 @@ const App = () => {
   };
 
   return (
-    <div className="App">
+    <div className="app">
       <h1>Twenty-Eight</h1>
       <h3>Your Daily Numbers Game</h3>
       <ViewToggle view={view} setView={setView} />
