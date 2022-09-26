@@ -18,10 +18,16 @@
 
 /* Blocks */
 
+/* .app */
+
+.App {
+  text-align: center;
+}
+
 /* .footer */
 
 .footer {
-  margin: 16px auto;
+  margin: 1rem auto;
   font-size: smaller;
 }
 
@@ -31,12 +37,6 @@
 }
 
 /* Old Code to be refactored */
-
-/* App */
-
-.App {
-  text-align: center;
-}
 
 .solved,
 .valid {
@@ -81,12 +81,12 @@ lottie-player {
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(4, 64px);
-  grid-template-rows: minmax(96px, auto) repeat(5, 64px);
+  grid-template-columns: repeat(4, 4rem);
+  grid-template-rows: minmax(6rem, auto) repeat(5, 4rem);
   justify-content: center;
   align-items: center;
   gap: 2px;
-  font-size: 1.125rem;
+  font-size: larger;
 }
 
 .grid > div,
@@ -106,11 +106,11 @@ lottie-player {
 
 .how-to-calc {
   display: grid;
-  grid-template-columns: repeat(4, 64px);
-  grid-template-rows: minmax(96px, auto);
+  grid-template-columns: repeat(4, 4rem);
+  grid-template-rows: minmax(6rem, auto);
   justify-content: center;
   align-items: center;
-  font-size: 18px;
+  font-size: larger;
 }
 
 .span-four {
@@ -122,13 +122,13 @@ lottie-player {
 }
 
 .output-calculation {
-  width: 256px;
-  height: 32px;
-  line-height: 32px;
-  margin-top: 24px;
+  width: 16rem;
+  height: 2rem;
+  line-height: 2rem;
+  margin-top: 1.5rem;
   padding: 0;
 
-  font-size: 32px;
+  font-size: 2rem;
   text-align: center;
 
   outline: none;
@@ -178,11 +178,11 @@ lottie-player {
 }
 
 .output-value {
-  margin-top: 8px;
-  margin-bottom: 16px;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
 
-  line-height: 16px;
-  font-size: 16px;
+  line-height: 1rem;
+  font-size: 1rem;
 }
 
 .output-value.valid {
@@ -208,7 +208,7 @@ lottie-player {
 
 .answers-grid {
   display: grid;
-  grid-template-columns: repeat(4, 80px);
+  grid-template-columns: repeat(4, 5rem);
   justify-content: center;
   align-items: center;
   font-family: monospace;
@@ -216,7 +216,7 @@ lottie-player {
 
 @media (min-width: 570px) {
   .answers-grid {
-    grid-template-columns: repeat(7, 80px);
+    grid-template-columns: repeat(7, 5rem);
   }
 }
 
@@ -224,12 +224,12 @@ lottie-player {
 
 .how-to-grid {
   display: grid;
-  grid-template-columns: repeat(4, 64px);
-  grid-template-rows: 64px;
+  grid-template-columns: repeat(4, 4rem);
+  grid-template-rows: 4rem;
   justify-content: center;
   align-items: center;
   gap: 2px;
-  font-size: 18px;
+  font-size: larger;
 }
 
 .text-page {
@@ -245,13 +245,13 @@ lottie-player {
 
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(4, 72px);
+  grid-template-columns: repeat(4, 4.5rem);
   justify-content: center;
   align-items: center;
 }
 
 .stats-number {
-  font-size: 24px;
+  font-size: 1.5rem;
 }
 
 .stats-value {
@@ -270,23 +270,23 @@ lottie-player {
 }
 
 .bar-chart .seven-days {
-  width: 40px;
+  width: 2.5rem;
 }
 
 .bar-chart .all-time {
-  width: 56px;
+  width: 3.5rem;
 }
 
 .bar {
-  width: 32px;
+  width: 2rem;
 }
 
 .seven-days .bar {
-  margin-left: 4px;
+  margin-left: 0.25rem;
 }
 
 .all-time .bar {
-  margin-left: 12px;
+  margin-left: 0.75rem;
 }
 
 .bar.orange {
