@@ -3,6 +3,7 @@
   * - Variables
   * - Blocks
   * - - .app
+  * - - .grid
   * - - .footer
 */
 
@@ -30,6 +31,17 @@
   text-align: center;
 }
 
+/* .grid */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 4rem);
+  grid-template-rows: minmax(6rem, auto) repeat(5, 4rem);
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+  font-size: larger;
+}
 /* .footer */
 
 .footer {
@@ -84,16 +96,6 @@ lottie-player {
 }
 
 /* Calculator */
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(4, 4rem);
-  grid-template-rows: minmax(6rem, auto) repeat(5, 4rem);
-  justify-content: center;
-  align-items: center;
-  gap: 2px;
-  font-size: larger;
-}
 
 .grid > div,
 .how-to-grid > div,
