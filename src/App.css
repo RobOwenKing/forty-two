@@ -3,8 +3,8 @@
 * - Variables
 * - Blocks
 * - - .app
-  * - - .grid
-  * - - .footer
+* - - .grid
+* - - .footer
 */
 
 /* Variables */
@@ -41,6 +41,12 @@
   align-items: center;
   gap: 2px;
   font-size: larger;
+}
+
+.grid__cell {
+  outline: solid black 2px;
+  height: 100%;
+  width: 100%;
 }
 
 .grid.has-one-row {
@@ -105,14 +111,6 @@ lottie-player {
 }
 
 /* Calculator */
-
-.grid > div,
-.how-to-grid > div,
-.how-to-calc > div {
-  outline: solid black 2px;
-  height: 100%;
-  width: 100%;
-}
 
 .button,
 .how-to-grid > div {
