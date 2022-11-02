@@ -42,6 +42,11 @@
   gap: 2px;
   font-size: larger;
 }
+
+.grid.has-one-row {
+  grid-template-rows: 4rem;
+}
+
 /* .footer */
 
 .footer {
@@ -229,16 +234,6 @@ lottie-player {
 }
 
 /* How To */
-
-.how-to-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 4rem);
-  grid-template-rows: 4rem;
-  justify-content: center;
-  align-items: center;
-  gap: 2px;
-  font-size: larger;
-}
 
 .text-page {
   width: 300px;

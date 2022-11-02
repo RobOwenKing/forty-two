@@ -6,7 +6,7 @@ const HowTo = () => {
         This is a game about a strange calculator. A calculator with only four
         digits, which change every day.
       </p>
-      <div className="how-to-grid">
+      <div className="how-to-grid grid has-one-row">
         <div>6</div>
         <div className="used">2</div>
         <div>11</div>
@@ -29,7 +29,7 @@ const HowTo = () => {
         can.
       </p>
       <p>Press equals when you've found a new number to score points.</p>
-      <div className="how-to-grid">
+      <div className="how-to-grid grid has-one-row">
         <div className="span-four equals">=</div>
       </div>
     </div>
