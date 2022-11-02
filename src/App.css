@@ -1,8 +1,8 @@
 /*
-  * CONTENTS
-  * - Variables
-  * - Blocks
-  * - - .app
+* CONTENTS
+* - Variables
+* - Blocks
+* - - .app
   * - - .grid
   * - - .footer
 */
@@ -45,6 +45,10 @@
 
 .grid.has-one-row {
   grid-template-rows: 4rem;
+}
+
+.grid.has-output-only {
+  grid-template-rows: minmax(6rem, auto);
 }
 
 /* .footer */
@@ -115,15 +119,6 @@ lottie-player {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.how-to-calc {
-  display: grid;
-  grid-template-columns: repeat(4, 4rem);
-  grid-template-rows: minmax(6rem, auto);
-  justify-content: center;
-  align-items: center;
-  font-size: larger;
 }
 
 .span-four {
