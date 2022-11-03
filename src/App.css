@@ -1,15 +1,7 @@
 @import "styles/caret";
 @import "styles/footer";
 @import "styles/grid";
-
-/*
-* CONTENTS
-* - Variables
-* - Blocks
-* - - .app
-* - - .grid
-* - - .footer
-*/
+@import "styles/react-share";
 
 /* Variables */
 
@@ -22,9 +14,7 @@
   --c-red: #81171b;
 }
 
-/* Blocks */
-
-/* .app */
+/* Basics */
 
 .app {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -213,14 +203,4 @@ lottie-player {
 
 .share-grid {
   white-space: pre-wrap;
-}
-
-.react-share__ShareButton {
-  margin: auto 2px;
-  opacity: 0.8;
-}
-
-.react-share__ShareButton:hover,
-.react-share__ShareButton:focus {
-  opacity: 1;
 }
