@@ -230,7 +230,7 @@ const Calculator = ({ answers, digits, possibles, handleValidAnswer }) => {
 
   return (
     <div className="grid">
-      <div className="grid__cell output span-four">
+      <div className="grid__cell is-span-four output ">
         {!isAllFound() && (
           <EquationInput
             cursorPos={cursorPos}
@@ -258,7 +258,7 @@ const Calculator = ({ answers, digits, possibles, handleValidAnswer }) => {
         );
       })}
       <div
-        className="grid__cell button span-two"
+        className="grid__cell is-span-two button "
         role="button"
         tabIndex="0"
         onClick={backspaceHandler}
@@ -266,7 +266,7 @@ const Calculator = ({ answers, digits, possibles, handleValidAnswer }) => {
         Back
       </div>
       <div
-        className="grid__cell button span-two"
+        className="grid__cell is-span-two button "
         role="button"
         tabIndex="0"
         onClick={acHandler}
@@ -274,7 +274,7 @@ const Calculator = ({ answers, digits, possibles, handleValidAnswer }) => {
         A/C
       </div>
       <div
-        className="grid__cell button span-four equals"
+        className="grid__cell is-span-four button  equals"
         role="button"
         tabIndex="0"
         onClick={enterHandler}

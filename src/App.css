@@ -85,14 +85,6 @@ lottie-player {
   justify-content: center;
 }
 
-.span-four {
-  grid-column: span 4;
-}
-
-.span-two {
-  grid-column: span 2;
-}
-
 .output-calculation {
   width: 16rem;
   height: 2rem;

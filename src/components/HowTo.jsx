@@ -17,7 +17,7 @@ const HowTo = () => {
         can use the other symbols as many or as few times as you wish.
       </p>
       <div className="how-to-calc grid has-output-only">
-        <div className="grid__cell span-four">
+        <div className="grid__cell is-span-four">
           <div className="output-calculation">
             (4-2)*11+6<span className="caret"></span>
           </div>
@@ -30,7 +30,7 @@ const HowTo = () => {
       </p>
       <p>Press equals when you've found a new number to score points.</p>
       <div className="how-to-grid grid has-one-row">
-        <div className="grid__cell span-four equals">=</div>
+        <div className="grid__cell is-span-four equals">=</div>
       </div>
     </div>
   );

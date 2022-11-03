@@ -8,16 +8,24 @@
   font-size: larger;
 }
 
-.grid__cell {
-  outline: solid black 2px;
-  height: 100%;
-  width: 100%;
-}
-
 .grid.has-one-row {
   grid-template-rows: 4rem;
 }
 
 .grid.has-output-only {
   grid-template-rows: minmax(6rem, auto);
+}
+
+.grid__cell {
+  outline: solid black 2px;
+  height: 100%;
+  width: 100%;
+}
+
+.grid__cell.is-span-four {
+  grid-column: span 4;
+}
+
+.grid__cell.is-span-two {
+  grid-column: span 2;
 }
