@@ -110,22 +110,6 @@
   background-color: var(--c-orange);
 }
 
-/* Answers Grid */
-
-.answers-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 5rem);
-  justify-content: center;
-  align-items: center;
-  font-family: monospace;
-}
-
-@media (min-width: 570px) {
-  .answers-grid {
-    grid-template-columns: repeat(7, 5rem);
-  }
-}
-
 /* How To */
 
 .text-page {

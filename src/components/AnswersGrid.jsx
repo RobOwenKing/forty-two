@@ -27,7 +27,7 @@ const AnswersGrid = ({ answerDetails, impossibles }) => {
   };
 
   return (
-    <div className="answers-grid">
+    <div className="grid for-answers">
       {answerDetails.map((answer, id) => {
         return (
           <div
