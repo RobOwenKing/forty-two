@@ -1,4 +1,5 @@
 @import "styles/caret";
+@import "styles/grid";
 
 /*
 * CONTENTS
@@ -33,32 +34,6 @@
   text-align: center;
 }
 
-/* .grid */
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(4, 4rem);
-  grid-template-rows: minmax(6rem, auto) repeat(5, 4rem);
-  justify-content: center;
-  align-items: center;
-  gap: 2px;
-  font-size: larger;
-}
-
-.grid__cell {
-  outline: solid black 2px;
-  height: 100%;
-  width: 100%;
-}
-
-.grid.has-one-row {
-  grid-template-rows: 4rem;
-}
-
-.grid.has-output-only {
-  grid-template-rows: minmax(6rem, auto);
-}
-
 /* .footer */
 
 .footer {
@@ -67,6 +42,8 @@
 }
 
 .footer__p {
+  /* .grid */
+
   margin-block-start: 0.2em;
   margin-block-end: 0.2em;
 }
