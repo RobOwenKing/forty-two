@@ -1,0 +1,9 @@
+.footer {
+  margin: 1rem auto;
+  font-size: smaller;
+}
+
+.footer__p {
+  margin-block-start: 0.2em;
+  margin-block-end: 0.2em;
+}
