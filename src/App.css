@@ -1,3 +1,4 @@
+@import "styles/calculator";
 @import "styles/caret";
 @import "styles/footer";
 @import "styles/grid";
@@ -59,20 +60,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.output-calculation {
-  width: 16rem;
-  height: 2rem;
-  line-height: 2rem;
-  margin-top: 1.5rem;
-  padding: 0;
-
-  font-size: 2rem;
-  text-align: center;
-
-  outline: none;
-  border-width: 0;
 }
 
 .output-value {

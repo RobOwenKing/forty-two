@@ -238,7 +238,7 @@ const Calculator = ({ answers, digits, possibles, handleValidAnswer }) => {
             inputArr={inputArr}
           />
         )}
-        {isAllFound() && <div className="output-calculation">CONGRATS!</div>}
+        {isAllFound() && <div className="calculator__equation">CONGRATS!</div>}
         <div className={`output-value ${previewValClass()}`}>{previewVal}</div>
       </div>
       {digits.map((input, id) => {

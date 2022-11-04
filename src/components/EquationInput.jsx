@@ -16,7 +16,7 @@ const EquationInput = ({ cursorPos, setCursorPos, inputArr }) => {
   };
 
   return (
-    <div className="output-calculation">
+    <div className="calculator__equation">
       {inputArr.slice(0, cursorPos).map((entry, id) => {
         return (
           <span key={id} onClick={(e) => clickHandler(e, id, entry)}>

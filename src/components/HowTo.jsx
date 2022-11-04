@@ -18,7 +18,7 @@ const HowTo = () => {
       </p>
       <div className="how-to-calc grid has-output-only">
         <div className="grid__cell is-span-four">
-          <div className="output-calculation">
+          <div className="calculator__equation">
             (4-2)*11+6<span className="caret"></span>
           </div>
           <div className="output-value valid">28</div>
