@@ -30,7 +30,7 @@
 /* Old Code to be refactored */
 
 .solved,
-.valid {
+.is-valid {
   color: var(--c-green);
 }
 
@@ -43,7 +43,7 @@
   color: var(--c-grey);
 }
 
-.not-valid {
+.is-not-valid {
   color: var(--c-red);
   font-weight: bold;
 }

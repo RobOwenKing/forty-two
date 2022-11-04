@@ -145,7 +145,7 @@ const Calculator = ({ answers, digits, possibles, handleValidAnswer }) => {
       return "Already found";
     }
 
-    return "valid";
+    return "is-valid";
   };
 
   /**
@@ -154,7 +154,7 @@ const Calculator = ({ answers, digits, possibles, handleValidAnswer }) => {
   const enterHandler = () => {
     const answerCheck = checkAnswer();
 
-    if (answerCheck === "valid") {
+    if (answerCheck === "is-valid") {
       handleValidAnswer(inputArr, inputVal);
       setDigitsUsed([]);
       setInputArr([]);
@@ -214,13 +214,13 @@ const Calculator = ({ answers, digits, possibles, handleValidAnswer }) => {
 
   const previewValClass = () => {
     if (typeof previewVal === "number") {
-      if (checkAnswer() === "valid") {
-        return "valid";
+      if (checkAnswer() === "is-valid") {
+        return "is-valid";
       }
 
       return "wip";
     } else {
-      return "not-valid";
+      return "is-not-valid";
     }
   };
 

@@ -20,6 +20,6 @@
   font-size: 1rem;
 }
 
-.calculator__total.valid {
+.calculator__total.is-valid {
   font-weight: bold;
 }
