@@ -2,6 +2,7 @@
 @import "styles/footer";
 @import "styles/grid";
 @import "styles/react-share";
+@import "styles/utilities";
 
 /* Variables */
 
@@ -46,18 +47,9 @@
   font-weight: bold;
 }
 
-.clickable:hover {
-  text-decoration: underline;
-  cursor: pointer;
-}
-
 .chosen-mode {
   color: var(--c-orange);
   font-weight: bold;
-}
-
-.italics {
-  font-style: italic;
 }
 
 /* Calculator */
@@ -175,10 +167,4 @@
 
 .bar.blue {
   background-color: var(--c-blue);
-}
-
-/* Share */
-
-.share-grid {
-  white-space: pre-wrap;
 }

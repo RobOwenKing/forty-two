@@ -1,0 +1,12 @@
+.clickable:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.italics {
+  font-style: italic;
+}
+
+.ws-pre-wrap {
+  white-space: pre-wrap;
+}
