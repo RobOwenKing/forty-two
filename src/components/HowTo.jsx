@@ -21,7 +21,7 @@ const HowTo = () => {
           <div className="calculator__equation">
             (4-2)*11+6<span className="caret"></span>
           </div>
-          <div className="output-value valid">28</div>
+          <div className="calculator__total valid">28</div>
         </div>
       </div>
       <p>
