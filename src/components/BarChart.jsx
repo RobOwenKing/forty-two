@@ -15,7 +15,9 @@ const BarChart = ({ data, highlights, divClass, labels = null }) => {
           <div key={i} className={divClass}>
             <div className="stats-value">{value}</div>
             <div
-              className={`bar-chart__bar ${highlights[i] ? "orange" : "blue"}`}
+              className={`bar-chart__bar ${
+                highlights[i] ? "is-highlighted" : "is-not-highlighted"
+              }`}
               style={{ height: (value * 100) / max }}
             ></div>
             {labels && <div className="stats-label">{labels[i]}</div>}

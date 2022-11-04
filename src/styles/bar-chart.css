@@ -24,10 +24,10 @@
   margin-left: 0.75rem;
 }
 
-.bar-chart__bar.orange {
+.bar-chart__bar.is-highlighted {
   background-color: var(--c-orange);
 }
 
-.bar-chart__bar.blue {
+.bar-chart__bar.is-not-highlighted {
   background-color: var(--c-blue);
 }
