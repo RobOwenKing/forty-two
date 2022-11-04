@@ -1,3 +1,4 @@
+@import "styles/bar-chart";
 @import "styles/calculator";
 @import "styles/caret";
 @import "styles/footer";
@@ -108,38 +109,4 @@
 
 .stats-label {
   font-size: 15px;
-}
-
-.bar-chart {
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-}
-
-.bar-chart .seven-days {
-  width: 2.5rem;
-}
-
-.bar-chart .all-time {
-  width: 3.5rem;
-}
-
-.bar {
-  width: 2rem;
-}
-
-.seven-days .bar {
-  margin-left: 0.25rem;
-}
-
-.all-time .bar {
-  margin-left: 0.75rem;
-}
-
-.bar.orange {
-  background-color: var(--c-orange);
-}
-
-.bar.blue {
-  background-color: var(--c-blue);
 }

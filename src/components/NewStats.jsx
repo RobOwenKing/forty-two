@@ -120,13 +120,13 @@ const NewStats = ({ answers }) => {
           </div>
           <h3>Last seven days</h3>
           <BarChart
-            divClass="seven-days"
+            divClass="bar-chart__of-seven"
             data={lastSevenScores()}
             highlights={[0, 0, 0, 0, 0, 0, 1]}
           />
           <h3>All time</h3>
           <BarChart
-            divClass="all-time"
+            divClass="bar-chart__of-five"
             data={scoresByGroup.map((s) => s.length)}
             highlights={scoresByGroup.map((s) =>
               s.includes(scores[scores.length - 1])

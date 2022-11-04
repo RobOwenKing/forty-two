@@ -1,0 +1,33 @@
+.bar-chart {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.bar-chart__of-seven {
+  width: 2.5rem;
+}
+
+.bar-chart__of-five {
+  width: 3.5rem;
+}
+
+.bar {
+  width: 2rem;
+}
+
+.bar-chart__of-seven .bar {
+  margin-left: 0.25rem;
+}
+
+.bar-chart__of-five .bar {
+  margin-left: 0.75rem;
+}
+
+.bar.orange {
+  background-color: var(--c-orange);
+}
+
+.bar.blue {
+  background-color: var(--c-blue);
+}
