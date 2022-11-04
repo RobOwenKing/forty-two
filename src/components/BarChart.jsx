@@ -13,7 +13,7 @@ const BarChart = ({ data, highlights, divClass, labels = null }) => {
       {data.map((value, i) => {
         return (
           <div key={i} className={divClass}>
-            <div className="stats-value">{value}</div>
+            <div className="stats-grid__value">{value}</div>
             <div
               className={`bar-chart__bar ${
                 highlights[i] ? "is-highlighted" : "is-not-highlighted"

@@ -71,22 +71,22 @@ const Stats = ({ answers }) => {
       {scores && (
         <>
           <div className="stats-grid">
-            <div className="stats-number">
+            <div className="stats-grid__number">
               {nonZeros.length /*Days played*/}
             </div>
-            <div className="stats-number">
+            <div className="stats-grid__number">
               {answers.length /*Today's score*/}
             </div>
-            <div className="stats-number">
+            <div className="stats-grid__number">
               {Math.max(...scores) /*Highscore*/}
             </div>
-            <div className="stats-number">
+            <div className="stats-grid__number">
               {averageScore().toFixed(2) /*Average*/}
             </div>
-            <div className="stats-label">Days played</div>
-            <div className="stats-label">Today</div>
-            <div className="stats-label">Highest</div>
-            <div className="stats-label">Average</div>
+            <div className="stats-grid__label">Days played</div>
+            <div className="stats-grid__label">Today</div>
+            <div className="stats-grid__label">Highest</div>
+            <div className="stats-grid__label">Average</div>
           </div>
           <h3>Last seven days</h3>
           <BarChart

@@ -4,6 +4,7 @@
 @import "styles/footer";
 @import "styles/grid";
 @import "styles/react-share";
+@import "styles/stats-grid";
 @import "styles/utilities";
 
 /* Variables */
@@ -87,26 +88,4 @@
 
 .text-page p {
   color: var(--c-dark-grey);
-}
-
-/* Stats */
-
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 4.5rem);
-  justify-content: center;
-  align-items: center;
-}
-
-.stats-number {
-  font-size: 1.5rem;
-}
-
-.stats-value {
-  color: var(--c-grey);
-  font-size: 15px;
-}
-
-.stats-label {
-  font-size: 15px;
 }

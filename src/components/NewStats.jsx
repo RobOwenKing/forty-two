@@ -98,25 +98,25 @@ const NewStats = ({ answers }) => {
       {scores && (
         <>
           <div className="stats-grid">
-            <div className="stats-number">{daysPlayed}</div>
-            <div className="stats-number">{streak}</div>
-            <div className="stats-number">{maxCount}</div>
-            <div className="stats-number">
+            <div className="stats-grid__number">{daysPlayed}</div>
+            <div className="stats-grid__number">{streak}</div>
+            <div className="stats-grid__number">{maxCount}</div>
+            <div className="stats-grid__number">
               {((maxCount * 100) / daysPlayed).toFixed() /*% maxes*/}%
             </div>
-            <div className="stats-label">
+            <div className="stats-grid__label">
               Days <br />
               played
             </div>
-            <div className="stats-label">
+            <div className="stats-grid__label">
               Day <br />
               streak
             </div>
-            <div className="stats-label">
+            <div className="stats-grid__label">
               Max <br />
               scores
             </div>
-            <div className="stats-label">Maxes</div>
+            <div className="stats-grid__label">Maxes</div>
           </div>
           <h3>Last seven days</h3>
           <BarChart
