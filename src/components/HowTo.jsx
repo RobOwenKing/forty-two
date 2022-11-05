@@ -32,7 +32,9 @@ const HowTo = () => {
         Press equals when you've found a new number to score points.
       </p>
       <div className="how-to-grid grid has-one-row">
-        <div className="grid__cell flex-center is-span-four equals">=</div>
+        <div className="grid__cell flex-center is-span-four calculator__equals">
+          =
+        </div>
       </div>
     </div>
   );

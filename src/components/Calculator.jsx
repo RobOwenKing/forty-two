@@ -276,7 +276,7 @@ const Calculator = ({ answers, digits, possibles, handleValidAnswer }) => {
         A/C
       </div>
       <div
-        className="grid__cell is-span-four calculator__button flex-center equals"
+        className="grid__cell is-span-four calculator__button flex-center calculator__equals"
         role="button"
         tabIndex="0"
         onClick={enterHandler}

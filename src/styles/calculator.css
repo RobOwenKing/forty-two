@@ -9,6 +9,10 @@
   background-color: var(--c-blue);
 }
 
+.calculator__equals {
+  background-color: var(--c-orange);
+}
+
 .calculator__equation {
   width: 16rem;
   height: 2rem;

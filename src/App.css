@@ -55,9 +55,3 @@
   color: var(--c-orange);
   font-weight: bold;
 }
-
-/* Calculator */
-
-.equals {
-  background-color: var(--c-orange);
-}
