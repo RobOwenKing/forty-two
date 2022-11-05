@@ -33,7 +33,7 @@ const Share = ({ answers, answerDetails }) => {
       <h2>Share</h2>
       <div className="ws-pre-wrap">{shareGrid}</div>
       <p
-        className="clickable"
+        className="clickable text-page__p"
         onClick={() => window.prompt("Press Ctrl+C to copy", shareGrid)}
       >
         Copy

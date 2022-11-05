@@ -1,0 +1,8 @@
+.text-page {
+  width: 300px;
+  margin: auto auto;
+}
+
+.text-page__p {
+  color: var(--c-dark-grey);
+}

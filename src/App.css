@@ -5,6 +5,7 @@
 @import "styles/grid";
 @import "styles/react-share";
 @import "styles/stats-grid";
+@import "styles/text-page";
 @import "styles/utilities";
 
 /* Variables */
@@ -63,15 +64,4 @@
 
 .equals {
   background-color: var(--c-orange);
-}
-
-/* How To */
-
-.text-page {
-  width: 300px;
-  margin: auto auto;
-}
-
-.text-page p {
-  color: var(--c-dark-grey);
 }

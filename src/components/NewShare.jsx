@@ -38,9 +38,9 @@ const NewShare = ({ answers, possibles }) => {
   return (
     <div className="text-page">
       <h2>Share</h2>
-      <p className="italics">{title}</p>
+      <p className="italics text-page__p">{title}</p>
       <p
-        className="clickable"
+        className="clickable text-page__p"
         onClick={() => window.prompt("Press Ctrl+C to copy", title)}
       >
         Copy
