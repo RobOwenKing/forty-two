@@ -58,10 +58,6 @@
 
 /* Calculator */
 
-.used {
-  background-color: var(--c-blue);
-}
-
 .equals {
   background-color: var(--c-orange);
 }

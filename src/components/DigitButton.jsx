@@ -19,7 +19,7 @@ const DigitButton = ({ id, input, clickHandler, digitsUsed }) => {
     <InputButton
       input={input}
       clickHandler={inputHandler}
-      classes={digitsUsed.includes(id) ? "used" : ""}
+      classes={digitsUsed.includes(id) ? "is-used" : ""}
     />
   );
 };

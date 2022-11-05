@@ -5,6 +5,10 @@
   z-index: 1;
 }
 
+.calculator__button.is-used {
+  background-color: var(--c-blue);
+}
+
 .calculator__equation {
   width: 16rem;
   height: 2rem;
