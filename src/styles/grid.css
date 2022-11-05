@@ -25,7 +25,7 @@
   font-family: monospace;
 }
 
-@media (min-width: 570px) {
+@media (min-width: 600px) {
   .grid.for-answers {
     grid-template-columns: repeat(7, 5rem);
     grid-template-rows: repeat(4, 1rem);
