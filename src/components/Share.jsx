@@ -4,7 +4,7 @@ import {
   PocketShareButton,
   TelegramShareButton,
   TwitterShareButton,
-  WhatsappShareButton
+  WhatsappShareButton,
 } from "react-share";
 
 import {
@@ -13,15 +13,15 @@ import {
   PocketIcon,
   TelegramIcon,
   TwitterIcon,
-  WhatsappIcon
+  WhatsappIcon,
 } from "react-share";
 
-import { createShareGrid } from '../helpers/createShareGrid.js';
+import { createShareGrid } from "../helpers/createShareGrid.js";
 
 /**
-  * @param {array.<number>} answers - Answers found by the user (values)
-  * @param {array.<string|null>} answerDetails - Answers found by the user (equations, each with total index-1), else null. Expected length = 28
-*/
+ * @param {array.<number>} answers - Answers found by the user (values)
+ * @param {array.<string|null>} answerDetails - Answers found by the user (equations, each with total index-1), else null. Expected length = 28
+ */
 const Share = ({ answers, answerDetails }) => {
   //const title = answers.length === 28 ? `I've done my 28 for today already! How about you?` : `I've got ${answers.length} so far today. How about you?`;
   const url = "http://twenty-eight.robowenking.com/";
@@ -31,15 +31,29 @@ const Share = ({ answers, answerDetails }) => {
   return (
     <div className="text-page">
       <h2>Share</h2>
-      <div className="share-grid">{shareGrid}</div>
-      <p className="clickable" onClick={() => window.prompt("Press Ctrl+C to copy", shareGrid)}>Copy</p>
-      <TwitterShareButton url={url} title={shareGrid} hashtags={["TwentyEight"]} related={["RobOwenKing"]}>
+      <div className="ws-pre-wrap">{shareGrid}</div>
+      <p
+        className="clickable text-page__p"
+        onClick={() => window.prompt("Press Ctrl+C to copy", shareGrid)}
+      >
+        Copy
+      </p>
+      <TwitterShareButton
+        url={url}
+        title={shareGrid}
+        hashtags={["TwentyEight"]}
+        related={["RobOwenKing"]}
+      >
         <TwitterIcon size={iconSize} round />
       </TwitterShareButton>
       <FacebookShareButton url={url} hashtag="#TwentyEight">
         <FacebookIcon size={iconSize} round />
       </FacebookShareButton>
-      <EmailShareButton url={url} subject="Have you tried this game?" body={`It's a simple daily numbers puzzle game. I've got ${answers.length} so far today. How about you?`}>
+      <EmailShareButton
+        url={url}
+        subject="Have you tried this game?"
+        body={`It's a simple daily numbers puzzle game. I've got ${answers.length} so far today. How about you?`}
+      >
         <EmailIcon size={iconSize} round />
       </EmailShareButton>
       <PocketShareButton url={url} title="Twenty-Eight">
@@ -53,6 +67,6 @@ const Share = ({ answers, answerDetails }) => {
       </WhatsappShareButton>
     </div>
   );
-}
+};
 
 export default Share;

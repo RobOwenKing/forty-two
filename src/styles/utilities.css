@@ -1,0 +1,18 @@
+.clickable:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.italics {
+  font-style: italic;
+}
+
+.ws-pre-wrap {
+  white-space: pre-wrap;
+}

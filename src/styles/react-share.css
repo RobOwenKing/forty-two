@@ -1,0 +1,9 @@
+.react-share__ShareButton {
+  margin: auto 2px;
+  opacity: 0.8;
+}
+
+.react-share__ShareButton:hover,
+.react-share__ShareButton:focus {
+  opacity: 1;
+}
