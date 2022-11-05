@@ -5,7 +5,7 @@
   z-index: 1;
 }
 
-.calculator__button.is-used {
+.grid__cell.is-used {
   background-color: var(--c-blue);
 }
 

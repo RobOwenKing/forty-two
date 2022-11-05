@@ -8,7 +8,7 @@ const HowTo = () => {
       </p>
       <div className="grid has-one-row">
         <div className="grid__cell flex-center">6</div>
-        <div className="grid__cell flex-center used">2</div>
+        <div className="grid__cell flex-center is-used">2</div>
         <div className="grid__cell flex-center">11</div>
         <div className="grid__cell flex-center">4</div>
       </div>
