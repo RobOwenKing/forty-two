@@ -30,28 +30,26 @@
   text-align: center;
 }
 
-/* Old Code to be refactored */
-
-.solved,
-.is-valid {
+.answers__answer.is-solved,
+.calculator__total.is-valid {
   color: var(--c-green);
 }
 
-.not-solved {
+.answers__answer.is-not-solved {
   font-weight: bold;
 }
 
-.wip,
-.impossible {
+.calculator__total.is-wip,
+.answers__answer.impossible {
   color: var(--c-grey);
 }
 
-.is-not-valid {
+.calculator__total.is-not-valid {
   color: var(--c-red);
   font-weight: bold;
 }
 
-.chosen-mode {
+.tab__name--is-chosen {
   color: var(--c-orange);
   font-weight: bold;
 }

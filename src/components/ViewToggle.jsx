@@ -6,21 +6,25 @@ const ViewToggle = ({ view, setView }) => {
   return (
     <p>
       <span
-        className={`clickable ${view === "howto" ? "chosen-mode" : ""}`}
+        className={`clickable ${
+          view === "howto" ? "tab__name--is-chosen" : ""
+        }`}
         onClick={() => setView("howto")}
       >
         How to Play
       </span>
       <span> / </span>
       <span
-        className={`clickable ${view === "game" ? "chosen-mode" : ""}`}
+        className={`clickable ${view === "game" ? "tab__name--is-chosen" : ""}`}
         onClick={() => setView("game")}
       >
         Game
       </span>
       <span> / </span>
       <span
-        className={`clickable ${view === "stats" ? "chosen-mode" : ""}`}
+        className={`clickable ${
+          view === "stats" ? "tab__name--is-chosen" : ""
+        }`}
         onClick={() => setView("stats")}
       >
         My Results

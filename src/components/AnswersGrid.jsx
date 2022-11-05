@@ -5,10 +5,10 @@
 const AnswersGrid = ({ answerDetails, impossibles }) => {
   const returnClass = (answer, id) => {
     if (impossibles.includes(id + 1)) {
-      return "impossible";
+      return "is-impossible";
     }
 
-    return answer ? "solved" : "not-solved";
+    return answer ? "is-solved" : "is-not-solved";
   };
 
   /**
@@ -27,12 +27,12 @@ const AnswersGrid = ({ answerDetails, impossibles }) => {
   };
 
   return (
-    <div className="grid for-answers">
+    <div className="grid answers">
       {answerDetails.map((answer, id) => {
         return (
           <div
             key={id}
-            className={returnClass(answer, id)}
+            className={`answers__answer ${returnClass(answer, id)}`}
             style={{ fontSize: fontSize(answer) }}
           >
             {answer ? answer : id + 1}

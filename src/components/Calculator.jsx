@@ -218,7 +218,7 @@ const Calculator = ({ answers, digits, possibles, handleValidAnswer }) => {
         return "is-valid";
       }
 
-      return "wip";
+      return "is-wip";
     } else {
       return "is-not-valid";
     }
