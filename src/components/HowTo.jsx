@@ -7,10 +7,10 @@ const HowTo = () => {
         digits, which change every day.
       </p>
       <div className="how-to-grid grid has-one-row">
-        <div className="grid__cell">6</div>
-        <div className="grid__cell used">2</div>
-        <div className="grid__cell">11</div>
-        <div className="grid__cell">4</div>
+        <div className="grid__cell flex-center">6</div>
+        <div className="grid__cell flex-center used">2</div>
+        <div className="grid__cell flex-center">11</div>
+        <div className="grid__cell flex-center">4</div>
       </div>
       <p>
         Each digit button must be used exactly once in every calculation. You
@@ -30,7 +30,7 @@ const HowTo = () => {
       </p>
       <p>Press equals when you've found a new number to score points.</p>
       <div className="how-to-grid grid has-one-row">
-        <div className="grid__cell is-span-four equals">=</div>
+        <div className="grid__cell flex-center is-span-four equals">=</div>
       </div>
     </div>
   );

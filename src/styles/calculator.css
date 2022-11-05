@@ -1,3 +1,10 @@
+.calculator__button:hover {
+  cursor: pointer;
+  font-size: 1.5em;
+  outline: solid black 4px;
+  z-index: 1;
+}
+
 .calculator__equation {
   width: 16rem;
   height: 2rem;

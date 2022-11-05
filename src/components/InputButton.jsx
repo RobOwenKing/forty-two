@@ -6,7 +6,7 @@
 const InputButton = ({ input, clickHandler, classes = "" }) => {
   return (
     <div
-      className={`grid__cell button ${classes}`}
+      className={`grid__cell flex-center calculator__button ${classes}`}
       role="button"
       tabIndex="0"
       onClick={() => clickHandler(input)}

@@ -260,7 +260,7 @@ const Calculator = ({ answers, digits, possibles, handleValidAnswer }) => {
         );
       })}
       <div
-        className="grid__cell is-span-two button "
+        className="grid__cell is-span-two calculator__button flex-center"
         role="button"
         tabIndex="0"
         onClick={backspaceHandler}
@@ -268,7 +268,7 @@ const Calculator = ({ answers, digits, possibles, handleValidAnswer }) => {
         Back
       </div>
       <div
-        className="grid__cell is-span-two button "
+        className="grid__cell is-span-two calculator__button flex-center"
         role="button"
         tabIndex="0"
         onClick={acHandler}
@@ -276,7 +276,7 @@ const Calculator = ({ answers, digits, possibles, handleValidAnswer }) => {
         A/C
       </div>
       <div
-        className="grid__cell is-span-four button  equals"
+        className="grid__cell is-span-four calculator__button flex-center equals"
         role="button"
         tabIndex="0"
         onClick={enterHandler}
