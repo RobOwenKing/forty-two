@@ -20,7 +20,7 @@ const BarChart = ({ data, highlights, divClass, labels = null }) => {
               }`}
               style={{ height: (value * 100) / max }}
             ></div>
-            {labels && <div className="stats-label">{labels[i]}</div>}
+            {labels && <div className="stats-grid__label">{labels[i]}</div>}
           </div>
         );
       })}
